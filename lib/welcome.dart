@@ -30,7 +30,7 @@ Read(),
 
     return Scaffold(
       bottomNavigationBar: FloatingNavbar(
-
+selectedBackgroundColor: Colors.white,
         iconSize: 30,
         fontSize: 15,
         backgroundColor: Colors.blue,
@@ -46,7 +46,7 @@ Read(),
 
           ),
           FloatingNavbarItem( icon: FaIcon(FontAwesomeIcons.edit).icon, title: 'Write'),
-          FloatingNavbarItem(icon: FaIcon(FontAwesomeIcons.userAlt).icon, title: 'Profile'),
+          FloatingNavbarItem(icon: FaIcon(FontAwesomeIcons.user).icon, title: 'Profile'),
 
         ],
       ),
