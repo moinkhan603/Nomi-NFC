@@ -240,15 +240,18 @@ class _detailsWidget extends StatelessWidget {
  _detailsWidget(this.heading,this.detail);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
 
-      Text(heading,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-        SizedBox(height: 5,),
-      Text(detail,style: TextStyle(fontSize: 18),),
+        Text(heading,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+          SizedBox(height: 5,),
+        Text(detail,style: TextStyle(fontSize: 18),),
 
-    ],);
+      ],),
+    );
   }
 }

@@ -13,20 +13,21 @@ class _WriteState extends State<Write> {
 
           children: <Widget>[
 
-      new Container(
+      SingleChildScrollView(
+        child: new Container(
 
 
 
-      decoration: new BoxDecoration(
+        decoration: new BoxDecoration(
 
 
 
-      image: new DecorationImage(image: new AssetImage("assets/images/bg_option.png"), fit: BoxFit.fill,),
+        image: new DecorationImage(image: new AssetImage("assets/images/bg_option.png"), fit: BoxFit.fill,),
 
     ),
 
 
-        child:     Column(
+          child:     Column(
 
     children: <Widget>[
 
@@ -95,25 +96,25 @@ Wrap(
 
     children: <Widget>[
 
-      _socialIcons("assets/images/whatsapp.png","Whatsapp"),
+        _socialIcons("assets/images/whatsapp.png","Whatsapp"),
 
-      _socialIcons("assets/images/snapchat.png","Snapchat"),
+        _socialIcons("assets/images/snapchat.png","Snapchat"),
 
-      _socialIcons("assets/images/soundcloud.png","Soundcloud"),
+        _socialIcons("assets/images/soundcloud.png","Soundcloud"),
 
-      _socialIcons("assets/images/tiktok.png","Tiktok"),
-      _socialIcons("assets/images/twitter.png","Twitter"),
-      _socialIcons("assets/images/youtube.png","Youtube"),
-      _socialIcons("assets/images/instagram.png","Instagram"),
-      _socialIcons("assets/images/linkedin.png","Linkedin"),
-      _socialIcons("assets/images/facebook.png","Facebook"),
-      _socialIcons("assets/images/tap.png","Contact Tap"),
-      _socialIcons("assets/images/cashapp.png","Cashapp"),
-      _socialIcons("assets/images/browser.png","Browser"),
-      _socialIcons("assets/images/music.png","Music"),
-      _socialIcons("assets/images/paypal.png","Paypal"),
-      _socialIcons("assets/images/twitch.png","Twitch"),
-      _socialIcons("assets/images/Add.png","Add Link"),
+        _socialIcons("assets/images/tiktok.png","Tiktok"),
+        _socialIcons("assets/images/twitter.png","Twitter"),
+        _socialIcons("assets/images/youtube.png","Youtube"),
+        _socialIcons("assets/images/instagram.png","Instagram"),
+        _socialIcons("assets/images/linkedin.png","Linkedin"),
+        _socialIcons("assets/images/facebook.png","Facebook"),
+        _socialIcons("assets/images/tap.png","Contact Tap"),
+        _socialIcons("assets/images/cashapp.png","Cashapp"),
+        _socialIcons("assets/images/browser.png","Browser"),
+        _socialIcons("assets/images/music.png","Music"),
+        _socialIcons("assets/images/paypal.png","Paypal"),
+        _socialIcons("assets/images/twitch.png","Twitch"),
+        _socialIcons("assets/images/Add.png","Add Link"),
 
 
 
@@ -155,6 +156,7 @@ Wrap(
 
 
     ),
+      ),
 
           ]),
     );
