@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'DemoLocalizations.dart';
 class EditProfile extends StatefulWidget {
   @override
   _EditProfileState createState() => _EditProfileState();
@@ -64,13 +66,16 @@ class _EditProfileState extends State<EditProfile> {
 
                             ),
 
-                            Text("Edit Profile",style: TextStyle(color: Colors.white,fontSize: 22),),
+                            Text(AppLocalizations.of(context).translate('edtprfile'),
+
+                              style: TextStyle(color: Colors.white,fontSize: 22),),
 
 
 
                             Row(children: <Widget>[
 
-                              Text("Save",style: TextStyle(color: Colors.white,fontSize: 18)),
+                              Text(AppLocalizations.of(context).translate('savevtn'),
+                                  style: TextStyle(color: Colors.white,fontSize: 18)),
 
 
 
@@ -125,9 +130,9 @@ class _EditProfileState extends State<EditProfile> {
                         physics: BouncingScrollPhysics(),
                         padding: EdgeInsets.symmetric(vertical: 10),
                         children: <Widget>[
-                        _info("Name",1),
-                        _info("Email",2),
-                        _info("Bio",3),
+                        _info(AppLocalizations.of(context).translate('name'),1),
+                        _info(AppLocalizations.of(context).translate('email'),2),
+                        _info(AppLocalizations.of(context).translate('bio'),3),
                           SizedBox(height: 20,),
                           Align(
 
@@ -135,22 +140,23 @@ class _EditProfileState extends State<EditProfile> {
                               alignment: Alignment.centerLeft,
                               child: Padding(
                                 padding: const EdgeInsets.only(left:14.0),
-                                child: Text("Social Networks",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
+                                child: Text(AppLocalizations.of(context).translate('social'),
+                                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
                               )),
 
-                        _info2(3,"Youtube username","assets/images/youtube.png"),
-                        _info2(3,"Whatsapp username","assets/images/whatsapp.png"),
-                        _info2(3,"Twitter username","assets/images/twitter.png"),
-                        _info2(3,"Tiktok username","assets/images/tiktok.png"),
-                        _info2(3,"SoundCloud username","assets/images/soundcloud.png"),
-                        _info2(3,"Snapchat username","assets/images/snapchat.png"),
-                        _info2(3,"Paypal username","assets/images/paypal.png"),
-                        _info2(3,"Music username","assets/images/music.png"),
-                        _info2(3,"Linkedin username","assets/images/linkedin.png"),
-                        _info2(3,"Instagram username","assets/images/instagram.png"),
-                        _info2(3,"Facebook username","assets/images/facebook.png"),
-                        _info2(3,"Cashapp username","assets/images/cashapp.png"),
-                        _info2(3,"Venmo username","assets/images/venmo.png"),
+                        _info2(3,AppLocalizations.of(context).translate('yutub'),"assets/images/youtube.png"),
+                        _info2(3,AppLocalizations.of(context).translate('wtsp'),"assets/images/whatsapp.png"),
+                        _info2(3,AppLocalizations.of(context).translate('twter'),"assets/images/twitter.png"),
+                        _info2(3,AppLocalizations.of(context).translate('tktok'),"assets/images/tiktok.png"),
+                        _info2(3,AppLocalizations.of(context).translate('soundcld'),"assets/images/soundcloud.png"),
+                        _info2(3,AppLocalizations.of(context).translate('snpcht'),"assets/images/snapchat.png"),
+                        _info2(3,AppLocalizations.of(context).translate('pypl'),"assets/images/paypal.png"),
+                        _info2(3,AppLocalizations.of(context).translate('msc'),"assets/images/music.png"),
+                        _info2(3,AppLocalizations.of(context).translate('lnk'),"assets/images/linkedin.png"),
+                        _info2(3,AppLocalizations.of(context).translate('insta'),"assets/images/instagram.png"),
+                        _info2(3,AppLocalizations.of(context).translate('fb'),"assets/images/facebook.png"),
+                        _info2(3,AppLocalizations.of(context).translate('cash'),"assets/images/cashapp.png"),
+                        _info2(3,AppLocalizations.of(context).translate('venmo'),"assets/images/venmo.png"),
 
 
 

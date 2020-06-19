@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'DemoLocalizations.dart';
+
 class signUp extends StatefulWidget {
   @override
   _signUpState createState() => _signUpState();
@@ -34,13 +36,15 @@ class _signUpState extends State<signUp> {
 
                        Padding(
                          padding: const EdgeInsets.only(left:58.0),
-                         child: Text("Welcome!",style: TextStyle(fontSize: 25,color: Colors.white,
+                         child: Text(AppLocalizations.of(context).translate('wlcm'),
+                           style: TextStyle(fontSize: 25,color: Colors.white,
                              fontWeight: FontWeight.bold
                          ),),
                        ),
                          Padding(
                            padding: const EdgeInsets.only(left:58.0),
-                           child: Text("Sign Up",style: TextStyle(fontSize: 29,color: Colors.white,
+                           child: Text(AppLocalizations.of(context).translate('signup'),
+                             style: TextStyle(fontSize: 29,color: Colors.white,
                              fontWeight: FontWeight.bold
                        ),),
                          ),
@@ -57,7 +61,7 @@ class _signUpState extends State<signUp> {
                                },
                                cursorColor: Colors.blue,
                                decoration: InputDecoration(
-                                   hintText: "Email",
+                                   hintText: AppLocalizations.of(context).translate('email'),
                                   hintStyle: TextStyle(fontWeight: FontWeight.bold
                                   ,color: Color(0xff0087E3)
                                   ),
@@ -81,7 +85,7 @@ SizedBox(height: 10,),
                                },
                                cursorColor: Colors.blue,
                                decoration: InputDecoration(
-                                   hintText: "Password",
+                                   hintText: AppLocalizations.of(context).translate('pass'),
                                    hintStyle: TextStyle(fontWeight: FontWeight.bold
                                        ,color: Color(0xff0087E3)
                                    ),
@@ -106,7 +110,7 @@ SizedBox(height: 10,),
     child: FlatButton(
 
     child: Text(
-    "Sign Up",
+      AppLocalizations.of(context).translate('signup'),
     style: TextStyle(
     color: Colors.white,
 

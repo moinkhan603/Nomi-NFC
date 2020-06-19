@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:nomi/welcome.dart';
+import 'DemoLocalizations.dart';
 import 'signUP.dart';
 class signIn extends StatefulWidget {
   @override
@@ -36,13 +37,16 @@ class _signInState extends State<signIn> {
 
                         Padding(
                           padding: const EdgeInsets.only(left:58.0),
-                          child: Text("Hello!",style: TextStyle(fontSize: 25,color: Colors.white,
+                          child: Text(AppLocalizations.of(context).translate('helo'),
+
+                            style: TextStyle(fontSize: 25,color: Colors.white,
                               fontWeight: FontWeight.bold
                           ),),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left:58.0),
-                          child: Text("Welcome Back!",style: TextStyle(fontSize: 29,color: Colors.white,
+                          child: Text(AppLocalizations.of(context).translate('wlcmbk')
+    ,style: TextStyle(fontSize: 29,color: Colors.white,
                               fontWeight: FontWeight.bold
                           ),),
                         ),
@@ -51,7 +55,7 @@ class _signInState extends State<signIn> {
                           padding: const EdgeInsets.symmetric(horizontal:30.0),
                           child: Text.rich(
                             TextSpan(
-                              text: 'You can use email to sign in or ',
+                              text: AppLocalizations.of(context).translate('signintxt'),
                               style: TextStyle(fontSize: 20,color: Colors.white),
                               children: <TextSpan>[
 
@@ -64,7 +68,7 @@ recognizer: new TapGestureRecognizer()..onTap=(){
   );
 }
                                     ,
-                                    text: 'Sign Up',
+                                    text: AppLocalizations.of(context).translate('signup'),
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
 
@@ -89,7 +93,7 @@ recognizer: new TapGestureRecognizer()..onTap=(){
                               },
                               cursorColor: Colors.blue,
                               decoration: InputDecoration(
-                                  hintText: "Email",
+                                  hintText: AppLocalizations.of(context).translate('email'),
                                   hintStyle: TextStyle(fontWeight: FontWeight.bold
                                       ,color: Color(0xff0087E3)
                                   ),
@@ -113,7 +117,7 @@ recognizer: new TapGestureRecognizer()..onTap=(){
                               },
                               cursorColor: Colors.blue,
                               decoration: InputDecoration(
-                                  hintText: "Password",
+                                  hintText: AppLocalizations.of(context).translate('pass'),
                                   hintStyle: TextStyle(fontWeight: FontWeight.bold
                                       ,color: Color(0xff0087E3)
                                   ),
@@ -138,7 +142,7 @@ recognizer: new TapGestureRecognizer()..onTap=(){
                                 child: FlatButton(
 
                                     child: Text(
-                                      "Sign In",
+                                      AppLocalizations.of(context).translate('signin'),
                                       style: TextStyle(
                                           color: Colors.white,
 
@@ -161,7 +165,8 @@ recognizer: new TapGestureRecognizer()..onTap=(){
                           padding: const EdgeInsets.symmetric(horizontal: 50),
                           child: Align(
                             alignment: Alignment.bottomRight,
-                            child: Text("Forgot Password?",style: TextStyle(fontSize: 20,color: Colors.white,
+                            child: Text(AppLocalizations.of(context).translate('frgtpas'),
+                              style: TextStyle(fontSize: 20,color: Colors.white,
 
                             ),),
                           ),

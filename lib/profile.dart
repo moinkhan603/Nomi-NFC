@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nomi/qrGenerator.dart';
+import 'DemoLocalizations.dart';
 import 'editProfile.dart';
 class Profile extends StatefulWidget {
   @override
@@ -61,13 +62,15 @@ body: SingleChildScrollView(
   
                 ),
   
-  Text("Profile",style: TextStyle(color: Colors.white,fontSize: 22),),
+  Text(AppLocalizations.of(context).translate('profile'),
+    style: TextStyle(color: Colors.white,fontSize: 22),),
   
   
   
   Row(children: <Widget>[
   
-    Text("Log out",style: TextStyle(color: Colors.white,fontSize: 18)),
+    Text(AppLocalizations.of(context).translate('logout'),
+        style: TextStyle(color: Colors.white,fontSize: 18)),
   
       ImageIcon(
   
@@ -120,7 +123,8 @@ body: SingleChildScrollView(
              );
 
            },
-           child: Text("Generate QR Code",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20
+           child: Text(AppLocalizations.of(context).translate('generateqr'),
+             style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20
 
            ,color: Colors.blue
 
@@ -129,11 +133,11 @@ body: SingleChildScrollView(
   
          SizedBox(height: 5,),
   
-         Text("im a man"),
+         Text(AppLocalizations.of(context).translate('man')),
   
          SizedBox(height: 5,),
   
-         Text("taps: 0"),
+         Text(AppLocalizations.of(context).translate('tap')),
   
          SizedBox(height: 5,),
   
@@ -170,7 +174,7 @@ body: SingleChildScrollView(
 
 
 
-          child: Center(child: Text("Edit Profile",
+          child: Center(child: Text(AppLocalizations.of(context).translate('edtprfile'),
 
               style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.blue)
 
@@ -181,30 +185,24 @@ body: SingleChildScrollView(
   
   
   
-    _detailsWidget("Specialize",
-  
-    "With Nomi Direct you can tap people direct to any app you choose"
+    _detailsWidget(AppLocalizations.of(context).translate('specilize'),
+
+        AppLocalizations.of(context).translate('specilizet')
   
     ),
   
          SizedBox(height: 5,),
   
-         _detailsWidget("Unlimited Taps",
-  
-             "Your Nomi is water proof and will work "
-  
-                 "indefinitely with an unlimited number of taos."
-  
+         _detailsWidget(AppLocalizations.of(context).translate('unlimitedtaps'),
+
+             AppLocalizations.of(context).translate('unlimitedtapst')
          ),
   
          SizedBox(height: 5,),
   
-         _detailsWidget("Privacy",
-  
-             "No Personal passwords are ever needed to link"
-  
-                 "social accounts with Nomi!"
-  
+         _detailsWidget(AppLocalizations.of(context).translate('privacy'),
+
+             AppLocalizations.of(context).translate('privacyt')
          ),
   
   

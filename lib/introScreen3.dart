@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'DemoLocalizations.dart';
 class intro3 extends StatefulWidget {
   @override
   _intro3State createState() => _intro3State();
@@ -18,7 +20,7 @@ class _intro3State extends State<intro3> {
 
 
               SizedBox(height: 10,),
-              Text("Your QR Code  "
+              Text(AppLocalizations.of(context).translate('intro3Heading')
 
 
 
@@ -30,8 +32,7 @@ class _intro3State extends State<intro3> {
               SizedBox(height: 30,),
               Image.asset("assets/images/qr_code_screen_en.png",height: 300,),
               SizedBox(height: 30,),
-              Text("Here is your exclusive QR Code"+"\n"+
-                "Share with your People"
+              Text(AppLocalizations.of(context).translate('intro3Text')
 
 
 

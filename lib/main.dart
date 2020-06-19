@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'DemoLocalizations.dart';
 import 'introScreen1.dart';
 import 'introScreen2.dart';
 import 'introScreen3.dart';
@@ -13,6 +15,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Nomi',
+
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('ar', ''),
+      ],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+
+
       theme: ThemeData(
 
         primarySwatch: Colors.blue,

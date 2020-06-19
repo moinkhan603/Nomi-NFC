@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'DemoLocalizations.dart';
 class Write extends StatefulWidget {
   @override
   _WriteState createState() => _WriteState();
@@ -63,7 +65,8 @@ class _WriteState extends State<Write> {
 
     Row(children: <Widget>[
 
-    Text("Log out",style: TextStyle(color: Colors.white,fontSize: 18)),
+    Text(AppLocalizations.of(context).translate('logout'),
+        style: TextStyle(color: Colors.white,fontSize: 18)),
 
     ImageIcon(
 

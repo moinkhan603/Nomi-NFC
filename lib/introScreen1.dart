@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'DemoLocalizations.dart';
 class intro1 extends StatefulWidget {
   @override
   _intro1State createState() => _intro1State();
@@ -16,20 +18,20 @@ class _intro1State extends State<intro1> {
 
             children: <Widget>[
 
-              Text("How To Tap!",style: TextStyle(fontSize: 25,color: Colors.white,
+              Text(AppLocalizations.of(context).translate('intro1Heading'),
+
+                style: TextStyle(fontSize: 25,color: Colors.white,
                   fontWeight: FontWeight.bold
               ),),
               SizedBox(height: 15,),
               Image.asset("assets/images/person_icon.png"),
               SizedBox(height: 10,),
-              Text("Tap your Nomi to the middle "+"\n"+
-                  "back of another mobile device to "+"\n"+
-                  "share your profile"+"\n"+"\n"+
-                  ""
-                  "Make sure they have turned on "+"\n"+
-                  "NFC in settings"
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Text(AppLocalizations.of(context).translate('intro1Text')
 
-                ,style: TextStyle(fontSize: 20,color: Colors.white),),
+                  ,style: TextStyle(fontSize: 20,color: Colors.white),),
+              ),
 
             ],
 

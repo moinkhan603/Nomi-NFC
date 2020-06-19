@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'DemoLocalizations.dart';
 class intro2 extends StatefulWidget {
   @override
   _intro2State createState() => _intro2State();
@@ -18,9 +20,7 @@ class _intro2State extends State<intro2> {
 
 
               SizedBox(height: 100,),
-              Text("Your Nomi QR Code can be "+"\n"+
-                  "accessed through by selecting "+"\n"+
-                  "Generate QR Code button"
+              Text(AppLocalizations.of(context).translate('intro2Text')
 
 
                 ,style: TextStyle(fontSize: 25,color: Colors.white,

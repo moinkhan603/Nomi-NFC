@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'DemoLocalizations.dart';
 class Read extends StatefulWidget {
   @override
   _ReadState createState() => _ReadState();
@@ -59,13 +61,16 @@ class _ReadState extends State<Read> {
 
                             ),
 
-                            Text("Apple",style: TextStyle(color: Colors.white,fontSize: 22),),
+                            Text(AppLocalizations.of(context).translate('apple'),
+                              style: TextStyle(color: Colors.white,fontSize: 22),),
 
 
 
                             Row(children: <Widget>[
 
-                              Text("Log out",style: TextStyle(color: Colors.white,fontSize: 18)),
+                              Text(AppLocalizations.of(context).translate('logout'),
+
+                                  style: TextStyle(color: Colors.white,fontSize: 18)),
 
                               ImageIcon(
 
