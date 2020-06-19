@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'editProfile.dart';
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -126,36 +127,46 @@ body: SingleChildScrollView(
   
          SizedBox(height: 5,),
   
-  Card(
-  
-    color: Colors.white.withOpacity(0.6),
-  
-    shape: RoundedRectangleBorder(
-  
-      borderRadius: BorderRadius.circular(15.0),
-  
+
+  InkWell(
+    onTap: (){
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => EditProfile()),
+      );
+
+    },
+    child: Card(
+
+      color: Colors.white.withOpacity(0.6),
+
+      shape: RoundedRectangleBorder(
+
+        borderRadius: BorderRadius.circular(15.0),
+
+      ),
+
+      elevation: 1,
+
+      child:   Container(
+
+
+
+          height: 30,
+
+    width: 150,
+
+
+
+
+
+          child: Center(child: Text("Edit Profile",
+
+              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.blue)
+
+          ))),
+
     ),
-  
-    elevation: 1,
-  
-    child:   Container(
-  
-  
-  
-        height: 30,
-  
-  width: 150,
-  
-  
-  
-  
-  
-        child: Center(child: Text("Edit Profile",
-  
-            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.blue)
-  
-        ))),
-  
   ),
   
   
