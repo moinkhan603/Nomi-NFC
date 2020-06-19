@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomi/qrGenerator.dart';
 import 'editProfile.dart';
 class Profile extends StatefulWidget {
   @override
@@ -111,11 +111,21 @@ body: SingleChildScrollView(
   
   
   
-         Text("Generate QR Code",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20
-  
-         ,color: Colors.blue
-  
-         ),),
+         InkWell(
+           onTap: (){
+
+             Navigator.push(
+               context,
+               MaterialPageRoute(builder: (context) => QRGenerator()),
+             );
+
+           },
+           child: Text("Generate QR Code",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20
+
+           ,color: Colors.blue
+
+           ),),
+         ),
   
          SizedBox(height: 5,),
   

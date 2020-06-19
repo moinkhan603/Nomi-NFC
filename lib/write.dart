@@ -87,40 +87,84 @@ class _WriteState extends State<Write> {
 
     ),
 
+Container(
+  height: 500,
+  child:   ListView(children: <Widget>[
 
 
-Wrap(
-  runSpacing: 15.0,
-  spacing: 2,
-    direction: Axis.horizontal,
 
-    children: <Widget>[
+
+
+    Wrap(
+
+      runSpacing: 15.0,
+
+      spacing: 2,
+
+      direction: Axis.horizontal,
+
+
+
+      children: <Widget>[
+
+
 
         _socialIcons("assets/images/whatsapp.png","Whatsapp"),
 
+
+
+
         _socialIcons("assets/images/snapchat.png","Snapchat"),
+
+
 
         _socialIcons("assets/images/soundcloud.png","Soundcloud"),
 
+
+
         _socialIcons("assets/images/tiktok.png","Tiktok"),
+
         _socialIcons("assets/images/twitter.png","Twitter"),
+
         _socialIcons("assets/images/youtube.png","Youtube"),
+
         _socialIcons("assets/images/instagram.png","Instagram"),
+
         _socialIcons("assets/images/linkedin.png","Linkedin"),
+
         _socialIcons("assets/images/facebook.png","Facebook"),
+
         _socialIcons("assets/images/tap.png","Contact Tap"),
+
         _socialIcons("assets/images/cashapp.png","Cashapp"),
+
         _socialIcons("assets/images/browser.png","Browser"),
+
         _socialIcons("assets/images/music.png","Music"),
+
         _socialIcons("assets/images/paypal.png","Paypal"),
+
         _socialIcons("assets/images/twitch.png","Twitch"),
-        _socialIcons("assets/images/Add.png","Add Link"),
 
 
 
 
 
-    ],
+
+
+
+
+
+
+
+
+      ],
+
+
+
+
+
+
 
 
 
@@ -128,6 +172,18 @@ Wrap(
 
     )
 
+
+
+
+
+
+
+
+
+
+
+  ],),
+),
 
 
 
