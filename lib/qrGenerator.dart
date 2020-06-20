@@ -68,7 +68,7 @@ class QrCode extends StatelessWidget {
           gapless: false,
           embeddedImage: AssetImage(ImgPath),
           embeddedImageStyle: QrEmbeddedImageStyle(
-            size: Size(80, 80),
+            size: Size(70, 70),
           ),
         ),
       ),

@@ -65,8 +65,15 @@ class _WriteState extends State<Write> {
 
     Row(children: <Widget>[
 
-    Text(AppLocalizations.of(context).translate('logout'),
-        style: TextStyle(color: Colors.white,fontSize: 18)),
+    GestureDetector(
+      onTap: (){
+
+        Navigator.pop(context);
+
+      },
+      child: Text(AppLocalizations.of(context).translate('logout'),
+          style: TextStyle(color: Colors.white,fontSize: 18)),
+    ),
 
     ImageIcon(
 
@@ -91,7 +98,7 @@ class _WriteState extends State<Write> {
     ),
 
 Container(
-  height: 500,
+  height: MediaQuery.of(context).size.height/1.3,
   child:   ListView(children: <Widget>[
 
 

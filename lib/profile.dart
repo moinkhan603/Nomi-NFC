@@ -8,13 +8,13 @@ import 'package:nomi/qrGenerator.dart';
 import 'DemoLocalizations.dart';
 import 'editProfile.dart';
 class Profile extends StatefulWidget {
+
+
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
-String name;
-String img;
 
 
 
@@ -22,7 +22,12 @@ String img;
   @override
   void initState() {
     // TODO: implement initState
-     CRUD.getData();
+    if(CRUD.myid==2)
+      {
+
+        CRUD.getData();
+      }
+
 
 
 

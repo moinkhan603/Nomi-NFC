@@ -148,7 +148,7 @@ try {
     CRUD.password=password;
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Welcome()),
+      MaterialPageRoute(builder: (context) => Welcome(1)),
     );
   }
   setState(() {

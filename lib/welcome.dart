@@ -6,6 +6,12 @@ import 'package:nomi/profile.dart';
 import 'package:nomi/read.dart';
 import 'package:nomi/write.dart';
 class Welcome extends StatefulWidget {
+
+  int id;
+  Welcome(this.id){
+   CRUD.myid=id;
+  }
+
   @override
   _WelcomeState createState() => _WelcomeState();
 }
@@ -25,12 +31,16 @@ Read(),
 
 
 
-  int _index = 2;
+  int _index = 1;
 
   @override
   void initState() {
     // TODO: implement initState
-    CRUD.getData();
+    if(widget.id==2)
+      {
+        CRUD.getData();
+      }
+
     super.initState();
   }
 

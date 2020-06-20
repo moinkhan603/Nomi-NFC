@@ -21,6 +21,7 @@ class _signInState extends State<signIn> {
   void dispose() {
     // TODO: implement dispose
   CRUD.getData();
+
   super.dispose();
 
   }
@@ -30,12 +31,7 @@ class _signInState extends State<signIn> {
     final nameholder = TextEditingController();
     final nameholder1 = TextEditingController();
 
-    clearTextInput(){
 
-      nameholder.clear();
-      nameholder1.clear();
-
-    }
 
     return Scaffold(
         body:ModalProgressHUD(
@@ -115,7 +111,7 @@ recognizer: new TapGestureRecognizer()..onTap=(){
                               elevation: 4.0,
                               borderRadius: BorderRadius.all(Radius.circular(30)),
                               child: TextField(
-                                controller: nameholder,
+
                                 onChanged: (String value){
                                   email=value.trim();
 
@@ -140,7 +136,7 @@ recognizer: new TapGestureRecognizer()..onTap=(){
                               elevation: 4.0,
                               borderRadius: BorderRadius.all(Radius.circular(30)),
                               child: TextField(
-controller: nameholder1,
+
                                 obscureText: true,
                                 onChanged: (String value){
 
@@ -182,7 +178,7 @@ controller: nameholder1,
                                       onPressed: () async
                                       {
 
-clearTextInput();
+
                                         if(email!=null&&password!=null)
                                         {
                                           setState(() {
@@ -200,7 +196,7 @@ clearTextInput();
                                               CRUD.password=password;
                                               Navigator.push(
                                                 context,
-                                                MaterialPageRoute(builder: (context) => Welcome()),
+                                                MaterialPageRoute(builder: (context) => Welcome(2)),
                                               );
                                             }
                                             setState(() {
@@ -218,14 +214,6 @@ clearTextInput();
 
 
 
-
-
-
-
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => Welcome()),
-                                        );
 
                                       }
 

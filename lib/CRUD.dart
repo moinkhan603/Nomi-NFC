@@ -2,8 +2,11 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/cupertino.dart';
 
 class CRUD{
+
+  static int myid;
 
   static String name="your name";
   static String email="";
@@ -23,6 +26,9 @@ class CRUD{
   static String venmo="add link";
   static String facebook="add link";
   static String cashapp="add link";
+
+
+
 
 
 static getData()async{

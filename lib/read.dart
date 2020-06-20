@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomi/CRUD.dart';
 
 import 'DemoLocalizations.dart';
 class Read extends StatefulWidget {
@@ -35,6 +37,7 @@ class _ReadState extends State<Read> {
 
                   children: <Widget>[
 
+
                     SafeArea(
 
                       child: Padding(
@@ -68,9 +71,15 @@ class _ReadState extends State<Read> {
 
                             Row(children: <Widget>[
 
-                              Text(AppLocalizations.of(context).translate('logout'),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.pop(context);
 
-                                  style: TextStyle(color: Colors.white,fontSize: 18)),
+                                },
+                                child: Text(AppLocalizations.of(context).translate('logout'),
+
+                                    style: TextStyle(color: Colors.white,fontSize: 18)),
+                              ),
 
                               ImageIcon(
 
@@ -92,81 +101,89 @@ class _ReadState extends State<Read> {
 
                       ),
 
-                    ),
+                    )
+                    ,
 
+Container(
+  height: MediaQuery.of(context).size.height/1.5,
+  child: ListView(
+scrollDirection: Axis.horizontal,
+    physics: BouncingScrollPhysics(),
+    children: <Widget>[
+      Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
 
-                    Container(
-                      height: MediaQuery.of(context).size.height/1.5,
-                      child: ListView(
-                        physics: BouncingScrollPhysics(),
-                        children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Row(
+              children: <Widget>[
+                CircleAvatar(backgroundImage: NetworkImage(CRUD.imgUrl),
 
-                            children: <Widget>[
-                              CircleAvatar(backgroundImage: AssetImage("assets/images/img_inside.png"),
+                  radius: 65,
 
-                                radius: 65,
+                ),
 
-                              ),
-
-                              SizedBox(width: 30,),
-                              InkWell(
-                                onTap: (){
+                SizedBox(width: 30,),
+                InkWell(
+                  onTap: (){
 //                            Navigator.push(
 //                              context,
 //                              MaterialPageRoute(builder: (context) => EditProfile()),
 //                            );
 
-                                },
-                                child: Card(
+                  },
+                  child: Card(
 
-                                  color: Colors.blueAccent,
+                    color: Colors.blueAccent,
 
-                                  shape: RoundedRectangleBorder(
+                    shape: RoundedRectangleBorder(
 
-                                    borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: BorderRadius.circular(15.0),
 
-                                  ),
-
-                                  elevation: 1,
-
-                                  child:   Container(
-
-
-
-                                      height: 31,
-
-                                      width: 200,
-
-
-
-
-
-                                      child: Center(child: Text("Ali Abbas Shah",
-
-                                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white)
-
-                                      ))),
-
-                                ),
-                              ),
-
-
-
-
-
-
-
-                            ],
-                          ),
-                        ),
-
-
-
-                      ],),
                     ),
+
+                    elevation: 1,
+
+                    child:   Container(
+
+
+
+                        height: 31,
+
+                        width: 200,
+
+
+
+
+
+                        child: Center(child: Text(CRUD.name,
+
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white)
+
+                        ))),
+
+                  ),
+                ),
+
+
+
+
+
+
+
+              ],
+            ),
+          ),
+        ],
+      ),
+
+
+
+    ],),
+),
+
+
+
 
 
 
@@ -207,10 +224,50 @@ class _ReadState extends State<Read> {
 
               ),
 
+Positioned.fill(
+    child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Stack(
+            children: <Widget>[
+    Image.asset("assets/images/footer_social.png",height: 80,),
+
+    Positioned.fill(
+        left: 40,
+        child:
+    Align(
+
+      alignment: Alignment.centerLeft,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+
+            FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
+            SizedBox(width: 10,),
+            Text("Read",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
+
+          ],
+        ))),
+              Positioned.fill(
+                  right: 40,
+                  child:
+                  Align(
+
+                      alignment: Alignment.centerRight,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
+                          SizedBox(width: 10,),
+                          Text("Edit",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
+                        ],
+                      ),)),
+            ],
 
 
+),
 
 
+))
             ]),
       ),
 
