@@ -1,6 +1,7 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomi/CRUD.dart';
 import 'package:nomi/profile.dart';
 import 'package:nomi/read.dart';
 import 'package:nomi/write.dart';
@@ -25,8 +26,19 @@ Read(),
 
 
   int _index = 2;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    CRUD.getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
+
+
 
     return Scaffold(
       bottomNavigationBar: FloatingNavbar(

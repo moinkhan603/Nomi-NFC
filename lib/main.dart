@@ -80,8 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }
     // use this to animate to the page
-    //_controller.animateToPage(index);
+   // _controller.animateToPage(index);
 _controller.jumpToPage(index);
+
     // or this to jump to it without animating
    // pageController.jumpToPage(index);
   }

@@ -1,4 +1,9 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:nomi/CRUD.dart';
 import 'package:nomi/qrGenerator.dart';
 import 'DemoLocalizations.dart';
 import 'editProfile.dart';
@@ -8,8 +13,30 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+String name;
+String img;
+
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+     CRUD.getData();
+
+
+
+    super.initState();
+
+
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    setState(() {
+
+    });
     return Scaffold(
 
 
@@ -69,8 +96,15 @@ body: SingleChildScrollView(
   
   Row(children: <Widget>[
   
-    Text(AppLocalizations.of(context).translate('logout'),
-        style: TextStyle(color: Colors.white,fontSize: 18)),
+    GestureDetector(
+      onTap: (){
+signout();
+
+      },
+
+      child: Text(AppLocalizations.of(context).translate('logout'),
+          style: TextStyle(color: Colors.white,fontSize: 18)),
+    ),
   
       ImageIcon(
   
@@ -98,7 +132,7 @@ body: SingleChildScrollView(
   
   
   
-         CircleAvatar(backgroundImage: AssetImage("assets/images/img_inside.png"),
+         CircleAvatar(backgroundImage: NetworkImage(CRUD.imgUrl),
   
            radius: 65,
   
@@ -108,7 +142,7 @@ body: SingleChildScrollView(
   
          SizedBox(height: 5,),
   
-         Text("Vincent Romero",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+         Text(CRUD.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
   
          SizedBox(height: 5,),
   
@@ -250,6 +284,14 @@ body: SingleChildScrollView(
 //      ),
 
     );
+  }
+
+  void signout() async{
+
+//    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+//    await _firebaseAuth.signOut();
+    Navigator.pop(context);
+
   }
 }
 

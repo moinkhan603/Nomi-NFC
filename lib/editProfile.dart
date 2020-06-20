@@ -1,212 +1,331 @@
+import 'dart:io';
 import 'dart:ui';
-
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:nomi/CRUD.dart';
+import 'package:path/path.dart' as Path;
 import 'DemoLocalizations.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 class EditProfile extends StatefulWidget {
+
+
+
+
+
+
   @override
   _EditProfileState createState() => _EditProfileState();
 }
 
+
+
+
 class _EditProfileState extends State<EditProfile> {
+
+
+  bool showSpinner = false;
+
+  File _image;
+  String _uploadedFileURL = "https://firebasestorage.googleapis.com/v0/b/nomitap-6dd55.appspot.com/o/Recent%2Fimg_inside.png?alt=media&token=5fae7f82-ce29-4915-b2d4-cef9aaa1e939";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
 
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: new Stack(
+
+            children: <Widget>[
+
+              new Container(
 
 
-      body: new Stack(
-
-          children: <Widget>[
-
-            new Container(
+                decoration: new BoxDecoration(
 
 
+                  image: new DecorationImage(
+                    image: new AssetImage("assets/images/bg_option.png"),
+                    fit: BoxFit.fill,),
 
-              decoration: new BoxDecoration(
-
-
-
-                image: new DecorationImage(image: new AssetImage("assets/images/bg_option.png"), fit: BoxFit.fill,),
-
-              ),
+                ),
 
 
+                child: SingleChildScrollView(
+                  child: Column(
 
-              child: SingleChildScrollView(
-                child: Column(
+                    children: <Widget>[
 
-                  children: <Widget>[
+                      SafeArea(
 
-                    SafeArea(
+                        child: Padding(
 
-                      child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 30),
 
-                        padding: const EdgeInsets.symmetric(horizontal:10,vertical: 30 ),
-
-                        child: Row(
-
-
-
-                          crossAxisAlignment: CrossAxisAlignment.end,
-
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                          children: <Widget>[
+                          child: Row(
 
 
+                            crossAxisAlignment: CrossAxisAlignment.end,
 
-                            ImageIcon(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                              AssetImage("assets/images/menu.png"),size: 30,
-
-                              color: Colors.white,
-
-                            ),
-
-                            Text(AppLocalizations.of(context).translate('edtprfile'),
-
-                              style: TextStyle(color: Colors.white,fontSize: 22),),
+                            children: <Widget>[
 
 
+                              ImageIcon(
 
-                            Row(children: <Widget>[
+                                AssetImage("assets/images/menu.png"), size: 30,
 
-                              Text(AppLocalizations.of(context).translate('savevtn'),
-                                  style: TextStyle(color: Colors.white,fontSize: 18)),
+                                color: Colors.white,
 
+                              ),
 
+                              Text(AppLocalizations.of(context).translate(
+                                  'edtprfile'),
 
-                            ],)
-
-                            ,
-
-
-
-
-
-                          ],),
-
-                      ),
-
-                    ),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 22),),
 
 
+                              Row(children: <Widget>[
 
 
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      showSpinner = true;
+                                    });
+                                    addData();
+                                    setState(() {
+                                      showSpinner = false;
+                                    });
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context).translate(
+                                          'savevtn'),
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18)),
+                                ),
 
-                    Stack(
 
-                      children: <Widget>[
-                        CircleAvatar(backgroundImage: AssetImage("assets/images/img_inside.png"),
+                              ],)
 
-                          radius: 60,
+                              ,
+
+
+                            ],),
 
                         ),
 
-                        Positioned.fill(
-                          bottom: 8,
-                          right: 10,
-                          child: Align(
+                      ),
+
+
+                      Stack(
+
+                        children: <Widget>[
+                          InkWell(
+
+                            onTap: () {
+                              chooseFile();
+                              setState(() {
+                                showSpinner = false;
+                              });
+                            },
+                            child: CircleAvatar(backgroundImage: NetworkImage(
+                                CRUD.imgUrl),
+                              backgroundColor: Colors.black,
+                              radius: 60,
+
+                            ),
+                          ),
+
+                          Positioned.fill(
+                            bottom: 8,
+                            right: 10,
+                            child: Align(
                               alignment: Alignment.bottomRight,
 
-                              child: FaIcon(FontAwesomeIcons.camera)),
-                        )
+                              child: FaIcon(
+                                FontAwesomeIcons.camera, color: Colors.blue,),),
+                          )
 
 
+                        ],
+
+                      )
+
+                      ,
+
+                      Container(
+                        height: MediaQuery
+                            .of(context)
+                            .size
+                            .height / 1.6,
+                        child: ListView(
+                          physics: BouncingScrollPhysics(),
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          children: <Widget>[
+                            _info(AppLocalizations.of(context).translate(
+                                'name'), 1),
+                            _info(AppLocalizations.of(context).translate(
+                                'email'), 2),
+                            _info(AppLocalizations.of(context).translate('bio'),
+                                3),
+                            SizedBox(height: 20,),
+                            Align(
 
 
-                      ],
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 14.0),
+                                  child: Text(
+                                    AppLocalizations.of(context).translate(
+                                        'social'),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 22),),
+                                )),
 
-                    )
-
-                    ,
-
-                    Container(
-                      height: MediaQuery.of(context).size.height/1.6,
-                      child: ListView(
-                        physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        children: <Widget>[
-                        _info(AppLocalizations.of(context).translate('name'),1),
-                        _info(AppLocalizations.of(context).translate('email'),2),
-                        _info(AppLocalizations.of(context).translate('bio'),3),
-                          SizedBox(height: 20,),
-                          Align(
-
-
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left:14.0),
-                                child: Text(AppLocalizations.of(context).translate('social'),
-                                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
-                              )),
-
-                        _info2(3,AppLocalizations.of(context).translate('yutub'),"assets/images/youtube.png"),
-                        _info2(3,AppLocalizations.of(context).translate('wtsp'),"assets/images/whatsapp.png"),
-                        _info2(3,AppLocalizations.of(context).translate('twter'),"assets/images/twitter.png"),
-                        _info2(3,AppLocalizations.of(context).translate('tktok'),"assets/images/tiktok.png"),
-                        _info2(3,AppLocalizations.of(context).translate('soundcld'),"assets/images/soundcloud.png"),
-                        _info2(3,AppLocalizations.of(context).translate('snpcht'),"assets/images/snapchat.png"),
-                        _info2(3,AppLocalizations.of(context).translate('pypl'),"assets/images/paypal.png"),
-                        _info2(3,AppLocalizations.of(context).translate('msc'),"assets/images/music.png"),
-                        _info2(3,AppLocalizations.of(context).translate('lnk'),"assets/images/linkedin.png"),
-                        _info2(3,AppLocalizations.of(context).translate('insta'),"assets/images/instagram.png"),
-                        _info2(3,AppLocalizations.of(context).translate('fb'),"assets/images/facebook.png"),
-                        _info2(3,AppLocalizations.of(context).translate('cash'),"assets/images/cashapp.png"),
-                        _info2(3,AppLocalizations.of(context).translate('venmo'),"assets/images/venmo.png"),
+                            _info2(4, AppLocalizations.of(context).translate(
+                                'yutub'), "assets/images/youtube.png"),
+                            _info2(5, AppLocalizations.of(context).translate(
+                                'wtsp'), "assets/images/whatsapp.png"),
+                            _info2(6, AppLocalizations.of(context).translate(
+                                'twter'), "assets/images/twitter.png"),
+                            _info2(7, AppLocalizations.of(context).translate(
+                                'tktok'), "assets/images/tiktok.png"),
+                            _info2(8, AppLocalizations.of(context).translate(
+                                'soundcld'), "assets/images/soundcloud.png"),
+                            _info2(9, AppLocalizations.of(context).translate(
+                                'snpcht'), "assets/images/snapchat.png"),
+                            _info2(10, AppLocalizations.of(context).translate(
+                                'pypl'), "assets/images/paypal.png"),
+                            _info2(11, AppLocalizations.of(context).translate(
+                                'msc'), "assets/images/music.png"),
+                            _info2(12, AppLocalizations.of(context).translate(
+                                'lnk'), "assets/images/linkedin.png"),
+                            _info2(13, AppLocalizations.of(context).translate(
+                                'insta'), "assets/images/instagram.png"),
+                            _info2(14, AppLocalizations.of(context).translate(
+                                'fb'), "assets/images/facebook.png"),
+                            _info2(15, AppLocalizations.of(context).translate(
+                                'cash'), "assets/images/cashapp.png"),
+                            _info2(16, AppLocalizations.of(context).translate(
+                                'venmo'), "assets/images/venmo.png"),
 
 
-
-                      ],),
-                    )
-,
-
+                          ],),
+                      )
+                      ,
 
 
-
-                    Divider(height: 10,color: Colors.black,thickness: 1,)
-
+                      Divider(height: 10, color: Colors.black, thickness: 1,)
 
 
+                    ],
 
 
-
-
-
-
-
-                  ],
-
-
-
-
-
-
-
+                  ),
                 ),
+
+
               ),
 
 
-
-            ),
-
-
-
-
-
-          ]),
-
-
-
+            ]),
+      ),
 
 
     );
   }
-}
 
+  void chooseFile() async {
+    File selected = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    this.setState(() {
+      _image = selected;
+      print(_image);
+    });
+
+    setState(() {
+      showSpinner = true;
+    });
+
+    StorageReference storageReference = FirebaseStorage.instance
+        .ref()
+        .child('Recent/${Path.basename(_image.path)}}');
+    StorageUploadTask uploadTask = storageReference.putFile(_image);
+    await uploadTask.onComplete;
+    print('File Uploaded');
+    storageReference.getDownloadURL().then((fileURL) {
+      setState(() {
+        _uploadedFileURL = fileURL;
+        print(fileURL);
+        CRUD.imgUrl = fileURL;
+        showSpinner = false;
+      });
+    });
+  }
+
+
+  void addData() async {
+
+
+
+    final _auth = FirebaseAuth.instance;
+    FirebaseUser loggedinUser;
+    String myuserid;
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedinUser = user;
+        print(loggedinUser.uid);
+        myuserid = loggedinUser.uid;
+      }
+    }
+    catch (e) {
+      print(e);
+    }
+
+    setState(() {
+      showSpinner=true;
+    });
+
+    final databaseReference = FirebaseDatabase.instance.reference();
+
+
+    await databaseReference.child("users").child(myuserid).set({
+      'Name': CRUD.name,
+      'email': CRUD.email,
+      'img_url': CRUD.imgUrl,
+      'password': CRUD.password,
+      'bio': CRUD.bio,
+      'youtube_un': CRUD.youtube,
+      'whatsapp_un': CRUD.whatsapp,
+      'twitter_un': CRUD.twitter,
+      'soundcloud_un': CRUD.soundcloud,
+      'snapchat_un': CRUD.snapchat,
+      'paypal_un': CRUD.paypal,
+      'music_un': CRUD.music,
+      'linkedin_un': CRUD.linkendin,
+      'instagram_un': CRUD.instagram,
+      'facebook_un': CRUD.facebook,
+      'cashapp_un': CRUD.cashapp,
+      'venmo_un': CRUD.venmo,
+
+    });
+    setState(() {
+      showSpinner=false;
+    });
+
+  }
+}
 class _info extends StatelessWidget {
 
   String heading;
@@ -238,6 +357,20 @@ SizedBox(height: 5,),
 
               onChanged: (String value){
                 //email=value.trim();
+                if(id==1)
+                  {
+                    CRUD.name=value;
+                  }
+                else if (id==2)
+                  {
+                    CRUD.email=value;
+                  }
+                else if (id==3)
+                {
+                  CRUD.bio=value;
+                }
+
+
 
               },
               cursorColor: Colors.blue,
@@ -294,6 +427,60 @@ String hintText;
 textAlign: TextAlign.center,
               onChanged: (String value){
                 //email=value.trim();
+if(id==4)
+  {
+    CRUD.youtube=value;
+  }
+
+            else if(id==5){
+              CRUD.whatsapp=value;
+            }
+
+            else if(id==6){
+              CRUD.twitter=value;
+            }
+
+            else if(id==7){
+              CRUD.tiktok=value;
+            }
+
+            else if(id==8){
+              CRUD.soundcloud=value;
+            }
+
+            else if(id==9){
+              CRUD.snapchat=value;
+            }
+
+            else if(id==10){
+              CRUD.paypal=value;
+            }
+
+            else if(id==11){
+              CRUD.music=value;
+            }
+
+            else if(id==12){
+              CRUD.linkendin=value;
+            }
+            else if(id==13){
+              CRUD.instagram=value;
+            }
+            else if(id==14){
+              CRUD.facebook=value;
+            }
+
+              else if(id==15){
+              CRUD.cashapp=value;
+            }
+
+              else if(id==16){
+              CRUD.venmo=value;
+            }
+
+
+
+
 
               },
               cursorColor: Colors.blue,

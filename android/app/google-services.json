@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "549670409132",
+    "firebase_url": "https://nomitap-6dd55.firebaseio.com",
+    "project_id": "nomitap-6dd55",
+    "storage_bucket": "nomitap-6dd55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549670409132:android:019fc558a538a17996e009",
+        "android_client_info": {
+          "package_name": "com.flashsol.nomi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549670409132-3knv4bc8q5k8mhgrc62ie110i7meo6hn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3Rb3mAOuD4oacVyhxiumCPRseFiKc4cI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549670409132-3knv4bc8q5k8mhgrc62ie110i7meo6hn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

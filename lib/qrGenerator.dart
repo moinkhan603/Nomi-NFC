@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nomi/CRUD.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 class QRGenerator extends StatefulWidget {
   @override
@@ -15,14 +16,14 @@ class _QRGeneratorState extends State<QRGenerator> {
 
           children: <Widget>[
 
+          QrCode("www.whatsapp.com/"+CRUD.whatsapp,"assets/images/whatsapp.png"),
+          QrCode("www.twitter.com/"+CRUD.twitter,"assets/images/twitter.png"),
+          QrCode("www.snapchat.com/"+CRUD.snapchat,"assets/images/snapchat.png"),
+          QrCode("www.youtube.com/"+CRUD.youtube,"assets/images/youtube.png"),
+          QrCode("www.facebook.com/"+CRUD.facebook,"assets/images/facebook.png"),
+          QrCode("www.instagram.com/"+CRUD.instagram,"assets/images/instagram.png"),
+          QrCode("www.venmo.com/"+CRUD.venmo,"assets/images/venmo.png"),
 
-          QrCode("assets/images/whatsapp.png"),
-          QrCode("assets/images/twitter.png"),
-          QrCode("assets/images/snapchat.png"),
-          QrCode("assets/images/youtube.png"),
-          QrCode("assets/images/facebook.png"),
-          QrCode("assets/images/instagram.png"),
-          QrCode("assets/images/venmo.png"),
 
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
@@ -30,7 +31,7 @@ class _QRGeneratorState extends State<QRGenerator> {
             child: QrImage(
 
               foregroundColor: Colors.blue,
-              data: 'lilikhjknjkhjli',
+              data: CRUD.email ,
               version: QrVersions.auto,
               size: 300,
               gapless: false,
@@ -52,14 +53,16 @@ class _QRGeneratorState extends State<QRGenerator> {
 
 class QrCode extends StatelessWidget {
   String ImgPath;
-  QrCode(this.ImgPath);
+  String path;
+
+  QrCode(this.path,this.ImgPath);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Center(
         child: QrImage(
-          data: 'You are myu fvvvv',
+          data: this.path,
           version: QrVersions.auto,
           size: 300,
           gapless: false,
