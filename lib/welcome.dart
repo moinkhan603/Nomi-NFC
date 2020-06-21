@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomi/CRUD.dart';
 import 'package:nomi/profile.dart';
-import 'package:nomi/read.dart';
+import 'package:nomi/readx.dart';
 import 'package:nomi/write.dart';
 class Welcome extends StatefulWidget {
 
@@ -23,7 +23,7 @@ class _WelcomeState extends State<Welcome> {
 
 
 
-Read(),
+ReadX(),
     Write(),
     Profile(),
 

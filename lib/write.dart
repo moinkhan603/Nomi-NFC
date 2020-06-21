@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nomi/read.dart';
 
 import 'DemoLocalizations.dart';
 class Write extends StatefulWidget {
@@ -249,7 +250,17 @@ class _socialIcons extends StatelessWidget {
 
 
 
-              Image.asset(imgPath,height: 80,),
+              GestureDetector(
+
+            onTap: (){
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Read("Write")),
+              );
+
+            },
+                  child: Image.asset(imgPath,height: 80,)),
 
               Text(name,style: TextStyle(color: Colors.blue),)
 

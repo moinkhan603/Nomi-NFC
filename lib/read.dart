@@ -4,6 +4,8 @@ import 'package:nomi/CRUD.dart';
 
 import 'DemoLocalizations.dart';
 class Read extends StatefulWidget {
+  String btntxt;
+  Read(this.btntxt);
   @override
   _ReadState createState() => _ReadState();
 }
@@ -243,7 +245,7 @@ Positioned.fill(
 
             FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
             SizedBox(width: 10,),
-            Text("Read",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
+            Text(widget.btntxt,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
 
           ],
         ))),

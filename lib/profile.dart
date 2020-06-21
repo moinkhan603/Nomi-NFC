@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -103,9 +102,9 @@ body: SingleChildScrollView(
   
     GestureDetector(
       onTap: (){
-//signout();
+
 _logOut();
-//Navigator.pop(context);
+
       },
 
       child: Text(AppLocalizations.of(context).translate('logout'),
@@ -301,13 +300,7 @@ _logOut();
     });
   }
 
-  void signout() async{
-    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-    await _firebaseAuth.signOut();
-
-
-  }
 }
 
 class _detailsWidget extends StatelessWidget {
