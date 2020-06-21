@@ -29,7 +29,27 @@ class CRUD{
 
 
 
+static refresh(){
 
+  name="your name";
+  imgUrl="https://firebasestorage.googleapis.com/v0/b/nomitap-6dd55.appspot.com/o/Recent%2Fimg_inside.png?alt=media&token=5fae7f82-ce29-4915-b2d4-cef9aaa1e939";
+  youtube="add link";
+  whatsapp="add link";
+  twitter="add link";
+  tiktok="add link";
+  soundcloud="add link";
+  snapchat="add link";
+  paypal="add link";
+  linkendin="add link";
+  instagram="add link";
+  music="add link";
+  venmo="add link";
+  facebook="add link";
+  cashapp="add link";
+
+
+
+}
 
 static getData()async{
 

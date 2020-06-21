@@ -103,8 +103,9 @@ body: SingleChildScrollView(
   
     GestureDetector(
       onTap: (){
-signout();
-
+//signout();
+_logOut();
+//Navigator.pop(context);
       },
 
       child: Text(AppLocalizations.of(context).translate('logout'),
@@ -291,11 +292,20 @@ signout();
     );
   }
 
-  void signout() async{
-
-//    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-//    await _firebaseAuth.signOut();
+  _logOut() async{
+    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    await _firebaseAuth.signOut().then((_){
+     // Navigator.of(context).pushNamedAndRemoveUntil("/signIN", ModalRoute.withName("/profile"));
+   CRUD.refresh();
     Navigator.pop(context);
+    });
+  }
+
+  void signout() async{
+    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+    await _firebaseAuth.signOut();
+
 
   }
 }
