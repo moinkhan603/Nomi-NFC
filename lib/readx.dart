@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nomi/read.dart';
+import 'CRUD.dart';
+import 'CRUD.dart';
+import 'CRUD.dart';
+import 'CRUD.dart';
+import 'CRUD.dart';
 import 'DemoLocalizations.dart';
 class ReadX extends StatefulWidget {
   @override
@@ -118,42 +123,42 @@ class _ReadXState extends State<ReadX> {
 
 
 
-                              _socialIcons("assets/images/whatsapp.png","Whatsapp"),
+                              _socialIcons("assets/images/whatsapp.png","Whatsapp",CRUD.whatsapp),
 
 
 
 
-                              _socialIcons("assets/images/snapchat.png","Snapchat"),
+                              _socialIcons("assets/images/snapchat.png","Snapchat",CRUD.snapchat),
 
 
 
-                              _socialIcons("assets/images/soundcloud.png","Soundcloud"),
+                              _socialIcons("assets/images/soundcloud.png","Soundcloud",CRUD.soundcloud),
 
 
 
-                              _socialIcons("assets/images/tiktok.png","Tiktok"),
+                              _socialIcons("assets/images/tiktok.png","Tiktok",CRUD.tiktok),
 
-                              _socialIcons("assets/images/twitter.png","Twitter"),
+                              _socialIcons("assets/images/twitter.png","Twitter",CRUD.twitter),
 
-                              _socialIcons("assets/images/youtube.png","Youtube"),
+                              _socialIcons("assets/images/youtube.png","Youtube",CRUD.youtube),
 
-                              _socialIcons("assets/images/instagram.png","Instagram"),
+                              _socialIcons("assets/images/instagram.png","Instagram",CRUD.instagram),
 
-                              _socialIcons("assets/images/linkedin.png","Linkedin"),
+                              _socialIcons("assets/images/linkedin.png","Linkedin",CRUD.linkendin),
 
-                              _socialIcons("assets/images/facebook.png","Facebook"),
+                              _socialIcons("assets/images/facebook.png","Facebook",CRUD.facebook),
 
-                              _socialIcons("assets/images/tap.png","Contact Tap"),
+                              _socialIcons("assets/images/tap.png","Contact Tap",""),
 
-                              _socialIcons("assets/images/cashapp.png","Cashapp"),
+                              _socialIcons("assets/images/cashapp.png","Cashapp",CRUD.cashapp),
 
-                              _socialIcons("assets/images/browser.png","Browser"),
+                              _socialIcons("assets/images/browser.png","Browser",""),
 
-                              _socialIcons("assets/images/music.png","Music"),
+                              _socialIcons("assets/images/music.png","Music",CRUD.music),
 
-                              _socialIcons("assets/images/paypal.png","Paypal"),
+                              _socialIcons("assets/images/paypal.png","Paypal",CRUD.paypal),
 
-                              _socialIcons("assets/images/twitch.png","Twitch"),
+                              _socialIcons("assets/images/twitch.png","Twitch",""),
 
 
 
@@ -231,7 +236,8 @@ class _ReadXState extends State<ReadX> {
 class _socialIcons extends StatelessWidget {
   String imgPath;
   String name;
-  _socialIcons(this.imgPath,this.name);
+  String path;
+  _socialIcons(this.imgPath,this.name,this.path);
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -252,7 +258,7 @@ class _socialIcons extends StatelessWidget {
 
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Read("Read")),
+                      MaterialPageRoute(builder: (context) => Read("Read",path)),
                     );
 
                   },

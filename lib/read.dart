@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nfc_reader/flutter_nfc_reader.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nfc_in_flutter/nfc_in_flutter.dart';
 import 'package:nomi/CRUD.dart';
 
 import 'DemoLocalizations.dart';
 class Read extends StatefulWidget {
   String btntxt;
-  Read(this.btntxt);
+  String name;
+  String result=" ";
+  Read(this.btntxt,this.name);
   @override
   _ReadState createState() => _ReadState();
 }
@@ -227,6 +231,10 @@ scrollDirection: Axis.horizontal,
               ),
 
 Positioned.fill(
+  child: Align(
+    alignment: Alignment.center,
+    child: Text(widget.result,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))),
+Positioned.fill(
     child: Align(
         alignment: Alignment.bottomCenter,
         child: Stack(
@@ -245,39 +253,81 @@ Positioned.fill(
 
             FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
             SizedBox(width: 10,),
-            Text(widget.btntxt,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
+            GestureDetector(
+              onTap: (){
+if(widget.btntxt=="Read")
+{
 
-          ],
-        ))),
-              Positioned.fill(
-                  right: 40,
-                  child:
-                  Align(
-
-                      alignment: Alignment.centerRight,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
-                          SizedBox(width: 10,),
-                          Text("Edit",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
-                        ],
-                      ),)),
-            ],
-
-
-),
-
-
-))
-            ]),
-      ),
-
-
-
-    );
-
-
-
+  ReadNfc();
+  
   }
+  else{
+  WriteNfc();
+    
+    }
+                  },
+                  child: Text(widget.btntxt,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),)),
+    
+              ],
+            ))),
+                  Positioned.fill(
+                      right: 40,
+                      child:
+                      Align(
+    
+                          alignment: Alignment.centerRight,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
+                              SizedBox(width: 10,),
+                              Text("Edit",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
+                            ],
+                          ),)),
+                ],
+    
+    
+    ),
+    
+    
+    ))
+                ]),
+          ),
+    
+    
+    
+        );
+    
+    
+    
+      }
+    
+      void ReadNfc() async{
+  
+  NDEFMessage message = await NFC.readNDEF(once: true).first;
+    print("payload: ${message.payload}");
+    setState(() {
+      widget.result=message.payload;
+    });
+  print("yes");
+      }
+  
+    void WriteNfc() {
+
+FlutterNfcReader.write("",widget.name).then((response) {
+print(response.content);
+});
+    }
+// NDEFMessage newMessage = NDEFMessage.withRecords(
+//     NDEFRecord.p("text/plain", "hello world")
+// );
+// Stream<NDEFTag> stream = NFC.writeNDEF(newMessage, once: true);
+
+// stream.listen((NDEFTag tag) {
+//     print("only wrote to one tag!");
+
+// });
+
+
+    
 }
