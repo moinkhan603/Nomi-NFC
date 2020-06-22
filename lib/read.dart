@@ -20,12 +20,12 @@ class _ReadState extends State<Read> {
     return Scaffold(
 
 
-      body: SingleChildScrollView(
-        child:   new Stack(
+      body: new Stack(
 
-            children: <Widget>[
+          children: <Widget>[
 
-              new Container(
+            SingleChildScrollView(
+              child: new Container(
 
 
 
@@ -111,25 +111,27 @@ class _ReadState extends State<Read> {
                     ,
 
 Container(
-  height: MediaQuery.of(context).size.height/1.5,
+  height: MediaQuery.of(context).size.height/1.15,
   child: ListView(
+    padding: EdgeInsets.symmetric(vertical: 35),
 scrollDirection: Axis.horizontal,
     physics: BouncingScrollPhysics(),
     children: <Widget>[
       Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(
 
               children: <Widget>[
                 CircleAvatar(backgroundImage: NetworkImage(CRUD.imgUrl),
 
                   radius: 65,
+                  backgroundColor: Colors.transparent,
 
                 ),
 
-                SizedBox(width: 30,),
+                SizedBox(width: 20,),
                 InkWell(
                   onTap: (){
 //                            Navigator.push(
@@ -178,9 +180,9 @@ scrollDirection: Axis.horizontal,
 
 
               ],
-            ),
           ),
-        ],
+        ),
+      ],
       ),
 
 
@@ -205,7 +207,7 @@ scrollDirection: Axis.horizontal,
 
 
 
-                    Divider(height: 10,color: Colors.black,thickness: 1,)
+       //           Divider(height: 10,color: Colors.black,thickness: 1,)
 
 
 
@@ -229,6 +231,7 @@ scrollDirection: Axis.horizontal,
 
 
               ),
+            ),
 
 Positioned.fill(
   child: Align(
@@ -236,63 +239,62 @@ Positioned.fill(
     child: Text(widget.result,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))),
 Positioned.fill(
     child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Stack(
-            children: <Widget>[
+      alignment: Alignment.bottomCenter,
+      child: Stack(
+          children: <Widget>[
     Image.asset("assets/images/footer_social.png",height: 80,),
 
     Positioned.fill(
-        left: 40,
-        child:
+      left: 40,
+      child:
     Align(
 
       alignment: Alignment.centerLeft,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
 
-            FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
-            SizedBox(width: 10,),
-            GestureDetector(
-              onTap: (){
+          FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
+          SizedBox(width: 10,),
+          GestureDetector(
+            onTap: (){
 if(widget.btntxt=="Read")
 {
 
   ReadNfc();
-  
+
   }
   else{
   WriteNfc();
-    
+
     }
-                  },
-                  child: Text(widget.btntxt,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),)),
-    
+                },
+                child: Text(widget.btntxt,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),)),
+
+            ],
+          ))),
+                Positioned.fill(
+                    right: 40,
+                    child:
+                    Align(
+
+                        alignment: Alignment.centerRight,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
+                            SizedBox(width: 10,),
+                            Text("Edit",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
+                          ],
+                        ),)),
               ],
-            ))),
-                  Positioned.fill(
-                      right: 40,
-                      child:
-                      Align(
-    
-                          alignment: Alignment.centerRight,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
-                              SizedBox(width: 10,),
-                              Text("Edit",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
-                            ],
-                          ),)),
-                ],
-    
-    
+
+
     ),
-    
-    
+
+
     ))
-                ]),
-          ),
+              ]),
     
     
     

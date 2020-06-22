@@ -10,7 +10,7 @@ class _QRGeneratorState extends State<QRGenerator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+appBar: AppBar(title: Text("Your Profile QR",),centerTitle: true,backgroundColor: Colors.blue,),
       body: SafeArea(
         child: ListView(
 

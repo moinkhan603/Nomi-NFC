@@ -6,6 +6,7 @@ import 'package:nomi/welcome.dart';
 import 'CRUD.dart';
 import 'DemoLocalizations.dart';
 import 'signUP.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 class signIn extends StatefulWidget {
   @override
   _signInState createState() => _signInState();
@@ -25,11 +26,10 @@ class _signInState extends State<signIn> {
   super.dispose();
 
   }
+
+
   @override
   Widget build(BuildContext context) {
-
-    final nameholder = TextEditingController();
-    final nameholder1 = TextEditingController();
 
 
 
@@ -51,7 +51,7 @@ class _signInState extends State<signIn> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 200),
+                    padding: const EdgeInsets.only(top: 250),
                     child:  SingleChildScrollView(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -63,14 +63,14 @@ class _signInState extends State<signIn> {
                             padding: const EdgeInsets.only(left:58.0),
                             child: Text(AppLocalizations.of(context).translate('helo'),
 
-                              style: TextStyle(fontSize: 25,color: Colors.white,
+                              style: TextStyle(fontSize: CRUD.headingFont,color: Colors.white,
                                 fontWeight: FontWeight.bold
                             ),),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left:58.0),
                             child: Text(AppLocalizations.of(context).translate('wlcmbk')
-    ,style: TextStyle(fontSize: 29,color: Colors.white,
+    ,style: TextStyle(fontSize: CRUD.headingFont,color: Colors.white,
                                 fontWeight: FontWeight.bold
                             ),),
                           ),
@@ -178,7 +178,24 @@ recognizer: new TapGestureRecognizer()..onTap=(){
                                       onPressed: () async
                                       {
 
+                                    if(email==null || password==null){
+                                      Fluttertoast.showToast(
+                                        msg: "Fields cannot be empty",
+                                        toastLength: Toast.LENGTH_LONG,
+                                      );
+                                      return;
+                                    }
+                                        if(email.contains("@")==false)
+                                        {
 
+                                          print(email.contains("@"));
+                                          Fluttertoast.showToast(
+                                            msg: "Email not valid",
+                                            toastLength: Toast.LENGTH_LONG,
+                                          );
+                                          return;
+                                        }
+EmailVerified();
                                         if(email!=null&&password!=null)
                                         {
                                           setState(() {
@@ -242,5 +259,29 @@ recognizer: new TapGestureRecognizer()..onTap=(){
             ],
           ),
         ));
+  }
+
+  void EmailVerified() async{
+
+
+
+
+      print("popo");
+      final FirebaseAuth _auth = FirebaseAuth.instance;
+      var user = await _auth.signInWithEmailAndPassword(email: email, password: password);
+
+
+
+//      if(user.isEmailVerified==false)
+//      {
+//        print("heloo");
+//        Fluttertoast.showToast(
+//          msg: "Email not varified",
+//          toastLength: Toast.LENGTH_LONG,
+//        );
+//      }
+
+
+
   }
 }

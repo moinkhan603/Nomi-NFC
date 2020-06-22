@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'CRUD.dart';
 import 'DemoLocalizations.dart';
 class intro3 extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _intro3State extends State<intro3> {
 
 
 
-                ,style: TextStyle(fontSize: 25,color: Colors.white,
+                ,style: TextStyle(fontSize: CRUD.headingFont,color: Colors.white,
                     fontWeight: FontWeight.bold
                 ),
 

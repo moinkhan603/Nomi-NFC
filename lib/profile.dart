@@ -140,6 +140,7 @@ _logOut();
          CircleAvatar(backgroundImage: NetworkImage(CRUD.imgUrl),
   
            radius: 65,
+           backgroundColor: Colors.transparent,
   
          )
   

@@ -28,7 +28,7 @@ class CRUD{
   static String cashapp="add link";
 
 
-
+static double headingFont=25;
 static refresh(){
 
   name="your name";

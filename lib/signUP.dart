@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:nomi/CRUD.dart';
 import 'package:nomi/welcome.dart';
@@ -37,7 +38,7 @@ class _signUpState extends State<signUp> {
                child: Align(
                  alignment: Alignment.centerLeft,
                  child: Padding(
-                   padding: const EdgeInsets.only(top: 200),
+                   padding: const EdgeInsets.only(top: 250),
                    child:  SingleChildScrollView(
                      child: Column(
                          mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +49,7 @@ class _signUpState extends State<signUp> {
                          Padding(
                            padding: const EdgeInsets.only(left:58.0),
                            child: Text(AppLocalizations.of(context).translate('wlcm'),
-                             style: TextStyle(fontSize: 25,color: Colors.white,
+                             style: TextStyle(fontSize: CRUD.headingFont,color: Colors.white,
                                fontWeight: FontWeight.bold
                            ),),
                          ),
@@ -131,6 +132,26 @@ SizedBox(height: 10,),
     onPressed: () async
     {
 
+
+
+      if(email==null || password==null){
+        Fluttertoast.showToast(
+          msg: "Fields cannot be empty",
+          toastLength: Toast.LENGTH_LONG,
+        );
+        return;
+      }
+      if(email.contains("@")==false)
+      {
+
+        print(email.contains("@"));
+        Fluttertoast.showToast(
+          msg: "Email not valid",
+          toastLength: Toast.LENGTH_LONG,
+        );
+        return;
+      }
+
       if(email!=null&&password!=null)
         {
           setState(() {
@@ -146,6 +167,9 @@ try {
 
     CRUD.email=email;
     CRUD.password=password;
+
+    sendVerificationMail(newuser);
+
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => Welcome(1)),
@@ -181,4 +205,23 @@ catch(e){
         ),
       ));
   }
+
+  Future<void> sendVerificationMail(user) async {
+   // final FirebaseAuth _auth = FirebaseAuth.instance;
+   // FirebaseUser user = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+   FirebaseUser myuser=user;
+    try {
+      await myuser.sendEmailVerification();
+      return myuser.uid;
+    } catch (e) {
+      print("An error occured while trying to send email verification");
+      print(e.message);
+    }
+
+   // return;
+
+
+  }
+
+
 }

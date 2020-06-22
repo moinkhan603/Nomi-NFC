@@ -9,6 +9,23 @@ class Write extends StatefulWidget {
 }
 
 class _WriteState extends State<Write> {
+
+  double height = 80;
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    if (MediaQuery
+        .of(context)
+        .size
+        .width < 400) {
+      setState(() {
+        height = 60;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +118,10 @@ class _WriteState extends State<Write> {
 
 Container(
   height: MediaQuery.of(context).size.height/1.3,
-  child:   ListView(children: <Widget>[
+  child:   ListView(
+    padding: EdgeInsets.only(bottom: 25, top: 10),
+    physics: BouncingScrollPhysics(),
+    children: <Widget>[
 
 
 
@@ -121,45 +141,53 @@ Container(
 
 
 
-
-                              _socialIcons("assets/images/whatsapp.png","Whatsapp",CRUD.whatsapp),
-
-
+        _socialIcons("assets/images/whatsapp.png",
+            "Whatsapp", CRUD.whatsapp,height),
 
 
-                              _socialIcons("assets/images/snapchat.png","Snapchat",CRUD.snapchat),
+        _socialIcons("assets/images/snapchat.png",
+            "Snapchat", CRUD.snapchat,height),
 
 
-
-                              _socialIcons("assets/images/soundcloud.png","Soundcloud",CRUD.soundcloud),
-
-
-
-                              _socialIcons("assets/images/tiktok.png","Tiktok",CRUD.tiktok),
-
-                              _socialIcons("assets/images/twitter.png","Twitter",CRUD.twitter),
-
-                              _socialIcons("assets/images/youtube.png","Youtube",CRUD.youtube),
-
-                              _socialIcons("assets/images/instagram.png","Instagram",CRUD.instagram),
-
-                              _socialIcons("assets/images/linkedin.png","Linkedin",CRUD.linkendin),
-
-                              _socialIcons("assets/images/facebook.png","Facebook",CRUD.facebook),
-
-                              _socialIcons("assets/images/tap.png","Contact Tap",""),
-
-                              _socialIcons("assets/images/cashapp.png","Cashapp",CRUD.cashapp),
-
-                              _socialIcons("assets/images/browser.png","Browser",""),
-
-                              _socialIcons("assets/images/music.png","Music",CRUD.music),
-
-                              _socialIcons("assets/images/paypal.png","Paypal",CRUD.paypal),
-
-                              _socialIcons("assets/images/twitch.png","Twitch",""),
+        _socialIcons("assets/images/soundcloud.png",
+            "Soundcloud", CRUD.soundcloud,height),
 
 
+        _socialIcons("assets/images/tiktok.png",
+            "Tiktok", CRUD.tiktok,height),
+
+        _socialIcons("assets/images/twitter.png",
+            "Twitter", CRUD.twitter,height),
+
+        _socialIcons("assets/images/youtube.png",
+            "Youtube", CRUD.youtube,height),
+
+        _socialIcons("assets/images/instagram.png",
+            "Instagram", CRUD.instagram,height),
+
+        _socialIcons("assets/images/linkedin.png",
+            "Linkedin", CRUD.linkendin,height),
+
+        _socialIcons("assets/images/facebook.png",
+            "Facebook", CRUD.facebook,height),
+
+        _socialIcons("assets/images/tap.png",
+            "Contact Tap", "",height),
+
+        _socialIcons("assets/images/cashapp.png",
+            "Cashapp", CRUD.cashapp,height),
+
+        _socialIcons("assets/images/browser.png",
+            "Browser", "",height),
+
+        _socialIcons("assets/images/music.png", "Music",
+            CRUD.music,height),
+
+        _socialIcons("assets/images/paypal.png",
+            "Paypal", CRUD.paypal,height),
+
+        _socialIcons("assets/images/twitch.png",
+            "Twitch", "",height),
 
 
 
@@ -234,7 +262,8 @@ class _socialIcons extends StatelessWidget {
  String imgPath;
  String name;
  String path;
-  _socialIcons(this.imgPath,this.name,this.path);
+ double Hight;
+  _socialIcons(this.imgPath,this.name,this.path,this.Hight);
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -261,7 +290,7 @@ class _socialIcons extends StatelessWidget {
               );
 
             },
-                  child: Image.asset(imgPath,height: 80,)),
+                  child: Image.asset(imgPath,height: Hight,)),
 
               Text(name,style: TextStyle(color: Colors.blue),)
 

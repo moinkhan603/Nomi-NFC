@@ -139,15 +139,15 @@ class _EditProfileState extends State<EditProfile> {
                             },
                             child: CircleAvatar(backgroundImage: NetworkImage(
                                 CRUD.imgUrl),
-                              backgroundColor: Colors.black,
-                              radius: 60,
+                              backgroundColor: Colors.transparent,
+                              radius: 65,
 
                             ),
                           ),
 
                           Positioned.fill(
                             bottom: 8,
-                            right: 10,
+                            right: 20,
                             child: Align(
                               alignment: Alignment.bottomRight,
 
