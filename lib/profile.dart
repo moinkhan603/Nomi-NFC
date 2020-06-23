@@ -196,9 +196,9 @@ body: SingleChildScrollView(
 
   ,
 
-         SizedBox(height: 10,),
+         SizedBox(height: 15,),
 
-         Text(CRUD.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+         Text(CRUD.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
 
          SizedBox(height: 10,),
 
@@ -216,7 +216,7 @@ CRUD.addData();
 
            },
            child: Text(AppLocalizations.of(context).translate('generateqr'),
-             style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20
+             style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18
 
            ,color: Colors.blue
 
@@ -225,12 +225,12 @@ CRUD.addData();
 
          SizedBox(height: 10,),
 
-         Text("im a "+CRUD.name),
+         Text("i'm "+CRUD.name),
 
          SizedBox(height: 10,),
 
         // Text(AppLocalizations.of(context).translate('tap')),
-         Text("taps: "+CRUD.taps.toString()),
+         Text("taps: "+CRUD.taps.toString(),style: TextStyle(color: Colors.black),),
          SizedBox(height: 10,),
 
 
@@ -244,7 +244,7 @@ CRUD.addData();
     },
     child: Card(
 
-      color: Colors.white.withOpacity(0.6),
+      color: Colors.white.withOpacity(0.7),
 
       shape: RoundedRectangleBorder(
 
@@ -258,7 +258,7 @@ CRUD.addData();
 
 
 
-          height: 30,
+          height: 40,
 
     width: 150,
 

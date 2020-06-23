@@ -138,14 +138,16 @@ static getData()async{
      snapchat=values["snapchat_un"];
      youtube=values["youtube_un"];
      instagram=values["instagram_un"];
+     tiktok=values["tiktok_un"];
+     linkendin=values["linkedin_un"];
+     paypal=values["paypal_un"];
+     music=values["music_un"];
+     cashapp=values["cashapp_un"];
+     soundcloud=values["soundcloud_un"];
+taps=values["taps"];
 name=values["Name"];
 imgUrl=values["img_url"];
-     print(values["whatsapp_un"]);
-     print(values["twitter_un"]);
-     print(values["venmo_un"]);
-     print(values["facebook_un"]);
-     print(values["snapchat_un"]);
-     print(values["instagram_un"]);
+  bio=values["bio"];
    });
 
   });
