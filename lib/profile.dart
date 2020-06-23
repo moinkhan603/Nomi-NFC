@@ -283,14 +283,14 @@ SizedBox(height: 30,),
 
     ),
 
-         SizedBox(height: 10,),
+         SizedBox(height: 15,),
 
          _detailsWidget(AppLocalizations.of(context).translate('unlimitedtaps'),
 
              AppLocalizations.of(context).translate('unlimitedtapst')
          ),
 
-         SizedBox(height: 10,),
+         SizedBox(height: 15,),
 
          _detailsWidget(AppLocalizations.of(context).translate('privacy'),
 
@@ -368,14 +368,14 @@ class _detailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
 
         Text(heading,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-          SizedBox(height: 5,),
+          SizedBox(height: 12,),
         Text(detail,style: TextStyle(fontSize: 18),),
 
       ],),
