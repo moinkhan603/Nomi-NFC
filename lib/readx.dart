@@ -28,6 +28,60 @@ class _ReadXState extends State<ReadX> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(65.0),
+          child: AppBar(
+
+            leading: Padding(
+              padding: const EdgeInsets.only(top:18.0),
+              child: IconButton(
+                icon: ImageIcon(AssetImage("assets/images/menu.png"), size: 30,
+                  color: Colors.white,),
+
+              ),
+            ),
+
+            title: Padding(
+              padding: const EdgeInsets.only(top:18.0),
+              child: Text("Nomi Tap", style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22),),
+            ),centerTitle: true,
+            backgroundColor: Color(0xff0087E3),
+            actions: <Widget>[
+
+              GestureDetector(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(top:25.0),
+                  child: Text(
+                      AppLocalizations.of(context).translate(
+                          'logout'),
+                      style: TextStyle(
+                          color: Colors.white, fontSize: 18)),
+                ),
+              ),
+
+              SizedBox(width: 5,),
+              Padding(
+                padding: const EdgeInsets.only(right:4.0,top: 20),
+                child: ImageIcon(
+
+                  AssetImage("assets/images/right_arrow.png",),
+                  size: 12,
+                  color: Colors.red,
+
+                ),
+              )
+            ],
+          ),
+        ),
+
+
         body: Stack(
 
             children: <Widget>[
@@ -39,9 +93,9 @@ class _ReadXState extends State<ReadX> {
                   decoration: new BoxDecoration(
 
 
-                    image: new DecorationImage(
-                      image: new AssetImage("assets/images/bg_option.png"),
-                      fit: BoxFit.fill,),
+                    image: new DecorationImage
+                      (image: new AssetImage("assets/images/social_detail_bg.png"),
+                      fit: BoxFit.cover,),
 
                   ),
 
@@ -50,76 +104,76 @@ class _ReadXState extends State<ReadX> {
 
                     children: <Widget>[
 
-                      SafeArea(
-
-                        child: Padding(
-
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 20),
-
-                          child: Row(
-
-
-                            crossAxisAlignment: CrossAxisAlignment.end,
-
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                            children: <Widget>[
-
-
-                              ImageIcon(
-
-                                AssetImage("assets/images/menu.png"), size: 30,
-
-                                color: Colors.white,
-
-                              ),
-
-                              Text("Nomi Tap", style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 22),),
-
-
-                              Row(children: <Widget>[
-
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context).translate(
-                                          'logout'),
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18)),
-                                ),
-
-                                ImageIcon(
-
-                                  AssetImage("assets/images/right_arrow.png"),
-
-                                  color: Colors.red,
-
-                                )
-
-                              ],)
-
-                              ,
-
-
-                            ],),
-
-                        ),
-
-                      ),
+//                      SafeArea(
+//
+//                        child: Padding(
+//
+//                          padding: const EdgeInsets.symmetric(
+//                              horizontal: 25, vertical: 50),
+//
+//                          child: Row(
+//
+//
+//                            crossAxisAlignment: CrossAxisAlignment.end,
+//
+//                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//
+//                            children: <Widget>[
+//
+//
+//                              ImageIcon(
+//
+//                                AssetImage("assets/images/menu.png"), size: 30,
+//
+//                                color: Colors.white,
+//
+//                              ),
+//
+//                              Text("Nomi Tap", style: TextStyle(
+//                                  color: Colors.white,
+//                                  fontWeight: FontWeight.bold,
+//                                  fontSize: 22),),
+//
+//
+//                              Row(children: <Widget>[
+//
+//                                GestureDetector(
+//                                  onTap: () {
+//                                    Navigator.pop(context);
+//                                  },
+//                                  child: Text(
+//                                      AppLocalizations.of(context).translate(
+//                                          'logout'),
+//                                      style: TextStyle(
+//                                          color: Colors.white, fontSize: 18)),
+//                                ),
+//
+//                                ImageIcon(
+//
+//                                  AssetImage("assets/images/right_arrow.png"),
+//
+//                                  color: Colors.red,
+//
+//                                )
+//
+//                              ],)
+//
+//                              ,
+//
+//
+//                            ],),
+//
+//                        ),
+//
+//                      ),
 
                       Container(
                         height: MediaQuery
                             .of(context)
                             .size
-                            .height / 1.3,
+                            .height/1.1 ,
                         child: ListView(
-                          padding: EdgeInsets.only(bottom: 25, top: 10),
+                          padding: EdgeInsets.only(bottom: 25, top: 25),
                           physics: BouncingScrollPhysics(),
                           children: <Widget>[
 
@@ -235,7 +289,7 @@ double Hight;
 
   Navigator.push(
   context,
-  MaterialPageRoute(builder: (context) => Read("Read",path)),
+  MaterialPageRoute(builder: (context) => Read("Read",path,name)),
   );
 
   },

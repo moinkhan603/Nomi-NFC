@@ -1,6 +1,6 @@
 {
   "intro1Heading": "How to Tap!",
-  "intro1Text" : "Tap your Nomi to the middle \nback of another mobile device to share your profile \n\nMake sure they have turned on NFC in settings",
+  "intro1Text" : "Tap your Nomi to the middle \nback of another mobile device to share your profile \n\nMake sure they have turned on\nNFC in settings",
   "nextbtn": "Next",
   "intro2Text": "Your Nomi QR Code can be \naccessed through by selecting \n Generate QR Code button",
   "intro3Text":"Here is your exclusive QR Code \n Share with your People",
@@ -8,7 +8,7 @@
   "donebtn": "Done",
   "helo": "Hello",
   "wlcmbk": "Welcome Back!",
-  "signintxt": "You can use email to sign in or \n",
+  "signintxt": "You can use email to sign in or ",
   "signinup": "Sign Up",
   "email": "Email",
   "pass": "Password",

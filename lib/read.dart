@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_nfc_reader/flutter_nfc_reader.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nfc_in_flutter/nfc_in_flutter.dart';
 import 'package:nomi/CRUD.dart';
 
 import 'DemoLocalizations.dart';
+import 'editProfile.dart';
 class Read extends StatefulWidget {
   String btntxt;
   String name;
   String result=" ";
-  Read(this.btntxt,this.name);
+  String title;
+  Read(this.btntxt,this.name,this.title);
   @override
   _ReadState createState() => _ReadState();
 }
@@ -19,7 +22,57 @@ class _ReadState extends State<Read> {
   Widget build(BuildContext context) {
     return Scaffold(
 
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(65.0),
+        child: AppBar(
 
+          leading: Padding(
+            padding: const EdgeInsets.only(top:18.0),
+            child: IconButton(
+              icon: ImageIcon(AssetImage("assets/images/menu.png"), size: 30,
+                color: Colors.white,),
+
+            ),
+          ),
+
+          title: Padding(
+            padding: const EdgeInsets.only(top:18.0),
+            child: Text(widget.title, style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 22),),
+          ),centerTitle: true,
+          backgroundColor: Color(0xff0087E3),
+          actions: <Widget>[
+
+            GestureDetector(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top:25.0),
+                child: Text(
+                    AppLocalizations.of(context).translate(
+                        'logout'),
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 18)),
+              ),
+            ),
+
+            SizedBox(width: 5,),
+            Padding(
+              padding: const EdgeInsets.only(right:4.0,top: 20),
+              child: ImageIcon(
+
+                AssetImage("assets/images/right_arrow.png",),
+                size: 12,
+                color: Colors.red,
+
+              ),
+            )
+          ],
+        ),
+      ),
       body: new Stack(
 
           children: <Widget>[
@@ -33,7 +86,7 @@ class _ReadState extends State<Read> {
 
 
 
-                  image: new DecorationImage(image: new AssetImage("assets/images/bg_option.png"), fit: BoxFit.fill,),
+                  image: new DecorationImage(image: new AssetImage("assets/images/social_detail_bg.png"), fit: BoxFit.cover,),
 
                 ),
 
@@ -44,76 +97,76 @@ class _ReadState extends State<Read> {
                   children: <Widget>[
 
 
-                    SafeArea(
+//                    SafeArea(
+//
+//                      child: Padding(
+//
+//                        padding: const EdgeInsets.symmetric(horizontal:10,vertical: 20 ),
+//
+//                        child: Row(
+//
+//
+//
+//                          crossAxisAlignment: CrossAxisAlignment.end,
+//
+//                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//
+//                          children: <Widget>[
+//
+//
+//
+//                            ImageIcon(
+//
+//                              AssetImage("assets/images/menu.png"),size: 30,
+//
+//                              color: Colors.white,
+//
+//                            ),
+//
+//                            Text(AppLocalizations.of(context).translate('apple'),
+//                              style: TextStyle(color: Colors.white,fontSize: 22),),
+//
+//
+//
+//                            Row(children: <Widget>[
+//
+//                              GestureDetector(
+//                                onTap: (){
+//                                  Navigator.pop(context);
+//
+//                                },
+//                                child: Text(AppLocalizations.of(context).translate('logout'),
+//
+//                                    style: TextStyle(color: Colors.white,fontSize: 18)),
+//                              ),
+//
+//                              ImageIcon(
+//
+//                                AssetImage("assets/images/right_arrow.png"),
+//
+//                                color: Colors.red,
+//
+//                              )
+//
+//                            ],)
+//
+//                            ,
+//
+//
+//
+//
+//
+//                          ],),
+//
+//                      ),
+//
+//                    )
 
-                      child: Padding(
-
-                        padding: const EdgeInsets.symmetric(horizontal:10,vertical: 20 ),
-
-                        child: Row(
-
-
-
-                          crossAxisAlignment: CrossAxisAlignment.end,
-
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                          children: <Widget>[
-
-
-
-                            ImageIcon(
-
-                              AssetImage("assets/images/menu.png"),size: 30,
-
-                              color: Colors.white,
-
-                            ),
-
-                            Text(AppLocalizations.of(context).translate('apple'),
-                              style: TextStyle(color: Colors.white,fontSize: 22),),
-
-
-
-                            Row(children: <Widget>[
-
-                              GestureDetector(
-                                onTap: (){
-                                  Navigator.pop(context);
-
-                                },
-                                child: Text(AppLocalizations.of(context).translate('logout'),
-
-                                    style: TextStyle(color: Colors.white,fontSize: 18)),
-                              ),
-
-                              ImageIcon(
-
-                                AssetImage("assets/images/right_arrow.png"),
-
-                                color: Colors.red,
-
-                              )
-
-                            ],)
-
-                            ,
-
-
-
-
-
-                          ],),
-
-                      ),
-
-                    )
-                    ,
 
 Container(
-  height: MediaQuery.of(context).size.height/1.15,
+  height: MediaQuery.of(context).size.height/1.1,
   child: ListView(
-    padding: EdgeInsets.symmetric(vertical: 35),
+    padding: EdgeInsets.symmetric(vertical: 20),
 scrollDirection: Axis.horizontal,
     physics: BouncingScrollPhysics(),
     children: <Widget>[
@@ -242,7 +295,7 @@ Positioned.fill(
       alignment: Alignment.bottomCenter,
       child: Stack(
           children: <Widget>[
-    Image.asset("assets/images/footer_social.png",height: 80,),
+    Image.asset("assets/images/footer_social.png",height: 85,),
 
     Positioned.fill(
       left: 40,
@@ -284,7 +337,15 @@ if(widget.btntxt=="Read")
                           children: <Widget>[
                             FaIcon(FontAwesomeIcons.edit,size: 25,color: Colors.white,),
                             SizedBox(width: 10,),
-                            Text("Edit",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
+                            InkWell(
+                                onTap: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => EditProfile()),
+                                  );
+
+                                },
+                                child: Text("Edit",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),)),
                           ],
                         ),)),
               ],
@@ -312,12 +373,14 @@ if(widget.btntxt=="Read")
       widget.result=message.payload;
     });
   print("yes");
+  Fluttertoast.showToast(msg: "READ SUCCESS",backgroundColor: Colors.green);
       }
   
     void WriteNfc() {
 
 FlutterNfcReader.write("",widget.name).then((response) {
 print(response.content);
+Fluttertoast.showToast(msg: "WRITE SUCCESS",backgroundColor: Colors.indigoAccent);
 });
     }
 // NDEFMessage newMessage = NDEFMessage.withRecords(

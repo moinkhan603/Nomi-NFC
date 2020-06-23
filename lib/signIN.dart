@@ -42,7 +42,8 @@ class _signInState extends State<signIn> {
 
                 decoration: new BoxDecoration(
 
-                  image: new DecorationImage(image: new AssetImage("assets/images/signup_bg.png"), fit: BoxFit.fill,),
+                  image: new DecorationImage(image: new AssetImage("assets/images/signup_bg.png",), fit: BoxFit.cover,
+                  ),
                 ),
               ),
 
@@ -111,7 +112,7 @@ recognizer: new TapGestureRecognizer()..onTap=(){
                               elevation: 4.0,
                               borderRadius: BorderRadius.all(Radius.circular(30)),
                               child: TextField(
-
+                                style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
                                 onChanged: (String value){
                                   email=value.trim();
 
@@ -136,7 +137,7 @@ recognizer: new TapGestureRecognizer()..onTap=(){
                               elevation: 4.0,
                               borderRadius: BorderRadius.all(Radius.circular(30)),
                               child: TextField(
-
+style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
                                 obscureText: true,
                                 onChanged: (String value){
 
@@ -236,13 +237,14 @@ EmailVerified();
 
 
                                   ))),
-
+SizedBox(height: 5,),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 50),
                             child: Align(
                               alignment: Alignment.bottomRight,
                               child: Text(AppLocalizations.of(context).translate('frgtpas'),
                                 style: TextStyle(fontSize: 20,color: Colors.white,
+                                  fontWeight: FontWeight.bold
 
                               ),),
                             ),

@@ -42,7 +42,57 @@ class _ProfileState extends State<Profile> {
 
     });
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(65.0),
+        child: AppBar(
 
+          leading: Padding(
+            padding: const EdgeInsets.only(top:18.0),
+            child: IconButton(
+              icon: ImageIcon(AssetImage("assets/images/menu.png"), size: 30,
+                color: Colors.white,),
+
+            ),
+          ),
+
+          title: Padding(
+            padding: const EdgeInsets.only(top:20.0),
+            child: Text("Profile", style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 22),),
+          ),centerTitle: true,
+          backgroundColor: Color(0xff0087E3),
+          actions: <Widget>[
+
+            GestureDetector(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top:25.0),
+                child: Text(
+                    AppLocalizations.of(context).translate(
+                        'logout'),
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 18)),
+              ),
+            ),
+
+            SizedBox(width: 5,),
+            Padding(
+              padding: const EdgeInsets.only(right:4.0,top: 20),
+              child: ImageIcon(
+
+                AssetImage("assets/images/right_arrow.png",),
+                size: 12,
+                color: Colors.red,
+
+              ),
+            )
+          ],
+        ),
+      ),
 
 body: SingleChildScrollView(
   child:   new Stack(
@@ -57,106 +107,108 @@ body: SingleChildScrollView(
   
   
   
-  image: new DecorationImage(image: new AssetImage("assets/images/bg_option.png"), fit: BoxFit.fill,),
+  image: new DecorationImage(image: new AssetImage("assets/images/bg_option2.png"), fit: BoxFit.cover,),
   
       ),
   
   
   
      child: Column(
-  
+
        children: <Widget>[
-  
-         SafeArea(
-  
-           child: Padding(
-  
-             padding: const EdgeInsets.symmetric(horizontal:10,vertical: 20 ),
-  
-             child: Row(
-  
-  
-  
-               crossAxisAlignment: CrossAxisAlignment.end,
-  
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  
-               children: <Widget>[
-  
-  
-  
-              ImageIcon(
-  
-                      AssetImage("assets/images/menu.png"),size: 30,
-  
-                  color: Colors.white,
-  
-                ),
-  
-  Text(AppLocalizations.of(context).translate('profile'),
-    style: TextStyle(color: Colors.white,fontSize: 22),),
-  
-  
-  
-  Row(children: <Widget>[
-  
-    GestureDetector(
-      onTap: (){
 
-_logOut();
+//         SafeArea(
+//
+//           child: Padding(
+//
+//             padding: const EdgeInsets.symmetric(horizontal:10,vertical: 20 ),
+//
+//             child: Row(
+//
+//
+//
+//               crossAxisAlignment: CrossAxisAlignment.end,
+//
+//  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//
+//               children: <Widget>[
+//
+//
+//
+//              ImageIcon(
+//
+//                      AssetImage("assets/images/menu.png"),size: 30,
+//
+//                  color: Colors.white,
+//
+//                ),
+//
+//  Text(AppLocalizations.of(context).translate('profile'),
+//    style: TextStyle(color: Colors.white,fontSize: 22),),
+//
+//
+//
+//  Row(children: <Widget>[
+//
+//    GestureDetector(
+//      onTap: (){
+//
+//_logOut();
+//
+//      },
+//
+//      child: Text(AppLocalizations.of(context).translate('logout'),
+//          style: TextStyle(color: Colors.white,fontSize: 18)),
+//    ),
+//
+//      ImageIcon(
+//
+//        AssetImage("assets/images/right_arrow.png"),
+//
+//        color: Colors.red,
+//
+//      )
+//
+//  ],)
+//
+//  ,
+//
+//
+//
+//
+//
+//             ],),
+//
+//           ),
+//
+//         ),
 
-      },
 
-      child: Text(AppLocalizations.of(context).translate('logout'),
-          style: TextStyle(color: Colors.white,fontSize: 18)),
-    ),
-  
-      ImageIcon(
-  
-        AssetImage("assets/images/right_arrow.png"),
-  
-        color: Colors.red,
-  
-      )
-  
-  ],)
-  
-  ,
-  
-  
-  
-  
-  
-             ],),
-  
-           ),
-  
-         ),
-  
-  
-  
-  
-  
+
+
+  SizedBox(height: 20,),
          CircleAvatar(backgroundImage: NetworkImage(CRUD.imgUrl),
-  
+
            radius: 65,
            backgroundColor: Colors.transparent,
-  
+
          )
-  
+
   ,
-  
-         SizedBox(height: 5,),
-  
+
+         SizedBox(height: 10,),
+
          Text(CRUD.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-  
-         SizedBox(height: 5,),
-  
-  
-  
+
+         SizedBox(height: 10,),
+
+
+
          InkWell(
            onTap: (){
+CRUD.taps=CRUD.taps+1;
 
+CRUD.addData();
              Navigator.push(
                context,
                MaterialPageRoute(builder: (context) => QRGenerator()),
@@ -170,17 +222,17 @@ _logOut();
 
            ),),
          ),
-  
-         SizedBox(height: 5,),
-  
-         Text(AppLocalizations.of(context).translate('man')),
-  
-         SizedBox(height: 5,),
-  
-         Text(AppLocalizations.of(context).translate('tap')),
-  
-         SizedBox(height: 5,),
-  
+
+         SizedBox(height: 10,),
+
+         Text("im a "+CRUD.name),
+
+         SizedBox(height: 10,),
+
+        // Text(AppLocalizations.of(context).translate('tap')),
+         Text("taps: "+CRUD.taps.toString()),
+         SizedBox(height: 10,),
+
 
   InkWell(
     onTap: (){
@@ -222,61 +274,64 @@ _logOut();
 
     ),
   ),
-  
-  
-  
+
+SizedBox(height: 30,),
+
     _detailsWidget(AppLocalizations.of(context).translate('specilize'),
 
         AppLocalizations.of(context).translate('specilizet')
-  
+
     ),
-  
-         SizedBox(height: 5,),
-  
+
+         SizedBox(height: 10,),
+
          _detailsWidget(AppLocalizations.of(context).translate('unlimitedtaps'),
 
              AppLocalizations.of(context).translate('unlimitedtapst')
          ),
-  
-         SizedBox(height: 5,),
-  
+
+         SizedBox(height: 10,),
+
          _detailsWidget(AppLocalizations.of(context).translate('privacy'),
 
              AppLocalizations.of(context).translate('privacyt')
          ),
-  
-  
-  
-  
-  
-  
-  Divider(height: 10,color: Colors.black,thickness: 1,)
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+SizedBox(height: 55,)
+
+
+
+
+
        ],
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
      ),
   
   
   
       ),
-  
-  
-  
+
+
+        Positioned.fill(
+            child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Divider(height: 10,color: Colors.black,thickness: 1,)))
   
   
       ]),
@@ -300,6 +355,8 @@ _logOut();
     Navigator.pop(context);
     });
   }
+
+
 
 
 }

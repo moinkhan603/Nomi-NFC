@@ -12,7 +12,8 @@ class CRUD{
   static String email="";
   static String password;
   static String bio;
-  static String imgUrl="https://firebasestorage.googleapis.com/v0/b/nomitap-6dd55.appspot.com/o/Recent%2Fimg_inside.png?alt=media&token=5fae7f82-ce29-4915-b2d4-cef9aaa1e939";
+  static int taps=0;
+  static String imgUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
   static String youtube="add link";
   static String whatsapp="add link";
   static String twitter="add link";
@@ -50,6 +51,59 @@ static refresh(){
 
 
 }
+
+
+
+  static void addData() async {
+
+
+
+    final _auth = FirebaseAuth.instance;
+    FirebaseUser loggedinUser;
+    String myuserid;
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedinUser = user;
+        print(loggedinUser.uid);
+        myuserid = loggedinUser.uid;
+      }
+    }
+    catch (e) {
+      print(e);
+    }
+
+
+    final databaseReference = FirebaseDatabase.instance.reference();
+
+
+    await databaseReference.child("users").child(myuserid).set({
+      'taps': CRUD.taps,
+      'Name': CRUD.name,
+      'email': CRUD.email,
+      'img_url': CRUD.imgUrl,
+      'password': CRUD.password,
+      'bio': CRUD.bio,
+      'youtube_un': CRUD.youtube,
+      'whatsapp_un': CRUD.whatsapp,
+      'twitter_un': CRUD.twitter,
+      'soundcloud_un': CRUD.soundcloud,
+      'snapchat_un': CRUD.snapchat,
+      'paypal_un': CRUD.paypal,
+      'music_un': CRUD.music,
+      'linkedin_un': CRUD.linkendin,
+      'instagram_un': CRUD.instagram,
+      'facebook_un': CRUD.facebook,
+      'cashapp_un': CRUD.cashapp,
+      'venmo_un': CRUD.venmo,
+
+
+    });
+
+
+  }
+
+
 
 static getData()async{
 

@@ -29,7 +29,7 @@ class _signUpState extends State<signUp> {
 
               decoration: new BoxDecoration(
 
-                image: new DecorationImage(image: new AssetImage("assets/images/signup_bg.png"), fit: BoxFit.fill,),
+                image: new DecorationImage(image: new AssetImage("assets/images/signup_bg.png"), fit: BoxFit.cover,),
               ),
             ),
 
@@ -49,7 +49,10 @@ class _signUpState extends State<signUp> {
                          Padding(
                            padding: const EdgeInsets.only(left:58.0),
                            child: Text(AppLocalizations.of(context).translate('wlcm'),
-                             style: TextStyle(fontSize: CRUD.headingFont,color: Colors.white,
+                             style: TextStyle(
+
+
+                                 fontSize: CRUD.headingFont,color: Colors.white,
                                fontWeight: FontWeight.bold
                            ),),
                          ),
@@ -67,6 +70,7 @@ class _signUpState extends State<signUp> {
                                elevation: 4.0,
                                borderRadius: BorderRadius.all(Radius.circular(30)),
                                child: TextField(
+                                 style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
                                  onChanged: (String value){
                                    email=value.trim();
 
@@ -91,6 +95,7 @@ SizedBox(height: 10,),
                                elevation: 4.0,
                                borderRadius: BorderRadius.all(Radius.circular(30)),
                                child: TextField(
+                                 style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
                                  obscureText: true,
                                  onChanged: (String value){
 

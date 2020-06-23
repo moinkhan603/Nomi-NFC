@@ -35,14 +35,14 @@ setState(() {
                 style: TextStyle(fontSize: CRUD.headingFont,color: Colors.white,
                   fontWeight: FontWeight.bold
               ),),
-              SizedBox(height: 15,),
-              Image.asset("assets/images/person_icon.png"),
-              SizedBox(height: 10,),
+              SizedBox(height: 20,),
+              Image.asset("assets/images/person_icon.png",height: 150,),
+              SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Text(AppLocalizations.of(context).translate('intro1Text')
 
-                  ,style: TextStyle(fontSize: 20,color: Colors.white),),
+                  ,style: TextStyle(fontSize: 20,color: Colors.white),textAlign: TextAlign.center,),
               ),
 
             ],
