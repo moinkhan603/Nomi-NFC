@@ -233,7 +233,7 @@ style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
                                           }
                                           catch(e){
                                             print(e);
-                                            Fluttertoast.showToast(msg: "wrong information"
+                                            Fluttertoast.showToast(msg: "Incorrect email or password"
                                                 ,gravity: ToastGravity.CENTER);
 
 

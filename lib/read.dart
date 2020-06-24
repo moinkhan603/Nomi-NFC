@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nfc_in_flutter/nfc_in_flutter.dart';
 import 'package:nomi/CRUD.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'DemoLocalizations.dart';
 import 'editProfile.dart';
@@ -20,11 +21,23 @@ class Read extends StatefulWidget {
 class _ReadState extends State<Read> {
 
 
+  _launchURL(url) async {
+   // const url = 'https://flutter.dev';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
 @override
   void initState() {
     // TODO: implement initState
     CRUD.getData();
+
+
+
+
   super.initState();
 
   if(widget.btntxt=="Write")
@@ -393,8 +406,13 @@ if(widget.btntxt=="Read")
   NDEFMessage message = await NFC.readNDEF(once: true).first;
     print("payload: ${message.payload}");
     setState(() {
-      widget.result=message.payload;
+    //  widget.result=message.payload;
     });
+  _launchURL(message.payload);
+
+
+
+
   print("yes");
   Fluttertoast.showToast(msg: "READ SUCCESS",backgroundColor: Colors.green);
 
@@ -444,7 +462,7 @@ Future<String> _asyncInputDialog(BuildContext context, String title) async {
     builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: Colors.black87,
-        title: Text("Your" +title+ "Username has Successfully written",style: TextStyle(
+        title: Text("Your" + title + " Username has Successfully written",style: TextStyle(
           color: Colors.white
         ),),
 
