@@ -219,8 +219,7 @@ style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
                                             }
                                             else{
 
-                                                Fluttertoast.showToast(msg: "Please verify your email"
-                                                    "before login",gravity: ToastGravity.CENTER);
+                                                Fluttertoast.showToast(msg: "Please Verify Your Email.",gravity: ToastGravity.CENTER);
 
 
                                             }
@@ -304,7 +303,7 @@ Future<String> _asyncInputDialog(BuildContext context) async {
     builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: Colors.white,
-        title: Text('Enter your Email Adress',style: TextStyle(color: Colors.black87),),
+        title: Text('Enter Your Email Address',style: TextStyle(color: Colors.black87),),
         content: new Row(
           children: <Widget>[
             new Expanded(
@@ -312,11 +311,6 @@ Future<String> _asyncInputDialog(BuildContext context) async {
                   style: TextStyle(color: Colors.black87,fontSize: 20),
                   cursorColor: Colors.black87,
                   keyboardType: TextInputType.emailAddress,
-
-
-
-
-
                   autofocus: true,
                   decoration: new InputDecoration(
                     enabledBorder: UnderlineInputBorder(
@@ -325,7 +319,7 @@ Future<String> _asyncInputDialog(BuildContext context) async {
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                     ),
-                    labelText: 'email:', hintText: 'x@example.com',hintStyle: TextStyle(color: Colors.grey), ),
+                    labelText: 'Email : ', hintText: 'xyz@example.com',hintStyle: TextStyle(color: Colors.grey), ),
                   onChanged: (value) {
                     email = value;
                   },

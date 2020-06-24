@@ -173,7 +173,7 @@ try {
     try {
       await newuser.sendEmailVerification();
       Fluttertoast.showToast(
-        msg: "Verification email sent",
+        msg: "Verification Email Sent.",
         toastLength: Toast.LENGTH_LONG,
       );
     } catch (e) {
