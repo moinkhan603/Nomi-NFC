@@ -177,7 +177,7 @@ try {
         toastLength: Toast.LENGTH_LONG,
       );
     } catch (e) {
-      print("An error occured while trying to send email        verification");
+      print("An error occured while trying to send email  verification");
       print(e.message);
     }
     CRUD.email=email;

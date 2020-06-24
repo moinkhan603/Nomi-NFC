@@ -14,19 +14,19 @@ class CRUD{
   static String bio="";
   static int taps=0;
   static String imgUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
-  static String youtube="add link";
-  static String whatsapp="add link";
-  static String twitter="add link";
-  static String tiktok="add link";
-  static String soundcloud="add link";
-  static String snapchat="add link";
-  static String paypal="add link";
-  static String linkendin="add link";
-  static String instagram="add link";
-  static String music="add link";
-  static String venmo="add link";
-  static String facebook="add link";
-  static String cashapp="add link";
+  static String youtube="add your link";
+  static String whatsapp="add your link";
+  static String twitter="add your link";
+  static String tiktok="add your link";
+  static String soundcloud="add your link";
+  static String snapchat="add your link";
+  static String paypal="add your link";
+  static String linkendin="add your link";
+  static String instagram="add your link";
+  static String music="add your link";
+  static String venmo="add your link";
+  static String facebook="add your link";
+  static String cashapp="add your link";
 
 
 static double headingFont=25;
@@ -96,6 +96,7 @@ static refresh(){
       'facebook_un':"www.facebook.com/"+ CRUD.facebook,
       'cashapp_un': "www.cashapp.com/"+CRUD.cashapp,
       'venmo_un': "www.venmo.com/"+CRUD.venmo,
+      'tiktok_un': "www.tiktok.com/"+CRUD.tiktok,
 
 
     });
@@ -103,7 +104,35 @@ static refresh(){
 
   }
 
+static updateTaps()async{
 
+  final _auth = FirebaseAuth.instance;
+  FirebaseUser loggedinUser;
+  String myuserid;
+  try {
+    final user = await _auth.currentUser();
+    if (user != null) {
+      loggedinUser = user;
+      print(loggedinUser.uid);
+      myuserid = loggedinUser.uid;
+    }
+  }
+  catch (e) {
+    print(e);
+  }
+
+
+  final databaseReference = FirebaseDatabase.instance.reference();
+
+
+  await databaseReference.child("users").child(myuserid).update({
+    'taps': CRUD.taps,
+
+
+
+  });
+
+}
 
 static getData()async{
 

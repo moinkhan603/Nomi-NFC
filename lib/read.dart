@@ -410,7 +410,13 @@ if(widget.btntxt=="Read")
 
 FlutterNfcReader.write(widget.name,widget.name).then((response) {
 print(response.content);
+
 _asyncInputDialog(context,widget.title);
+
+FlutterNfcReader.stop().then((response) {
+  print(response.status.toString());
+});
+
 });
 
 

@@ -207,8 +207,8 @@ body: SingleChildScrollView(
          InkWell(
            onTap: (){
 CRUD.taps=CRUD.taps+1;
-
-CRUD.addData();
+CRUD.updateTaps();
+//CRUD.addData();
              Navigator.push(
                context,
                MaterialPageRoute(builder: (context) => QRGenerator()),

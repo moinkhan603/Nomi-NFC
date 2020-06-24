@@ -356,7 +356,7 @@ SizedBox(height: 15,),
     final databaseReference = FirebaseDatabase.instance.reference();
 
 
-    await databaseReference.child("users").child(myuserid).set({
+    await databaseReference.child("users").child(myuserid).update({
       'taps': CRUD.taps,
       'Name': CRUD.name,
       'email': CRUD.email,
@@ -375,7 +375,7 @@ SizedBox(height: 15,),
       'facebook_un':"www.facebook.com/"+ CRUD.facebook,
       'cashapp_un': "www.cashapp.com/"+CRUD.cashapp,
       'venmo_un': "www.venmo.com/"+CRUD.venmo,
-
+      'tiktok_un': "www.tiktok.com/"+CRUD.tiktok
     });
     setState(() {
       showSpinner=false;

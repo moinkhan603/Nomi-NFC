@@ -19,9 +19,9 @@ class _signInState extends State<signIn> {
   String password;
   final _auth=FirebaseAuth.instance;
 @override
-  void dispose() {
+  void dispose() async{
     // TODO: implement dispose
-  CRUD.getData();
+  await CRUD.getData();
 
   super.dispose();
 
