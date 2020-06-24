@@ -231,8 +231,10 @@ SizedBox(height: 15,),
                                   'name'), 1,CRUD.name,true),
                               _info(AppLocalizations.of(context).translate(
                                   'email'), 2,CRUD.email,false),
+                              _info('Number', 3,CRUD.Number,true),
+                              _info('Occupation', 4,CRUD.Occupation,true),
                               _info(AppLocalizations.of(context).translate('bio'),
-                                  3,CRUD.bio,true),
+                                  5,CRUD.bio,true),
                               SizedBox(height: 20,),
                               Align(
 
@@ -358,25 +360,27 @@ SizedBox(height: 15,),
 
 
     await databaseReference.child("users").child(myuserid).update({
-      'taps': CRUD.taps,
       'Name': CRUD.name,
       'email': CRUD.email,
       'img_url': CRUD.imgUrl,
       'password': CRUD.password,
+      'Number': CRUD.Number,
+      'Occupation': CRUD.Occupation,
+
       'bio': CRUD.bio,
-      'youtube_un': "www.youtube.com/"+CRUD.youtube,
-      'whatsapp_un':"www.whatsapp.com/"+ CRUD.whatsapp,
-      'twitter_un': "www.twitter.com/"+CRUD.twitter,
-      'soundcloud_un':"www.soundcloud.com/"+ CRUD.soundcloud,
-      'snapchat_un': "www.snapchat.com/"+CRUD.snapchat,
-      'paypal_un': "www.paypal.com/"+CRUD.paypal,
-      'music_un': "www.music.com/"+CRUD.music,
-      'linkedin_un': "www.linkedin.com/"+CRUD.linkendin,
-      'instagram_un': "www.instagram.com/"+CRUD.instagram,
-      'facebook_un':"www.facebook.com/"+ CRUD.facebook,
-      'cashapp_un': "www.cashapp.com/"+CRUD.cashapp,
-      'venmo_un': "www.venmo.com/"+CRUD.venmo,
-      'tiktok_un': "www.tiktok.com/"+CRUD.tiktok
+      'youtube_un': CRUD.youtube,
+      'whatsapp_un':CRUD.whatsapp,
+      'twitter_un': CRUD.twitter,
+      'soundcloud_un': CRUD.soundcloud,
+      'snapchat_un': CRUD.snapchat,
+      'paypal_un': CRUD.paypal,
+      'music_un': CRUD.music,
+      'linkedin_un': CRUD.linkendin,
+      'instagram_un': CRUD.instagram,
+      'facebook_un': CRUD.facebook,
+      'cashapp_un': CRUD.cashapp,
+      'venmo_un': CRUD.venmo,
+      'tiktok_un': CRUD.tiktok
     });
     setState(() {
       showSpinner=false;
@@ -433,7 +437,16 @@ SizedBox(height: 5,),
                   {
                     CRUD.email=value;
                   }
-                else if (id==3)
+                  else if (id==3)
+                  {
+                    CRUD.Number=value;
+                  }
+                  else if (id==4)
+                  {
+                    CRUD.Occupation=value;
+                  }
+
+                else if (id==5)
                 {
                   CRUD.bio=value;
                 }
@@ -503,49 +516,49 @@ if(id==4)
   }
 
             else if(id==5){
-              CRUD.whatsapp=value;
+              CRUD.whatsapp="www.whatsapp.com/"+value;
             }
 
             else if(id==6){
-              CRUD.twitter=value;
+              CRUD.twitter="www.twitter.com/"+value;
             }
 
             else if(id==7){
-              CRUD.tiktok=value;
+              CRUD.tiktok="www.tiktok.com/"+value;
             }
 
             else if(id==8){
-              CRUD.soundcloud=value;
+              CRUD.soundcloud="www.soundcloud.com/"+value;
             }
 
             else if(id==9){
-              CRUD.snapchat=value;
+              CRUD.snapchat="www.snapchat.com/"+value;
             }
 
             else if(id==10){
-              CRUD.paypal=value;
+              CRUD.paypal="www.paypal.com/"+value;
             }
 
             else if(id==11){
-              CRUD.music=value;
+              CRUD.music="www.music.com/"+value;
             }
 
             else if(id==12){
-              CRUD.linkendin=value;
+              CRUD.linkendin="www.linkedin.com/"+value;
             }
             else if(id==13){
-              CRUD.instagram=value;
+              CRUD.instagram="www.instagram.com/"+value;
             }
             else if(id==14){
-              CRUD.facebook=value;
+              CRUD.facebook="www.facebook.com/"+value;
             }
 
               else if(id==15){
-              CRUD.cashapp=value;
+              CRUD.cashapp="www.cashapp.com/"+value;
             }
 
               else if(id==16){
-              CRUD.venmo=value;
+              CRUD.venmo="www.venmo.com/"+value;
             }
 
 

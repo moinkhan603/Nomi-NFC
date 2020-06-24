@@ -67,7 +67,9 @@ class _ProfileState extends State<Profile> {
 
             GestureDetector(
               onTap: (){
+                _logOut();
                 Navigator.pop(context);
+
               },
               child: Padding(
                 padding: const EdgeInsets.only(top:25.0),
@@ -351,8 +353,8 @@ SizedBox(height: 55,)
     final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     await _firebaseAuth.signOut().then((_){
      // Navigator.of(context).pushNamedAndRemoveUntil("/signIN", ModalRoute.withName("/profile"));
-   CRUD.refresh();
-    Navigator.pop(context);
+   //CRUD.refresh();
+
     });
   }
 

@@ -8,8 +8,12 @@ import 'DemoLocalizations.dart';
 import 'signUP.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 class signIn extends StatefulWidget {
+  int id=0;
+  signIn(this.id);
   @override
   _signInState createState() => _signInState();
+
+
 }
 
 class _signInState extends State<signIn> {
@@ -214,7 +218,7 @@ style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
                                               CRUD.password=password;
                                               Navigator.push(
                                                 context,
-                                                MaterialPageRoute(builder: (context) => Welcome(2)),
+                                                MaterialPageRoute(builder: (context) => Welcome(widget.id)),
                                               );
                                             }
                                             else{

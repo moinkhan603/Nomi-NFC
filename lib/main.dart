@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if(indx==2){
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => signIn()),
+        MaterialPageRoute(builder: (context) => signIn(2)),
       );
     }
     // use this to animate to the page

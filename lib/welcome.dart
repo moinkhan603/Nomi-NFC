@@ -36,17 +36,17 @@ ReadX(),
   @override
   void initState() {
     // TODO: implement initState
-if(CRUD.email==null)
+if(CRUD.myid==1)
   {
     CRUD.addData();
+    CRUD.myid=3;
   }
 
 
 
-    if(widget.id==2)
-      {
+
         CRUD.getData();
-      }
+
 
 
     super.initState();

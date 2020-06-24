@@ -11,6 +11,8 @@ class CRUD{
   static String name="your name";
   static String email="";
   static String password="";
+  static String Number="";
+  static String Occupation="";
   static String bio="";
   static int taps=0;
   static String imgUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
@@ -33,6 +35,8 @@ static double headingFont=25;
 static refresh(){
 
   name="your name";
+  Occupation="Your Occupation";
+  Number="Your Number";
   imgUrl="https://firebasestorage.googleapis.com/v0/b/nomitap-6dd55.appspot.com/o/Recent%2Fimg_inside.png?alt=media&token=5fae7f82-ce29-4915-b2d4-cef9aaa1e939";
   youtube="add your link";
   whatsapp="add your link";
@@ -52,13 +56,13 @@ static refresh(){
 
 }
 
-
-
+ static  final  _auth = FirebaseAuth.instance;
+  static final databaseReference = FirebaseDatabase.instance.reference();
   static void addData() async {
 
 
 
-    final _auth = FirebaseAuth.instance;
+
     FirebaseUser loggedinUser;
     String myuserid;
     try {
@@ -74,29 +78,31 @@ static refresh(){
     }
 
 
-    final databaseReference = FirebaseDatabase.instance.reference();
+
 
 
     await databaseReference.child("users").child(myuserid).set({
       'taps': CRUD.taps,
       'Name': CRUD.name,
+      'Number': CRUD.Number,
+      'Occupation': CRUD.Occupation,
       'email': CRUD.email,
       'img_url': CRUD.imgUrl,
       'password': CRUD.password,
       'bio': CRUD.bio,
-      'youtube_un': "www.youtube.com/"+CRUD.youtube,
-      'whatsapp_un':"www.whatsapp.com/"+ CRUD.whatsapp,
-      'twitter_un': "www.twitter.com/"+CRUD.twitter,
-      'soundcloud_un':"www.soundcloud.com/"+ CRUD.soundcloud,
-      'snapchat_un': "www.snapchat.com/"+CRUD.snapchat,
-      'paypal_un': "www.paypal.com/"+CRUD.paypal,
-      'music_un': "www.music.com/"+CRUD.music,
-      'linkedin_un': "www.linkedin.com/"+CRUD.linkendin,
-      'instagram_un': "www.instagram.com/"+CRUD.instagram,
-      'facebook_un':"www.facebook.com/"+ CRUD.facebook,
-      'cashapp_un': "www.cashapp.com/"+CRUD.cashapp,
-      'venmo_un': "www.venmo.com/"+CRUD.venmo,
-      'tiktok_un': "www.tiktok.com/"+CRUD.tiktok,
+      'youtube_un': CRUD.youtube,
+      'whatsapp_un': CRUD.whatsapp,
+      'twitter_un': CRUD.twitter,
+      'soundcloud_un': CRUD.soundcloud,
+      'snapchat_un': CRUD.snapchat,
+      'paypal_un': CRUD.paypal,
+      'music_un': CRUD.music,
+      'linkedin_un': CRUD.linkendin,
+      'instagram_un': CRUD.instagram,
+      'facebook_un': CRUD.facebook,
+      'cashapp_un': CRUD.cashapp,
+      'venmo_un': CRUD.venmo,
+      'tiktok_un': CRUD.tiktok,
 
 
     });
@@ -106,7 +112,7 @@ static refresh(){
 
 static updateTaps()async{
 
-  final _auth = FirebaseAuth.instance;
+
   FirebaseUser loggedinUser;
   String myuserid;
   try {
@@ -122,12 +128,11 @@ static updateTaps()async{
   }
 
 
-  final databaseReference = FirebaseDatabase.instance.reference();
+
 
 
   await databaseReference.child("users").child(myuserid).update({
     'taps': CRUD.taps,
-
 
 
   });
@@ -175,6 +180,8 @@ static getData()async{
      soundcloud=values["soundcloud_un"];
 taps=values["taps"];
 name=values["Name"];
+Number=values["Number"];
+Occupation=values["Occupation"];
 imgUrl=values["img_url"];
   bio=values["bio"];
    });
