@@ -31,7 +31,7 @@ ReadX(),
 
 
 
-  int _index = 1;
+  int _index = 2;
 
   @override
   void initState() {
@@ -51,10 +51,13 @@ ReadX(),
 
 
     return Scaffold(
+
       bottomNavigationBar: FloatingNavbar(
+
 selectedBackgroundColor: Colors.white,
         iconSize: 30,
-        fontSize: 15,
+        fontSize: 18,
+
         backgroundColor: Colors.blue,
         onTap: (int val) => setState(() => _index = val),
         currentIndex: _index,
@@ -64,7 +67,9 @@ selectedBackgroundColor: Colors.white,
 //          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
 //          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
 
-          FloatingNavbarItem( icon: FaIcon(FontAwesomeIcons.table).icon, title: 'Read',
+          FloatingNavbarItem( icon: FaIcon(FontAwesomeIcons.table,).icon,
+
+            title: 'Read',
 
           ),
           FloatingNavbarItem( icon: FaIcon(FontAwesomeIcons.edit).icon, title: 'Write'),

@@ -11,7 +11,7 @@
         android:required="true" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="nomi"
+        android:label="NomiTap"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

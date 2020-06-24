@@ -6,9 +6,23 @@ class QRGenerator extends StatefulWidget {
   _QRGeneratorState createState() => _QRGeneratorState();
 }
 
+
+
+
 class _QRGeneratorState extends State<QRGenerator> {
+
+@override
+  void dispose() {
+    // TODO: implement dispose
+  CRUD.getData();
+  super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
 appBar: AppBar(title: Text("Your Profile QR",),centerTitle: true,backgroundColor: Colors.blue,),
       body: SafeArea(

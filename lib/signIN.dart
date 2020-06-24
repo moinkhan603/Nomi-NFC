@@ -81,7 +81,7 @@ class _signInState extends State<signIn> {
                             child: Text.rich(
                               TextSpan(
                                 text: AppLocalizations.of(context).translate('signintxt'),
-                                style: TextStyle(fontSize: 20,color: Colors.white),
+                                style: TextStyle(fontSize: 18,color: Colors.white),
                                 children: <TextSpan>[
 
                                   TextSpan(
@@ -196,7 +196,7 @@ style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
                                           );
                                           return;
                                         }
-EmailVerified();
+
                                         if(email!=null&&password!=null)
                                         {
                                           setState(() {
@@ -204,11 +204,11 @@ EmailVerified();
                                           });
 
                                           try {
-                                            final newuser = await _auth
+                                            FirebaseUser newuser = (await _auth
                                                 .signInWithEmailAndPassword(
-                                                email: email, password: password);
+                                                email: email, password: password)).user;
 
-                                            if (newuser != null) {
+                                            if (newuser != null&&newuser.isEmailVerified==true) {
 
                                               CRUD.email=email;
                                               CRUD.password=password;
@@ -217,12 +217,25 @@ EmailVerified();
                                                 MaterialPageRoute(builder: (context) => Welcome(2)),
                                               );
                                             }
+                                            else{
+
+                                                Fluttertoast.showToast(msg: "Please verify your email"
+                                                    "before login",gravity: ToastGravity.CENTER);
+
+
+                                            }
                                             setState(() {
                                               showSpinner = false;
                                             });
                                           }
                                           catch(e){
                                             print(e);
+                                            Fluttertoast.showToast(msg: "wrong information"
+                                                ,gravity: ToastGravity.CENTER);
+
+
+
+
                                             setState(() {
                                               showSpinner = false;
                                             });
@@ -242,11 +255,19 @@ SizedBox(height: 5,),
                             padding: const EdgeInsets.symmetric(horizontal: 50),
                             child: Align(
                               alignment: Alignment.bottomRight,
-                              child: Text(AppLocalizations.of(context).translate('frgtpas'),
-                                style: TextStyle(fontSize: 20,color: Colors.white,
-                                  fontWeight: FontWeight.bold
+                              child: GestureDetector(
 
-                              ),),
+                                onTap: (){
+
+                                  _asyncInputDialog(context);
+
+                                },
+                                child: Text(AppLocalizations.of(context).translate('frgtpas'),
+                                  style: TextStyle(fontSize: 20,color: Colors.white,
+                                    fontWeight: FontWeight.bold
+
+                                ),),
+                              ),
                             ),
                           ),
 
@@ -263,27 +284,105 @@ SizedBox(height: 5,),
         ));
   }
 
-  void EmailVerified() async{
+
+}
 
 
 
 
-      print("popo");
-      final FirebaseAuth _auth = FirebaseAuth.instance;
-      var user = await _auth.signInWithEmailAndPassword(email: email, password: password);
 
 
 
-//      if(user.isEmailVerified==false)
-//      {
-//        print("heloo");
-//        Fluttertoast.showToast(
-//          msg: "Email not varified",
-//          toastLength: Toast.LENGTH_LONG,
-//        );
-//      }
 
+
+
+Future<String> _asyncInputDialog(BuildContext context) async {
+  String email = '';
+  return showDialog<String>(
+    context: context,
+    barrierDismissible: false, // dialog is dismissible with a tap on the barrier
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Colors.white,
+        title: Text('Enter your Email Adress',style: TextStyle(color: Colors.black87),),
+        content: new Row(
+          children: <Widget>[
+            new Expanded(
+                child: new TextField(
+                  style: TextStyle(color: Colors.black87,fontSize: 20),
+                  cursorColor: Colors.black87,
+                  keyboardType: TextInputType.emailAddress,
+
+
+
+
+
+                  autofocus: true,
+                  decoration: new InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black87),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    labelText: 'email:', hintText: 'x@example.com',hintStyle: TextStyle(color: Colors.grey), ),
+                  onChanged: (value) {
+                    email = value;
+                  },
+                ))
+          ],
+        ),
+        actions: <Widget>[
+
+
+          FlatButton(
+            child: Text('Cancel',),
+            color: Colors.red,
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          FlatButton(
+            color: Colors.green,
+            child: Text('Send',),
+            onPressed: () {
+if(email!=null&&email.contains("@"))
+  {
+    final _auth=FirebaseAuth.instance;
+    _auth.sendPasswordResetEmail(email: email).then((onValue){
+      Fluttertoast.showToast(
+          msg: "Email Sent",
+          toastLength: Toast.LENGTH_LONG,
+        );
+    });
+
+    Navigator.of(context).pop();
 
 
   }
+else
+  {
+    Fluttertoast.showToast(
+      msg: "Email not Valid",
+      toastLength: Toast.LENGTH_LONG,
+    );
+  }
+              //Navigator.of(context).pop(newcardNo);
+            },
+          ),
+
+
+
+        ],
+      );
+    },
+  );
 }
+
+
+
+
+
+
+
+

@@ -173,75 +173,78 @@ class _ReadXState extends State<ReadX> {
                             .size
                             .height/1.1 ,
                         child: ListView(
+
                           padding: EdgeInsets.only(bottom: 25, top: 25),
                           physics: BouncingScrollPhysics(),
                           children: <Widget>[
 
 
-                            Wrap(
+                            Center(
+                              child: Wrap(
 
-                              runSpacing: 15.0,
+                                runSpacing: 15.0,
 
-                              spacing: 2,
+                                spacing: 2,
 
-                              direction: Axis.horizontal,
-
-
-                              children: <Widget>[
+                                direction: Axis.horizontal,
 
 
-                                _socialIcons("assets/images/whatsapp.png",
-                                    "Whatsapp", CRUD.whatsapp,height),
+                                children: <Widget>[
 
 
-                                _socialIcons("assets/images/snapchat.png",
-                                    "Snapchat", CRUD.snapchat,height),
+                                  _socialIcons("assets/images/whatsapp.png",
+                                      "Whatsapp", CRUD.whatsapp,height),
 
 
-                                _socialIcons("assets/images/soundcloud.png",
-                                    "Soundcloud", CRUD.soundcloud,height),
+                                  _socialIcons("assets/images/snapchat.png",
+                                      "Snapchat", CRUD.snapchat,height),
 
 
-                                _socialIcons("assets/images/tiktok.png",
-                                    "Tiktok", CRUD.tiktok,height),
-
-                                _socialIcons("assets/images/twitter.png",
-                                    "Twitter", CRUD.twitter,height),
-
-                                _socialIcons("assets/images/youtube.png",
-                                    "Youtube", CRUD.youtube,height),
-
-                                _socialIcons("assets/images/instagram.png",
-                                    "Instagram", CRUD.instagram,height),
-
-                                _socialIcons("assets/images/linkedin.png",
-                                    "Linkedin", CRUD.linkendin,height),
-
-                                _socialIcons("assets/images/facebook.png",
-                                    "Facebook", CRUD.facebook,height),
-
-                                _socialIcons("assets/images/tap.png",
-                                    "Contact Tap", "",height),
-
-                                _socialIcons("assets/images/cashapp.png",
-                                    "Cashapp", CRUD.cashapp,height),
-
-                                _socialIcons("assets/images/browser.png",
-                                    "Browser", "",height),
-
-                                _socialIcons("assets/images/music.png", "Music",
-                                    CRUD.music,height),
-
-                                _socialIcons("assets/images/paypal.png",
-                                    "Paypal", CRUD.paypal,height),
-
-                                _socialIcons("assets/images/twitch.png",
-                                    "Twitch", "",height),
+                                  _socialIcons("assets/images/soundcloud.png",
+                                      "Soundcloud", CRUD.soundcloud,height),
 
 
-                              ],
+                                  _socialIcons("assets/images/tiktok.png",
+                                      "Tiktok", CRUD.tiktok,height),
+
+                                  _socialIcons("assets/images/twitter.png",
+                                      "Twitter", CRUD.twitter,height),
+
+                                  _socialIcons("assets/images/youtube.png",
+                                      "Youtube", CRUD.youtube,height),
+
+                                  _socialIcons("assets/images/instagram.png",
+                                      "Instagram", CRUD.instagram,height),
+
+                                  _socialIcons("assets/images/linkedin.png",
+                                      "Linkedin", CRUD.linkendin,height),
+
+                                  _socialIcons("assets/images/facebook.png",
+                                      "Facebook", CRUD.facebook,height),
+
+                                  _socialIcons("assets/images/tap.png",
+                                      "Contact Tap", "",height),
+
+                                  _socialIcons("assets/images/cashapp.png",
+                                      "Cashapp", CRUD.cashapp,height),
+
+                                  _socialIcons("assets/images/browser.png",
+                                      "Browser", "",height),
+
+                                  _socialIcons("assets/images/music.png", "Music",
+                                      CRUD.music,height),
+
+                                  _socialIcons("assets/images/paypal.png",
+                                      "Paypal", CRUD.paypal,height),
+
+                                  _socialIcons("assets/images/twitch.png",
+                                      "Twitch", "",height),
 
 
+                                ],
+
+
+                              ),
                             )
 
 

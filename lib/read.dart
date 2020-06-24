@@ -18,6 +18,28 @@ class Read extends StatefulWidget {
 }
 
 class _ReadState extends State<Read> {
+
+
+
+@override
+  void initState() {
+    // TODO: implement initState
+    CRUD.getData();
+  super.initState();
+
+  if(widget.btntxt=="Write")
+    {
+      Fluttertoast.showToast(msg: "Click Write so you will be able to write on"
+          " NFC Chip",backgroundColor: Colors.blue,textColor: Colors.white,
+      gravity: ToastGravity.CENTER);
+
+    }
+
+}
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -316,6 +338,7 @@ if(widget.btntxt=="Read")
 
   ReadNfc();
 
+
   }
   else{
   WriteNfc();
@@ -374,14 +397,23 @@ if(widget.btntxt=="Read")
     });
   print("yes");
   Fluttertoast.showToast(msg: "READ SUCCESS",backgroundColor: Colors.green);
+
+
+
+
+
+
+
       }
   
     void WriteNfc() {
 
-FlutterNfcReader.write("",widget.name).then((response) {
+FlutterNfcReader.write(widget.name,widget.name).then((response) {
 print(response.content);
-Fluttertoast.showToast(msg: "WRITE SUCCESS",backgroundColor: Colors.indigoAccent);
+_asyncInputDialog(context,widget.title);
 });
+
+
     }
 // NDEFMessage newMessage = NDEFMessage.withRecords(
 //     NDEFRecord.p("text/plain", "hello world")
@@ -395,4 +427,35 @@ Fluttertoast.showToast(msg: "WRITE SUCCESS",backgroundColor: Colors.indigoAccent
 
 
     
+}
+
+
+Future<String> _asyncInputDialog(BuildContext context, String title) async {
+
+  return showDialog<String>(
+    context: context,
+    barrierDismissible: false, // dialog is dismissible with a tap on the barrier
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Colors.black87,
+        title: Text("Your" +title+ "Username has Successfully written",style: TextStyle(
+          color: Colors.white
+        ),),
+
+        actions: <Widget>[
+
+
+          FlatButton(
+            child: Text('Close',),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+
+
+
+        ],
+      );
+    },
+  );
 }

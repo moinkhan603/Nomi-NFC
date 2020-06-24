@@ -10,8 +10,8 @@ class CRUD{
 
   static String name="your name";
   static String email="";
-  static String password;
-  static String bio;
+  static String password="";
+  static String bio="";
   static int taps=0;
   static String imgUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
   static String youtube="add link";
@@ -34,19 +34,19 @@ static refresh(){
 
   name="your name";
   imgUrl="https://firebasestorage.googleapis.com/v0/b/nomitap-6dd55.appspot.com/o/Recent%2Fimg_inside.png?alt=media&token=5fae7f82-ce29-4915-b2d4-cef9aaa1e939";
-  youtube="add link";
-  whatsapp="add link";
-  twitter="add link";
-  tiktok="add link";
-  soundcloud="add link";
-  snapchat="add link";
-  paypal="add link";
-  linkendin="add link";
-  instagram="add link";
-  music="add link";
-  venmo="add link";
-  facebook="add link";
-  cashapp="add link";
+  youtube="add your link";
+  whatsapp="add your link";
+  twitter="add your link";
+  tiktok="add your link";
+  soundcloud="add your link";
+  snapchat="add your link";
+  paypal="add your link";
+  linkendin="add your link";
+  instagram="add your link";
+  music="add your link";
+  venmo="add your link";
+  facebook="add your link";
+  cashapp="add your link";
 
 
 
@@ -84,18 +84,18 @@ static refresh(){
       'img_url': CRUD.imgUrl,
       'password': CRUD.password,
       'bio': CRUD.bio,
-      'youtube_un': CRUD.youtube,
-      'whatsapp_un': CRUD.whatsapp,
-      'twitter_un': CRUD.twitter,
-      'soundcloud_un': CRUD.soundcloud,
-      'snapchat_un': CRUD.snapchat,
-      'paypal_un': CRUD.paypal,
-      'music_un': CRUD.music,
-      'linkedin_un': CRUD.linkendin,
-      'instagram_un': CRUD.instagram,
-      'facebook_un': CRUD.facebook,
-      'cashapp_un': CRUD.cashapp,
-      'venmo_un': CRUD.venmo,
+      'youtube_un': "www.youtube.com/"+CRUD.youtube,
+      'whatsapp_un':"www.whatsapp.com/"+ CRUD.whatsapp,
+      'twitter_un': "www.twitter.com/"+CRUD.twitter,
+      'soundcloud_un':"www.soundcloud.com/"+ CRUD.soundcloud,
+      'snapchat_un': "www.snapchat.com/"+CRUD.snapchat,
+      'paypal_un': "www.paypal.com/"+CRUD.paypal,
+      'music_un': "www.music.com/"+CRUD.music,
+      'linkedin_un': "www.linkedin.com/"+CRUD.linkendin,
+      'instagram_un': "www.instagram.com/"+CRUD.instagram,
+      'facebook_un':"www.facebook.com/"+ CRUD.facebook,
+      'cashapp_un': "www.cashapp.com/"+CRUD.cashapp,
+      'venmo_un': "www.venmo.com/"+CRUD.venmo,
 
 
     });

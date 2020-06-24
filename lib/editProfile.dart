@@ -227,11 +227,11 @@ SizedBox(height: 15,),
                           //  padding: EdgeInsets.only(bottom: 200),
                             children: <Widget>[
                               _info(AppLocalizations.of(context).translate(
-                                  'name'), 1,CRUD.name),
+                                  'name'), 1,CRUD.name,true),
                               _info(AppLocalizations.of(context).translate(
-                                  'email'), 2,CRUD.email),
+                                  'email'), 2,CRUD.email,false),
                               _info(AppLocalizations.of(context).translate('bio'),
-                                  3,CRUD.bio),
+                                  3,CRUD.bio,true),
                               SizedBox(height: 20,),
                               Align(
 
@@ -363,18 +363,18 @@ SizedBox(height: 15,),
       'img_url': CRUD.imgUrl,
       'password': CRUD.password,
       'bio': CRUD.bio,
-      'youtube_un': CRUD.youtube,
-      'whatsapp_un': CRUD.whatsapp,
-      'twitter_un': CRUD.twitter,
-      'soundcloud_un': CRUD.soundcloud,
-      'snapchat_un': CRUD.snapchat,
-      'paypal_un': CRUD.paypal,
-      'music_un': CRUD.music,
-      'linkedin_un': CRUD.linkendin,
-      'instagram_un': CRUD.instagram,
-      'facebook_un': CRUD.facebook,
-      'cashapp_un': CRUD.cashapp,
-      'venmo_un': CRUD.venmo,
+      'youtube_un': "www.youtube.com/"+CRUD.youtube,
+      'whatsapp_un':"www.whatsapp.com/"+ CRUD.whatsapp,
+      'twitter_un': "www.twitter.com/"+CRUD.twitter,
+      'soundcloud_un':"www.soundcloud.com/"+ CRUD.soundcloud,
+      'snapchat_un': "www.snapchat.com/"+CRUD.snapchat,
+      'paypal_un': "www.paypal.com/"+CRUD.paypal,
+      'music_un': "www.music.com/"+CRUD.music,
+      'linkedin_un': "www.linkedin.com/"+CRUD.linkendin,
+      'instagram_un': "www.instagram.com/"+CRUD.instagram,
+      'facebook_un':"www.facebook.com/"+ CRUD.facebook,
+      'cashapp_un': "www.cashapp.com/"+CRUD.cashapp,
+      'venmo_un': "www.venmo.com/"+CRUD.venmo,
 
     });
     setState(() {
@@ -392,8 +392,9 @@ class _info extends StatelessWidget {
   String heading;
   int id;
   String imgPath;
+  bool flag=false;
 String placeholderText;
-  _info(@required this.heading,@required this.id,this.placeholderText);
+  _info(@required this.heading,@required this.id,this.placeholderText,this.flag);
 
   @override
   Widget build(BuildContext context) {
@@ -416,6 +417,7 @@ SizedBox(height: 5,),
             elevation: 1.0,
             borderRadius: BorderRadius.all(Radius.circular(12)),
             child: TextField(
+              enabled: flag,
               controller: TextEditingController()..text = placeholderText,
              // controller: TextEditingController()..text = myval,
               style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
@@ -491,7 +493,7 @@ String hintText;
             borderRadius: BorderRadius.all(Radius.circular(12)),
             child: TextField(
               controller: TextEditingController()..text = placeHolderText,
-textAlign: TextAlign.left,
+textAlign: TextAlign.center,
               onChanged: (String value){
                 //email=value.trim();
 if(id==4)

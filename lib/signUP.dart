@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:nomi/CRUD.dart';
+import 'package:nomi/signIN.dart';
 import 'package:nomi/welcome.dart';
 import 'DemoLocalizations.dart';
 
@@ -164,20 +165,32 @@ SizedBox(height: 10,),
           });
 
 try {
-  final newuser = await _auth
+  FirebaseUser newuser = (await _auth
       .createUserWithEmailAndPassword(
-      email: email, password: password);
+      email: email, password: password)).user;
 
   if (newuser != null) {
-
+    try {
+      await newuser.sendEmailVerification();
+      Fluttertoast.showToast(
+        msg: "Verification email sent",
+        toastLength: Toast.LENGTH_LONG,
+      );
+    } catch (e) {
+      print("An error occured while trying to send email        verification");
+      print(e.message);
+    }
     CRUD.email=email;
     CRUD.password=password;
 
-    sendVerificationMail(newuser);
-
+   // sendVerificationMail(newuser);
+    Fluttertoast.showToast(
+      msg: "Successfully Signed Up",
+      toastLength: Toast.LENGTH_LONG,
+    );
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Welcome(1)),
+      MaterialPageRoute(builder: (context) => signIn()),
     );
   }
   setState(() {
@@ -186,6 +199,12 @@ try {
 }
 catch(e){
   print(e);
+
+  Fluttertoast.showToast(
+    msg: "This Email address is already in use",
+    toastLength: Toast.LENGTH_LONG,
+  );
+
   setState(() {
     showSpinner = false;
   });
@@ -211,22 +230,6 @@ catch(e){
       ));
   }
 
-  Future<void> sendVerificationMail(user) async {
-   // final FirebaseAuth _auth = FirebaseAuth.instance;
-   // FirebaseUser user = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-   FirebaseUser myuser=user;
-    try {
-      await myuser.sendEmailVerification();
-      return myuser.uid;
-    } catch (e) {
-      print("An error occured while trying to send email verification");
-      print(e.message);
-    }
-
-   // return;
-
-
-  }
 
 
 }
