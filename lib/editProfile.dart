@@ -73,6 +73,7 @@ class _EditProfileState extends State<EditProfile> {
                   setState(() {
                     showSpinner = false;
                   });
+                  Navigator.pop(context);
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(top:25.0,right: 10),
