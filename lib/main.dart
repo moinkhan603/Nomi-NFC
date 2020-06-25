@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'CRUD.dart';
 import 'DemoLocalizations.dart';
 import 'introScreen1.dart';
 import 'introScreen2.dart';
@@ -15,11 +16,11 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Nomi',
+      title: 'NomiTap',
 
       supportedLocales: [
         Locale('en', 'US'),
-        Locale('ar', ''),
+        Locale('es', ''),
       ],
       localizationsDelegates: [
         AppLocalizations.delegate,
@@ -100,6 +101,7 @@ _controller.jumpToPage(index);
 
   @override
   Widget build(BuildContext context) {
+
 
     return Scaffold(
       backgroundColor: Color(0xff0087E3),

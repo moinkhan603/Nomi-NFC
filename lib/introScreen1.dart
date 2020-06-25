@@ -18,6 +18,11 @@ class _intro1State extends State<intro1> {
 setState(() {
   CRUD.headingFont=22;
 });
+
+
+
+
+
     }
 
 

@@ -30,7 +30,7 @@ class _intro2State extends State<intro2> {
 
               ),
               SizedBox(height: 30,),
-Image.asset("assets/images/profile_screen1en.png",height: 300,)
+Image.asset(AppLocalizations.of(context).translate('Profileimg'),height: 300,)
 
             ],
 

@@ -31,7 +31,7 @@ class _intro3State extends State<intro3> {
 
               ),
               SizedBox(height: 30,),
-              Image.asset("assets/images/qr_code_screen_en.png",height: 300,),
+              Image.asset(AppLocalizations.of(context).translate('Qrimg'),height: 300,),
               SizedBox(height: 30,),
               Text(AppLocalizations.of(context).translate('intro3Text')
 

@@ -45,6 +45,8 @@
   "msc": "Nombre de usuario de music",
   "lnk": "Nombre de usuario de Linkedin",
   "cash": "Nombre de usuario de Cashapp",
-  "venmo": "Nombre de usuario de Venmo"
+  "venmo": "Nombre de usuario de Venmo",
+  "Qrimg": "assets/images/qr_code_screen.png",
+  "Profileimg": "assets/images/profile_screen_1.png"
 
 }
