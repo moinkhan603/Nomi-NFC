@@ -26,6 +26,16 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>This app requires access to the gallery.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>This app requires access to the camera.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app requires access to the microphone.</string>
+    <key>NFCReaderUsageDescription</key>
+    <string>This app requires access to the NFC</string>
+
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

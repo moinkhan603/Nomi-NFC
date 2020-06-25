@@ -25,7 +25,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   page_indicator: ^0.3.0
-  image_picker:
+  image_picker: ^0.6.7+2
   firebase_core: ^0.4.5
   nfc_in_flutter: ^2.0.2
   flutter_nfc_reader: ^0.1.0
