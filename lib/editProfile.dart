@@ -509,59 +509,123 @@ String hintText;
               controller: TextEditingController()..text = placeHolderText,
 textAlign: TextAlign.center,
               onChanged: (String value){
-                //email=value.trim();
-if(id==4)
+
+      if(!value.contains(".com")==true)
+    {
+
+
+    //email=value.trim();
+    if(id==4)
+    {
+    CRUD.youtube="www.youtube.com/"+value;
+    }
+
+    else if(id==5){
+
+
+    CRUD.whatsapp="www.whatsapp.com/"+value;
+    }
+
+    else if(id==6){
+    CRUD.twitter="www.twitter.com/"+value;
+    }
+
+    else if(id==7){
+    CRUD.tiktok="www.tiktok.com/"+value;
+    }
+
+    else if(id==8){
+    CRUD.soundcloud="www.soundcloud.com/"+value;
+    }
+
+    else if(id==9){
+    CRUD.snapchat="www.snapchat.com/"+value;
+    }
+
+    else if(id==10){
+    CRUD.paypal="www.paypal.com/"+value;
+    }
+
+    else if(id==11){
+    CRUD.music="www.music.com/"+value;
+    }
+
+    else if(id==12){
+    CRUD.linkendin="www.linkedin.com/"+value;
+    }
+    else if(id==13){
+    CRUD.instagram="www.instagram.com/"+value;
+    }
+    else if(id==14){
+    CRUD.facebook="www.facebook.com/"+value;
+    }
+
+    else if(id==15){
+    CRUD.cashapp="www.cashapp.com/"+value;
+    }
+
+    else if(id==16){
+    CRUD.venmo="www.venmo.com/"+value;
+    }
+    }
+else{
+
+  if(id==4)
   {
     CRUD.youtube=value;
   }
 
-            else if(id==5){
-              CRUD.whatsapp="www.whatsapp.com/"+value;
-            }
+  else if(id==5){
 
-            else if(id==6){
-              CRUD.twitter="www.twitter.com/"+value;
-            }
+    // CRUD.whatsapp="www.whatsapp.com/"+value;
+    CRUD.whatsapp=value;
 
-            else if(id==7){
-              CRUD.tiktok="www.tiktok.com/"+value;
-            }
+  }
 
-            else if(id==8){
-              CRUD.soundcloud="www.soundcloud.com/"+value;
-            }
+  else if(id==6){
+    CRUD.twitter=value;
+  }
 
-            else if(id==9){
-              CRUD.snapchat="www.snapchat.com/"+value;
-            }
+  else if(id==7){
+    CRUD.tiktok=value;
+  }
 
-            else if(id==10){
-              CRUD.paypal="www.paypal.com/"+value;
-            }
+  else if(id==8){
+    CRUD.soundcloud=value;
+  }
 
-            else if(id==11){
-              CRUD.music="www.music.com/"+value;
-            }
+  else if(id==9){
+    CRUD.snapchat=value;
+  }
 
-            else if(id==12){
-              CRUD.linkendin="www.linkedin.com/"+value;
-            }
-            else if(id==13){
-              CRUD.instagram="www.instagram.com/"+value;
-            }
-            else if(id==14){
-              CRUD.facebook="www.facebook.com/"+value;
-            }
+  else if(id==10){
+    CRUD.paypal=value;
+  }
 
-              else if(id==15){
-              CRUD.cashapp="www.cashapp.com/"+value;
-            }
+  else if(id==11){
+    CRUD.music=value;
+  }
 
-              else if(id==16){
-              CRUD.venmo="www.venmo.com/"+value;
-            }
+  else if(id==12){
+    CRUD.linkendin=value;
+  }
+  else if(id==13){
+    CRUD.instagram=value;
+  }
+  else if(id==14){
+    CRUD.facebook=value;
+  }
+
+  else if(id==15){
+    CRUD.cashapp=value;
+  }
+
+  else if(id==16){
+    CRUD.venmo=value;
+  }
 
 
+}
 
 
 
