@@ -333,7 +333,7 @@ class _ReadState extends State<Read> {
     _launchURL(message.payload);
 
     print("yes");
-    Fluttertoast.showToast(msg: "READ SUCCESS", backgroundColor: Colors.green);
+    Fluttertoast.showToast(msg: "Read Successfully!", backgroundColor: Colors.green);
   }
 
   void WriteNfc() {
@@ -368,7 +368,7 @@ Future<String> _asyncInputDialog(BuildContext context, String title) async {
       return AlertDialog(
         backgroundColor: Colors.black87,
         title: Text(
-          "Your" + title + " Username has Successfully written",
+          "Your " + title + " Username has Successfully written",
           style: TextStyle(color: Colors.white),
         ),
         actions: <Widget>[
