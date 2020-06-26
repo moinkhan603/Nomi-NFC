@@ -54,6 +54,7 @@ class _ReadXState extends State<ReadX> {
 
               GestureDetector(
                 onTap: (){
+                  CRUD.refresh();
                   Navigator.pop(context);
                 },
                 child: Padding(

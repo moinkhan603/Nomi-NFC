@@ -353,7 +353,7 @@ SizedBox(height: 55,)
     final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     await _firebaseAuth.signOut().then((_){
      // Navigator.of(context).pushNamedAndRemoveUntil("/signIN", ModalRoute.withName("/profile"));
-   //CRUD.refresh();
+   CRUD.refresh();
 
     });
   }

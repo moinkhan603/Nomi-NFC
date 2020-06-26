@@ -38,6 +38,7 @@ static double headingFont=25;
 static refresh(){
 
   name="your name";
+  taps=0;
   Occupation="Your Occupation";
   Number="Your Number";
   imgUrl="https://firebasestorage.googleapis.com/v0/b/nomitap-6dd55.appspot.com/o/Recent%2Fimg_inside.png?alt=media&token=5fae7f82-ce29-4915-b2d4-cef9aaa1e939";

@@ -54,6 +54,7 @@ class _WriteState extends State<Write> {
 
             GestureDetector(
               onTap: (){
+                CRUD.refresh();
                 Navigator.pop(context);
               },
               child: Padding(
