@@ -1,5 +1,8 @@
+import 'dart:async';
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_nfc_reader/flutter_nfc_reader.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nfc_in_flutter/nfc_in_flutter.dart';
@@ -9,20 +12,93 @@ import 'package:url_launcher/url_launcher.dart';
 import 'DemoLocalizations.dart';
 import 'editProfile.dart';
 
+class RecordEditor {
+  TextEditingController mediaTypeController;
+  TextEditingController payloadController;
+
+  RecordEditor() {
+    mediaTypeController = TextEditingController();
+    payloadController = TextEditingController();
+  }
+}
+
 class Read extends StatefulWidget {
   String btntxt;
   String name;
   String result = " ";
   String title;
+
   Read(this.btntxt, this.name, this.title);
+
   @override
   _ReadState createState() => _ReadState();
 }
 
 class _ReadState extends State<Read> {
+  StreamSubscription<NDEFMessage> _stream;
+  List<RecordEditor> _records = [];
+  bool _hasClosedWriteDialog = false;
+
+  void _startScanning() {
+    setState(() {
+      _stream = NFC.readNDEF(alertMessage: "Read Successfully!").listen(
+          (NDEFMessage message) {
+        if (message.isEmpty) {
+          print("Read empty NDEF message");
+          return;
+        }
+        print("Read NDEF message with ${message.records.length} records");
+        for (NDEFRecord record in message.records) {
+          print(
+              "Record '${record.id ?? "[NO ID]"}' with TNF '${record.tnf}', type '${record.type}', payload '${record.payload}' and data '${record.data}' and language code '${record.languageCode}'");
+          Fluttertoast.showToast(
+              msg: "Read Successfully : " '${record.payload}',
+              backgroundColor: Colors.green);
+
+          _launchURL('${record.payload}');
+        }
+      }, onError: (error) {
+        setState(() {
+          _stream = null;
+        });
+        if (error is NFCUserCanceledSessionException) {
+          print("user canceled");
+        } else if (error is NFCSessionTimeoutException) {
+          print("session timed out");
+        } else {
+          print("error: $error");
+        }
+      }, onDone: () {
+        setState(() {
+          _stream = null;
+        });
+      });
+    });
+  }
+
+  void _stopScanning() {
+    _stream?.cancel();
+    setState(() {
+      _stream = null;
+    });
+  }
+
+  void _toggleScan() {
+    if (_stream == null) {
+      _startScanning();
+    } else {
+      _stopScanning();
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _stopScanning();
+  }
+
   _launchURL(url) async {
-    // const url = 'https://flutter.dev';
-    if (await canLaunch('https://'+url)) {
+    if (await canLaunch('https://' + url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
@@ -112,71 +188,6 @@ class _ReadState extends State<Read> {
             ),
             child: Column(
               children: <Widget>[
-//                    SafeArea(
-//
-//                      child: Padding(
-//
-//                        padding: const EdgeInsets.symmetric(horizontal:10,vertical: 20 ),
-//
-//                        child: Row(
-//
-//
-//
-//                          crossAxisAlignment: CrossAxisAlignment.end,
-//
-//                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//
-//                          children: <Widget>[
-//
-//
-//
-//                            ImageIcon(
-//
-//                              AssetImage("assets/images/menu.png"),size: 30,
-//
-//                              color: Colors.white,
-//
-//                            ),
-//
-//                            Text(AppLocalizations.of(context).translate('apple'),
-//                              style: TextStyle(color: Colors.white,fontSize: 22),),
-//
-//
-//
-//                            Row(children: <Widget>[
-//
-//                              GestureDetector(
-//                                onTap: (){
-//                                  Navigator.pop(context);
-//
-//                                },
-//                                child: Text(AppLocalizations.of(context).translate('logout'),
-//
-//                                    style: TextStyle(color: Colors.white,fontSize: 18)),
-//                              ),
-//
-//                              ImageIcon(
-//
-//                                AssetImage("assets/images/right_arrow.png"),
-//
-//                                color: Colors.red,
-//
-//                              )
-//
-//                            ],)
-//
-//                            ,
-//
-//
-//
-//
-//
-//                          ],),
-//
-//                      ),
-//
-//                    )
-
                 Container(
                   height: MediaQuery.of(context).size.height / 1.1,
                   child: ListView(
@@ -199,12 +210,7 @@ class _ReadState extends State<Read> {
                                   width: 20,
                                 ),
                                 InkWell(
-                                  onTap: () {
-//                            Navigator.push(
-//                              context,
-//                              MaterialPageRoute(builder: (context) => EditProfile()),
-//                            );
-                                  },
+                                  onTap: () {},
                                   child: Card(
                                     color: Colors.blueAccent,
                                     shape: RoundedRectangleBorder(
@@ -270,10 +276,11 @@ class _ReadState extends State<Read> {
                           GestureDetector(
                               onTap: () {
                                 if (widget.btntxt == "Read") {
-                                  ReadNfc();
+                                  ReadNFC;
                                 } else {
                                   WriteNfc();
                                 }
+                                //  _records.length > 0 ? () => _write(context) : null;                              }
                               },
                               child: Text(
                                 widget.btntxt,
@@ -324,39 +331,82 @@ class _ReadState extends State<Read> {
     );
   }
 
-  void ReadNfc() async {
-    NDEFMessage message = await NFC.readNDEF(once: true).first;
-    print("payload: ${message.payload}");
-    setState(() {
-      //  widget.result=message.payload;
-    });
-    _launchURL(message.payload);
+//  void ReadNfc() async {
+//    NDEFMessage message = await NFC.readNDEF(once: true).first;
+//    print("payload: ${message.payload}");
+//    setState(() {
+//      //  widget.result=message.payload;
+//    });
+//    _launchURL(message.payload);
+//
+//    print("yes");
+//    Fluttertoast.showToast(
+//        msg: "Read Successfully!", backgroundColor: Colors.green);
+//  }
 
-    print("yes");
-    Fluttertoast.showToast(msg: "Read Successfully!", backgroundColor: Colors.green);
+  void ReadNFC() {
+    _toggleScan();
   }
 
   void WriteNfc() {
-    FlutterNfcReader.write(" ", widget.name).then((response) {
-      print(response.content);
-
-      _asyncInputDialog(context, widget.title);
-
-      FlutterNfcReader.stop().then((response) {
-        print(response.status.toString());
-      });
-    });
+    _records.add(RecordEditor());
+    _write;
+//    FlutterNfcReader.write(" ", widget.name).then((response) {
+//      print(response.content);
+//      FlutterNfcReader.stop().then((response) {
+//        print(response.status.toString());
+//      });
+//    });
   }
-// NDEFMessage newMessage = NDEFMessage.withRecords(
-//     NDEFRecord.p("text/plain", "hello world")
-// );
-// Stream<NDEFTag> stream = NFC.writeNDEF(newMessage, once: true);
 
-// stream.listen((NDEFTag tag) {
-//     print("only wrote to one tag!");
+  void _write(BuildContext context) async {
+    List<NDEFRecord> records = _records.map((record) {
+      return NDEFRecord.type(
+        record.mediaTypeController.text,
+        record.payloadController.text,
+      );
+    }).toList();
+    NDEFMessage message = NDEFMessage.withRecords(records);
+    _asyncInputDialog(context, widget.title);
 
-// });
-
+    // Show dialog on Android (iOS has it's own one)
+    if (Platform.isAndroid) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("Scan the tag you want to write to"),
+          actions: <Widget>[
+            FlatButton(
+              child: const Text("Cancel"),
+              onPressed: () {
+                _hasClosedWriteDialog = true;
+                _stream?.cancel();
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      );
+    } else {
+      new CupertinoAlertDialog(
+        title: new Text("Dialog Title"),
+        content: new Text("This is my content"),
+        actions: <Widget>[
+          CupertinoDialogAction(
+            isDefaultAction: true,
+            child: Text("Yes"),
+          ),
+          CupertinoDialogAction(
+            child: Text("No"),
+          )
+        ],
+      );
+    }
+    await NFC.writeNDEF(message).first;
+    if (!_hasClosedWriteDialog) {
+      Navigator.pop(context);
+    }
+  }
 }
 
 Future<String> _asyncInputDialog(BuildContext context, String title) async {

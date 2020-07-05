@@ -5,11 +5,11 @@ import 'package:nomi/CRUD.dart';
 import 'package:nomi/profile.dart';
 import 'package:nomi/readx.dart';
 import 'package:nomi/write.dart';
-class Welcome extends StatefulWidget {
 
+class Welcome extends StatefulWidget {
   int id;
-  Welcome(this.id){
-   CRUD.myid=id;
+  Welcome(this.id) {
+    CRUD.myid = id;
   }
 
   @override
@@ -17,79 +17,55 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
-
-
   final List<Widget> _children = [
-
-
-
-ReadX(),
+    ReadX(),
     Write(),
     Profile(),
-
   ];
-
-
 
   int _index = 1;
 
   @override
   void initState() {
     // TODO: implement initState
-if(CRUD.myid==1)
-  {
-    CRUD.addData();
-    CRUD.myid=3;
-  }
+    if (CRUD.myid == 1) {
+      CRUD.addData();
+      CRUD.myid = 3;
+    }
 
-
-
-
-        CRUD.getData();
-
-
+    CRUD.getData();
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
-
-
-
     return Scaffold(
-
       bottomNavigationBar: FloatingNavbar(
-
-selectedBackgroundColor: Colors.white,
+        selectedBackgroundColor: Colors.white,
         iconSize: 30,
         fontSize: 18,
-
         backgroundColor: Colors.blue,
         onTap: (int val) => setState(() => _index = val),
         currentIndex: _index,
-
         items: [
 //          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
 //          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
 //          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
 
-          FloatingNavbarItem( icon: FaIcon(FontAwesomeIcons.table,).icon,
-
+          FloatingNavbarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.table,
+            ).icon,
             title: 'Read',
-
           ),
-          FloatingNavbarItem( icon: FaIcon(FontAwesomeIcons.edit).icon, title: 'Write'),
-          FloatingNavbarItem(icon: FaIcon(FontAwesomeIcons.user).icon, title: 'Profile'),
-
+          FloatingNavbarItem(
+              icon: FaIcon(FontAwesomeIcons.edit).icon, title: 'Write'),
+          FloatingNavbarItem(
+              icon: FaIcon(FontAwesomeIcons.user).icon, title: 'Profile'),
         ],
       ),
-
-
       body: _children[_index],
-
-
     );
   }
 }
