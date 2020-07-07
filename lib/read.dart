@@ -276,7 +276,16 @@ class _ReadState extends State<Read> {
                           GestureDetector(
                               onTap: () {
                                 if (widget.btntxt == "Read") {
-                                  ReadNFC;
+                                  NFC.isNDEFSupported
+                                      .then((bool isSupported) async {
+                                    if (isSupported) {
+                                      try {
+                                        ReadNFC();
+                                      } catch (e) {
+                                        print(e.toString());
+                                      }
+                                    }
+                                  });
                                 } else {
                                   WriteNfc();
                                 }
@@ -350,7 +359,7 @@ class _ReadState extends State<Read> {
 
   void WriteNfc() {
     _records.add(RecordEditor());
-    _write;
+    _write(context);
 //    FlutterNfcReader.write(" ", widget.name).then((response) {
 //      print(response.content);
 //      FlutterNfcReader.stop().then((response) {
@@ -362,11 +371,12 @@ class _ReadState extends State<Read> {
   void _write(BuildContext context) async {
     List<NDEFRecord> records = _records.map((record) {
       return NDEFRecord.type(
-        record.mediaTypeController.text,
-        record.payloadController.text,
+        "type/text",
+        widget.name,
       );
     }).toList();
     NDEFMessage message = NDEFMessage.withRecords(records);
+
     _asyncInputDialog(context, widget.title);
 
     // Show dialog on Android (iOS has it's own one)
@@ -389,16 +399,17 @@ class _ReadState extends State<Read> {
       );
     } else {
       new CupertinoAlertDialog(
-        title: new Text("Dialog Title"),
-        content: new Text("This is my content"),
+        title: new Text("Scan the tag you want to write to"),
         actions: <Widget>[
           CupertinoDialogAction(
             isDefaultAction: true,
-            child: Text("Yes"),
+            child: Text("Cancel"),
+            onPressed: () {
+              _hasClosedWriteDialog = true;
+              _stream?.cancel();
+              Navigator.pop(context);
+            },
           ),
-          CupertinoDialogAction(
-            child: Text("No"),
-          )
         ],
       );
     }
