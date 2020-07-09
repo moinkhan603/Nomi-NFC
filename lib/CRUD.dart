@@ -29,6 +29,7 @@ class CRUD {
   static String cashapp = "add your link";
 
   static double headingFont = 25;
+
   static refresh() {
     name = "your name";
     taps = 0;
@@ -112,6 +113,13 @@ class CRUD {
   }
 
   static getData() async {
+
+//
+//    FirebaseDatabase database;
+//    database = FirebaseDatabase.instance;
+//    database.setPersistenceEnabled(true);
+//    database.setPersistenceCacheSizeBytes(10000000);
+
     final databaseReference =
         FirebaseDatabase.instance.reference().child("users");
 

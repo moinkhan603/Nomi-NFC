@@ -186,7 +186,7 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: 489c1265d2c85b68187a83a911913d190012158d
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
-  image_picker: 66aa71bc96850a90590a35d4c4a2907b0d823109
+  image_picker: 9c3312491f862b28d21ecd8fdf0ee14e601b3f09
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   nfc_in_flutter: c656fbfb1ec5b9d021da87b0c87629d62fd5264d
