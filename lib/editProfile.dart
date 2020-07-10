@@ -12,12 +12,15 @@ import 'package:path/path.dart' as Path;
 import 'DemoLocalizations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'customDrawer.dart';
+
 class EditProfile extends StatefulWidget {
   @override
   _EditProfileState createState() => _EditProfileState();
 }
 
 class _EditProfileState extends State<EditProfile> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   bool showSpinner = false;
 
   File _image;
@@ -27,12 +30,17 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
+      drawer: CustomDrawer.buildDrawer(context),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65.0),
         child: AppBar(
           leading: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
+              onPressed: (){
+                _key.currentState.openDrawer();
+              },
               icon: ImageIcon(
                 AssetImage("assets/images/menu.png"),
                 size: 30,

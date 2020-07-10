@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nomi/read.dart';
 import 'CRUD.dart';
 import 'DemoLocalizations.dart';
+import 'customDrawer.dart';
 
 class ReadX extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class ReadX extends StatefulWidget {
 }
 
 class _ReadXState extends State<ReadX> {
+
   double height = 80;
 
   @override
@@ -25,12 +27,17 @@ class _ReadXState extends State<ReadX> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: CustomDrawer.key,
+        drawer: CustomDrawer.buildDrawer(context),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(65.0),
           child: AppBar(
             leading: Padding(
               padding: const EdgeInsets.only(top: 18.0),
               child: IconButton(
+                onPressed: (){
+                   CustomDrawer.key.currentState.openDrawer();
+                },
                 icon: ImageIcon(
                   AssetImage("assets/images/menu.png"),
                   size: 30,
@@ -53,7 +60,7 @@ class _ReadXState extends State<ReadX> {
             actions: <Widget>[
               GestureDetector(
                 onTap: () {
-                  CRUD.refresh();
+                  CRUD.logOut();
                   Navigator.pop(context);
                 },
                 child: Padding(

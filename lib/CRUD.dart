@@ -112,6 +112,17 @@ class CRUD {
     });
   }
 
+
+
+  static logOut() async {
+    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    await _firebaseAuth.signOut().then((_) {
+
+  refresh();
+    });
+  }
+
+
   static getData() async {
 
 //

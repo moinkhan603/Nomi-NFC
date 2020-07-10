@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "549670409132-o2hi13vbpdkronthih0sjed1rmuh16ss.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flashsol.nomi",
+            "certificate_hash": "d3c15f0cea6f067b2549e153d808bc4fdf89f3d4"
+          }
+        },
+        {
           "client_id": "549670409132-3knv4bc8q5k8mhgrc62ie110i7meo6hn.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +38,14 @@
             {
               "client_id": "549670409132-3knv4bc8q5k8mhgrc62ie110i7meo6hn.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "549670409132-39dhknghmdivtej2mvsoqhirmcc98j4k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flashsolapp.nomitap",
+                "app_store_id": "1521871921"
+              }
             }
           ]
         }

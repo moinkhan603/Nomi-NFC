@@ -10,6 +10,7 @@ import 'package:nomi/write_example_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'DemoLocalizations.dart';
+import 'customDrawer.dart';
 import 'editProfile.dart';
 
 class Read extends StatefulWidget {
@@ -17,7 +18,7 @@ class Read extends StatefulWidget {
   String name;
   String result = " ";
   String title;
-
+String imgPath="assets/images/transparent.png";
   Read(this.btntxt, this.name, this.title);
 
   @override
@@ -25,6 +26,7 @@ class Read extends StatefulWidget {
 }
 
 class _ReadState extends State<Read> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   StreamSubscription<NDEFMessage> _stream;
   bool _hasClosedWriteDialog = false;
 
@@ -76,10 +78,14 @@ class _ReadState extends State<Read> {
                     .tnf}', type '${record.type}', payload '${record
                     .payload}' and data '${record
                     .data}' and language code '${record.languageCode}'");
+            setState(() {
+              widget.imgPath="assets/images/tick.png";
+            });
             _launchURL(record.payload);
           }
         }, onError: (error) {
           setState(() {
+            widget.imgPath="assets/images/cross.png";
             _stream = null;
           });
           if (error is NFCUserCanceledSessionException) {
@@ -107,8 +113,9 @@ class _ReadState extends State<Read> {
 
   @override
   void dispose() {
-    super.dispose();
+
     _stopScanning();
+    super.dispose();
   }
 
   void _scanFun() {
@@ -134,12 +141,17 @@ class _ReadState extends State<Read> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
+      drawer: CustomDrawer.buildDrawer(context),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65.0),
         child: AppBar(
           leading: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
+              onPressed: (){
+                _key.currentState.openDrawer();
+              },
               icon: ImageIcon(
                 AssetImage("assets/images/menu.png"),
                 size: 30,
@@ -162,6 +174,8 @@ class _ReadState extends State<Read> {
           actions: <Widget>[
             GestureDetector(
               onTap: () {
+                CRUD.logOut();
+                Navigator.pop(context);
                 Navigator.pop(context);
               },
               child: Padding(
@@ -178,6 +192,7 @@ class _ReadState extends State<Read> {
               child: ImageIcon(
                 AssetImage(
                   "assets/images/right_arrow.png",
+
                 ),
                 size: 12,
                 color: Colors.red,
@@ -251,15 +266,12 @@ class _ReadState extends State<Read> {
             ),
           ),
         ),
+
         Positioned.fill(
             child: Align(
                 alignment: Alignment.center,
-                child: Text(
-                  widget.result,
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                ))),
+                child:Image.asset(widget.imgPath,height: 100,),)),
+
         Positioned.fill(
             child: Align(
           alignment: Alignment.bottomCenter,

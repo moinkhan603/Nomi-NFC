@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:nomi/CRUD.dart';
 import 'package:nomi/qrGenerator.dart';
 import 'DemoLocalizations.dart';
+import 'customDrawer.dart';
 import 'editProfile.dart';
 
 class Profile extends StatefulWidget {
@@ -13,6 +14,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+
   @override
   void initState() {
     // TODO: implement initState
@@ -27,14 +29,19 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     setState(() {});
     return Scaffold(
+      key: CustomDrawer.key,
+      drawer: CustomDrawer.buildDrawer(context),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65.0),
         child: AppBar(
           leading: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
+              onPressed: (){
+                CustomDrawer.key.currentState.openDrawer();
+              },
               icon: ImageIcon(
-                AssetImage("assets/images/menu.png"),
+                AssetImage("assets/images/menu.png",),
                 size: 30,
                 color: Colors.white,
               ),
@@ -55,7 +62,7 @@ class _ProfileState extends State<Profile> {
           actions: <Widget>[
             GestureDetector(
               onTap: () {
-                _logOut();
+                CRUD.logOut();
                 Navigator.pop(context);
               },
               child: Padding(
@@ -292,13 +299,7 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  _logOut() async {
-    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-    await _firebaseAuth.signOut().then((_) {
-      // Navigator.of(context).pushNamedAndRemoveUntil("/signIN", ModalRoute.withName("/profile"));
-      CRUD.refresh();
-    });
-  }
+
 }
 
 class _detailsWidget extends StatelessWidget {

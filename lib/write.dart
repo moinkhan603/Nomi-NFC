@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nomi/customDrawer.dart';
 import 'package:nomi/read.dart';
-
 import 'CRUD.dart';
 import 'DemoLocalizations.dart';
 
@@ -10,6 +10,7 @@ class Write extends StatefulWidget {
 }
 
 class _WriteState extends State<Write> {
+
   double height = 80;
 
   @override
@@ -26,12 +27,19 @@ class _WriteState extends State<Write> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      key: CustomDrawer.key,
+      drawer: CustomDrawer.buildDrawer(context),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65.0),
         child: AppBar(
+          automaticallyImplyLeading: false,
           leading: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
+              onPressed: (){
+                CustomDrawer.key.currentState.openDrawer();
+              },
               icon: ImageIcon(
                 AssetImage("assets/images/menu.png"),
                 size: 30,
@@ -54,7 +62,7 @@ class _WriteState extends State<Write> {
           actions: <Widget>[
             GestureDetector(
               onTap: () {
-                CRUD.refresh();
+                CRUD.logOut();
                 Navigator.pop(context);
               },
               child: Padding(
@@ -145,6 +153,8 @@ class _WriteState extends State<Write> {
       ]),
     );
   }
+
+
 }
 
 class _socialIcons extends StatelessWidget {
