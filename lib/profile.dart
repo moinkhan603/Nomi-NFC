@@ -14,7 +14,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-
+  GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   @override
   void initState() {
     // TODO: implement initState
@@ -29,7 +29,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     setState(() {});
     return Scaffold(
-      key: CustomDrawer.key,
+      key: key,
       drawer: CustomDrawer.buildDrawer(context),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65.0),
@@ -38,7 +38,7 @@ class _ProfileState extends State<Profile> {
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
               onPressed: (){
-                CustomDrawer.key.currentState.openDrawer();
+                key.currentState.openDrawer();
               },
               icon: ImageIcon(
                 AssetImage("assets/images/menu.png",),

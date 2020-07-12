@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nomi/profile.dart';
+import 'package:nomi/vcard.dart';
+import 'package:nomi/write.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+import 'CRUD.dart';
 class CustomDrawer{
 
-  static GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
+
  static buildDrawer(BuildContext context) {
     print("dsd");
     return  Drawer(
@@ -48,25 +54,59 @@ class CustomDrawer{
                 /// ---------------------------
 
                 SizedBox(height: 30.0),
-                _buildRow(Icons.home, "Home"),
+
+                InkWell(
+                    onTap: (){
+
+                      Navigator.popAndPushNamed(context, '/profile');
+                    },
+                    child: _buildRow(FontAwesomeIcons.userAlt, "My Profile")),
                 _buildDivider(),
-                _buildRow(FontAwesomeIcons.userAlt, "My Profile"),
+                InkWell(
+                    onTap: (){
+                      Navigator.popAndPushNamed(context, '/read');
+                    },
+                    child: _buildRow(FontAwesomeIcons.tag, "Nomi Tag")),
                 _buildDivider(),
-                _buildRow(FontAwesomeIcons.powerOff, "Activate Nomi"),
-                _buildDivider(),
-                _buildRow(FontAwesomeIcons.mobile, "Read a Nomi"),
+                InkWell(
+                    onTap: (){
+                      Navigator.popAndPushNamed(context, '/write');
+                    },
+                    child: _buildRow(FontAwesomeIcons.mobile, "Write a Nomi")),
                 _buildDivider(),
 
                 _buildRow(FontAwesomeIcons.building, "Buy a Nomi",),
+                _buildDivider(),
+                InkWell(
+                    onTap: ()async{
+
+                      final PermissionHandler _permissionHandler = PermissionHandler();
+                      var result = await _permissionHandler.requestPermissions([PermissionGroup.storage]);
+
+                      if (result[PermissionGroup.storage] == PermissionStatus.granted) {
+                        VCARD v=new VCARD();
+                        v.saveVcard();
+                      }
+
+
+                     // v.Sharefile();
+                    },
+                    child: _buildRow(FontAwesomeIcons.addressCard, "V Card",)),
                 _buildDivider(),
                 _buildRow(Icons.help, "Tutorial",
                 ),
 
                 _buildDivider(),
-                _buildRow(FontAwesomeIcons.signOutAlt, "Logout"),
+                InkWell(
+                    onTap: (){
+                      CRUD.logOut();
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                    child: _buildRow(FontAwesomeIcons.signOutAlt, "Logout")),
                 _buildDivider(),
 
-                Text("NOMI",style: TextStyle(color: Colors.black,fontSize: 25,
+                Text("NOMI TAP",style: TextStyle(color: Colors.black,fontSize: 25,
                     fontWeight: FontWeight.bold,fontStyle: FontStyle.normal
                 ),)
               ],

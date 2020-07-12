@@ -20,6 +20,7 @@ class _signUpState extends State<signUp> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         body: ModalProgressHUD(
       inAsyncCall: showSpinner,

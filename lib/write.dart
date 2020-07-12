@@ -10,7 +10,7 @@ class Write extends StatefulWidget {
 }
 
 class _WriteState extends State<Write> {
-
+  GlobalKey<ScaffoldState> key2 = GlobalKey<ScaffoldState>();
   double height = 80;
 
   @override
@@ -28,7 +28,7 @@ class _WriteState extends State<Write> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      key: CustomDrawer.key,
+      key: key2,
       drawer: CustomDrawer.buildDrawer(context),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65.0),
@@ -38,7 +38,7 @@ class _WriteState extends State<Write> {
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
               onPressed: (){
-                CustomDrawer.key.currentState.openDrawer();
+                key2.currentState.openDrawer();
               },
               icon: ImageIcon(
                 AssetImage("assets/images/menu.png"),

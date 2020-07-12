@@ -10,7 +10,7 @@ class ReadX extends StatefulWidget {
 }
 
 class _ReadXState extends State<ReadX> {
-
+  GlobalKey<ScaffoldState> key1 = GlobalKey<ScaffoldState>();
   double height = 80;
 
   @override
@@ -27,7 +27,7 @@ class _ReadXState extends State<ReadX> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: CustomDrawer.key,
+        key:key1,
         drawer: CustomDrawer.buildDrawer(context),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(65.0),
@@ -36,7 +36,7 @@ class _ReadXState extends State<ReadX> {
               padding: const EdgeInsets.only(top: 18.0),
               child: IconButton(
                 onPressed: (){
-                   CustomDrawer.key.currentState.openDrawer();
+                  key1.currentState.openDrawer();
                 },
                 icon: ImageIcon(
                   AssetImage("assets/images/menu.png"),

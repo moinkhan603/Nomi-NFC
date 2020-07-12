@@ -46,30 +46,30 @@ class _WelcomeState extends State<Welcome> {
       onWillPop: willpop,
       child: Scaffold(
 
-        bottomNavigationBar: FloatingNavbar(
-          selectedBackgroundColor: Colors.white,
-          iconSize: 25,
-          fontSize: 18,
-          backgroundColor: Colors.blue,
-          onTap: (int val) => setState(() => _index = val),
-          currentIndex: _index,
-          items: [
-//          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
-//          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
-//          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
-
-            FloatingNavbarItem(
-              icon: FaIcon(
-                FontAwesomeIcons.table,
-              ).icon,
-              title: 'Read',
-            ),
-            FloatingNavbarItem(
-                icon: FaIcon(FontAwesomeIcons.edit).icon, title: 'Write'),
-            FloatingNavbarItem(
-                icon: FaIcon(FontAwesomeIcons.user).icon, title: 'Profile'),
-          ],
-        ),
+//        bottomNavigationBar: FloatingNavbar(
+//          selectedBackgroundColor: Colors.white,
+//          iconSize: 25,
+//          fontSize: 18,
+//          backgroundColor: Colors.blue,
+//          onTap: (int val) => setState(() => _index = val),
+//          currentIndex: _index,
+//          items: [
+////          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
+////          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
+////          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
+//
+//            FloatingNavbarItem(
+//              icon: FaIcon(
+//                FontAwesomeIcons.table,
+//              ).icon,
+//              title: 'Read',
+//            ),
+//            FloatingNavbarItem(
+//                icon: FaIcon(FontAwesomeIcons.edit).icon, title: 'Write'),
+//            FloatingNavbarItem(
+//                icon: FaIcon(FontAwesomeIcons.user).icon, title: 'Profile'),
+//          ],
+//        ),
         body: _children[_index],
       ),
     );

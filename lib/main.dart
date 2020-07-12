@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:nomi/profile.dart';
+import 'package:nomi/readx.dart';
+import 'package:nomi/write.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'DemoLocalizations.dart';
 import 'introScreen1.dart';
@@ -18,6 +21,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+
+
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+//        '/': (context) => FirstScreen(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/profile': (context) => Profile(),
+        '/read': (context) => ReadX(),
+        '/write': (context) => Write(),
+      },
+
       debugShowCheckedModeBanner: false,
       title: 'NomiTap',
       supportedLocales: [
