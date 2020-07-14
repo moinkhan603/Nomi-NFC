@@ -16,13 +16,11 @@ Directory _downloadsDirectory;
 
   saveVcard()async{
     vCard.firstName = CRUD.name;
+    vCard.email = CRUD.email;
+    vCard.photo.attachFromUrl(CRUD.imgUrl, 'PNG');
+    vCard.workPhone = CRUD.Number;
+    vCard.jobTitle = CRUD.bio;
 
-    vCard.organization = 'ActivSpaces Labs';
-    vCard.photo.attachFromUrl('https://www.activspaces.com/wp-content/uploads/2019/01/ActivSpaces-Logo_Dark.png', 'PNG');
-    vCard.workPhone = 'Work Phone Number';
-    vCard.jobTitle = 'Software Developer';
-    vCard.url = 'https://github.com/valerycolong';
-    vCard.note = 'Notes on contact';
     Directory dir = await getApplicationDocumentsDirectory();
    // File testFile = new File("${dir.path}/image.png");
     saveToFile('contact.vcf');

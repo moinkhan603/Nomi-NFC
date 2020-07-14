@@ -1,4 +1,6 @@
 PODS:
+  - downloads_path_provider (0.0.1):
+    - Flutter
   - Firebase/Auth (6.27.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.6.0)
@@ -98,6 +100,8 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - image_picker (0.0.1):
     - Flutter
+  - launch_review (0.0.1):
+    - Flutter
   - leveldb-library (1.22)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
@@ -106,12 +110,21 @@ PODS:
   - nanopb/encode (1.30905.0)
   - nfc_in_flutter (1.0.0):
     - Flutter
+  - path_provider (0.0.1):
+    - Flutter
+  - permission_handler (3.3.0):
+    - Flutter
   - PromisesObjC (1.2.9)
+  - share_extend (0.0.1):
+    - Flutter
+  - shared_preferences (0.0.1):
+    - Flutter
   - url_launcher (0.0.1):
     - Flutter
   - VYNFCKit (0.3.2)
 
 DEPENDENCIES:
+  - downloads_path_provider (from `.symlinks/plugins/downloads_path_provider/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
@@ -120,7 +133,12 @@ DEPENDENCIES:
   - flutter_nfc_reader (from `.symlinks/plugins/flutter_nfc_reader/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - launch_review (from `.symlinks/plugins/launch_review/ios`)
   - nfc_in_flutter (from `.symlinks/plugins/nfc_in_flutter/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+  - share_extend (from `.symlinks/plugins/share_extend/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
@@ -144,6 +162,8 @@ SPEC REPOS:
     - VYNFCKit
 
 EXTERNAL SOURCES:
+  downloads_path_provider:
+    :path: ".symlinks/plugins/downloads_path_provider/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -160,12 +180,23 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/fluttertoast/ios"
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
+  launch_review:
+    :path: ".symlinks/plugins/launch_review/ios"
   nfc_in_flutter:
     :path: ".symlinks/plugins/nfc_in_flutter/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
+  share_extend:
+    :path: ".symlinks/plugins/share_extend/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
+  downloads_path_provider: fe0d06888d4b8c055a59edbc2f51f03e63cb0e28
   Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
   firebase_auth: af8784c4d8d87c36f730a305f97bfbcb24db024b
   firebase_core: 335c02abd48672b7c83c683df833d0488a72e73e
@@ -187,10 +218,15 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   image_picker: 9c3312491f862b28d21ecd8fdf0ee14e601b3f09
+  launch_review: 75d5a956ba8eaa493e9c9d4bf4c05e505e8d5ed0
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   nfc_in_flutter: c656fbfb1ec5b9d021da87b0c87629d62fd5264d
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  permission_handler: 67637977b227d62d46bfbf524f335f8568de5a73
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  share_extend: b6748dc53695587891126a89533b862b92548c7b
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   VYNFCKit: 86a9b711fd1f34f6f7128a2a883cd58dbd781b9d
 

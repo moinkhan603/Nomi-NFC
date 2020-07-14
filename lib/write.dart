@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nomi/customDrawer.dart';
 import 'package:nomi/read.dart';
 import 'CRUD.dart';
@@ -11,23 +12,81 @@ class Write extends StatefulWidget {
 
 class _WriteState extends State<Write> {
   GlobalKey<ScaffoldState> key2 = GlobalKey<ScaffoldState>();
-  double height = 80;
-
+  double height = 120;
+  bool visibleBoxWhatsapp = true;
+  bool visibleBoxSnapchat = true;
+  bool visibleBoxSoundcloud = true;
+  bool visibleBoxTiktok = true;
+  bool visibleBoxTwitter = true;
+  bool visibleBoxYoutube = true;
+  bool visibleBoxInstagram = true;
+  bool visibleBoxLinkedin = true;
+  bool visibleBoxFacebook = true;
+  bool visibleBoxContactTap = true;
+  bool visibleBoxCashapp = true;
+  bool visibleBoxBrowser = true;
+  bool visibleBoxMusic = true;
+  bool visibleBoxpaypal = true;
+  bool visibleBoxTwitch = true;
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     if (MediaQuery.of(context).size.width < 400) {
       setState(() {
-        height = 60;
+        height = 85;
       });
+    }
+  }
+
+  @override
+  void initState() {
+    CRUD.getData();
+
+    super.initState();
+
+
+    if (CRUD.whatsapp.contains("add your link") || CRUD.whatsapp=="www.whatsapp.com/") {
+      visibleBoxWhatsapp = false;
+    }
+    if (CRUD.snapchat.contains("add your link") || CRUD.snapchat=="www.snapchat.com/") {
+      visibleBoxSnapchat = false;
+    }
+    if (CRUD.soundcloud.contains("add your link") || CRUD.soundcloud=="www.soundcloud.com/") {
+      visibleBoxSoundcloud = false;
+    }
+    if (CRUD.tiktok.contains("add your link") || CRUD.tiktok=="www.tiktok.com/") {
+      visibleBoxTiktok = false;
+    }
+    if (CRUD.twitter.contains("add your link")|| CRUD.twitter=="www.twitter.com/") {
+      visibleBoxTwitter = false;
+    }
+    if (CRUD.youtube.contains("add your link")|| CRUD.youtube=="www.youtube.com/") {
+      visibleBoxYoutube = false;
+    }
+    if (CRUD.instagram.contains("add your link")|| CRUD.instagram=="www.instagram.com/") {
+      visibleBoxInstagram = false;
+    }
+    if (CRUD.linkendin.contains("add your link")|| CRUD.linkendin=="www.linkedin.com/") {
+      visibleBoxLinkedin = false;
+    }
+    if (CRUD.facebook.contains("add your link")|| CRUD.facebook=="www.facebook.com/") {
+      visibleBoxFacebook = false;
+    }
+    if (CRUD.cashapp.contains("add your link")|| CRUD.cashapp=="www.cashapp.com/") {
+      visibleBoxCashapp = false;
+    }
+    if (CRUD.music.contains("add your link")|| CRUD.music=="www.music.com/") {
+      visibleBoxMusic = false;
+    }
+    if (CRUD.paypal.contains("add your link")|| CRUD.paypal=="www.paypal.com/") {
+      visibleBoxpaypal = false;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       key: key2,
       drawer: CustomDrawer.buildDrawer(context),
       appBar: PreferredSize(
@@ -37,7 +96,7 @@ class _WriteState extends State<Write> {
           leading: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
-              onPressed: (){
+              onPressed: () {
                 key2.currentState.openDrawer();
               },
               icon: ImageIcon(
@@ -50,7 +109,7 @@ class _WriteState extends State<Write> {
           title: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: Text(
-              "Nomi Tap",
+              "Write Nomi",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -110,36 +169,84 @@ class _WriteState extends State<Write> {
                           spacing: 2,
                           direction: Axis.horizontal,
                           children: <Widget>[
-                            _socialIcons("assets/images/whatsapp.png",
-                                "Whatsapp", CRUD.whatsapp, height),
-                            _socialIcons("assets/images/snapchat.png",
-                                "Snapchat", CRUD.snapchat, height),
-                            _socialIcons("assets/images/soundcloud.png",
-                                "Soundcloud", CRUD.soundcloud, height),
-                            _socialIcons("assets/images/tiktok.png", "Tiktok",
-                                CRUD.tiktok, height),
-                            _socialIcons("assets/images/twitter.png", "Twitter",
-                                CRUD.twitter, height),
-                            _socialIcons("assets/images/youtube.png", "Youtube",
-                                CRUD.youtube, height),
-                            _socialIcons("assets/images/instagram.png",
-                                "Instagram", CRUD.instagram, height),
-                            _socialIcons("assets/images/linkedin.png",
-                                "Linkedin", CRUD.linkendin, height),
-                            _socialIcons("assets/images/facebook.png",
-                                "Facebook", CRUD.facebook, height),
-                            _socialIcons("assets/images/tap.png", "Contact Tap",
-                                "", height),
-                            _socialIcons("assets/images/cashapp.png", "Cashapp",
-                                CRUD.cashapp, height),
-                            _socialIcons("assets/images/browser.png", "Browser",
-                                "", height),
-                            _socialIcons("assets/images/music.png", "Music",
-                                CRUD.music, height),
-                            _socialIcons("assets/images/paypal.png", "Paypal",
-                                CRUD.paypal, height),
-                            _socialIcons("assets/images/twitch.png", "Twitch",
-                                "", height),
+                            Visibility(
+                                visible: visibleBoxWhatsapp,
+                                child: _socialIcons(
+                                    "assets/images/whatsapp.png",
+                                    "Whatsapp",
+                                    CRUD.whatsapp,
+                                    height)),
+                            Visibility(
+                                visible: visibleBoxSnapchat,
+                                child: _socialIcons(
+                                    "assets/images/snapchat.png",
+                                    "Snapchat",
+                                    CRUD.snapchat,
+                                    height)),
+                            Visibility(
+                                visible: visibleBoxSoundcloud,
+                                child: _socialIcons(
+                                    "assets/images/soundcloud.png",
+                                    "Soundcloud",
+                                    CRUD.soundcloud,
+                                    height)),
+                            Visibility(
+                                visible: visibleBoxTiktok,
+                                child: _socialIcons("assets/images/tiktok.png",
+                                    "Tiktok", CRUD.tiktok, height)),
+                            Visibility(
+                                visible: visibleBoxTwitter,
+                                child: _socialIcons("assets/images/twitter.png",
+                                    "Twitter", CRUD.twitter, height)),
+                            Visibility(
+                                visible: visibleBoxYoutube,
+                                child: _socialIcons("assets/images/youtube.png",
+                                    "Youtube", CRUD.youtube, height)),
+                            Visibility(
+                                visible: visibleBoxInstagram,
+                                child: _socialIcons(
+                                    "assets/images/instagram.png",
+                                    "Instagram",
+                                    CRUD.instagram,
+                                    height)),
+                            Visibility(
+                                visible: visibleBoxLinkedin,
+                                child: _socialIcons(
+                                    "assets/images/linkedin.png",
+                                    "Linkedin",
+                                    CRUD.linkendin,
+                                    height)),
+                            Visibility(
+                                visible: visibleBoxFacebook,
+                                child: _socialIcons(
+                                    "assets/images/facebook.png",
+                                    "Facebook",
+                                    CRUD.facebook,
+                                    height)),
+                            Visibility(
+                                visible: false,
+                                child: _socialIcons("assets/images/tap.png",
+                                    "Contact Tap", "", height)),
+                            Visibility(
+                                visible: visibleBoxCashapp,
+                                child: _socialIcons("assets/images/cashapp.png",
+                                    "Cashapp", CRUD.cashapp, height)),
+                            Visibility(
+                                visible: false,
+                                child: _socialIcons("assets/images/browser.png",
+                                    "Browser", "", height)),
+                            Visibility(
+                                visible: visibleBoxMusic,
+                                child: _socialIcons("assets/images/music.png",
+                                    "Music", CRUD.music, height)),
+                            Visibility(
+                                visible: visibleBoxpaypal,
+                                child: _socialIcons("assets/images/paypal.png",
+                                    "Paypal", CRUD.paypal, height)),
+                            Visibility(
+                                visible: false,
+                                child: _socialIcons("assets/images/twitch.png",
+                                    "Twitch", "", height)),
                           ],
                         ),
                       )
@@ -153,8 +260,6 @@ class _WriteState extends State<Write> {
       ]),
     );
   }
-
-
 }
 
 class _socialIcons extends StatelessWidget {
@@ -168,7 +273,7 @@ class _socialIcons extends StatelessWidget {
     return Wrap(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[

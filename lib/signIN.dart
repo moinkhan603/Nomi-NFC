@@ -26,32 +26,28 @@ class _signInState extends State<signIn> {
     // TODO: implement dispose
     super.dispose();
     await CRUD.getData();
-print("C");
-
+    print("C");
   }
-@override
+
+  @override
   void initState() {
     // TODO: implement initState
-  loggedinuser();
-  super.initState();
+    loggedinuser();
+    super.initState();
   }
 
-
-   loggedinuser()async {
-     FirebaseAuth.instance.currentUser().then((firebaseUser){
-       if(firebaseUser == null)
-       {
-         //signed out
-       }
-       else if(firebaseUser!=null){
-         //signed in
-         Navigator.push(
-           context,
-           MaterialPageRoute(
-               builder: (context) => Welcome(2)),
-         );
-       }
-     });
+  loggedinuser() async {
+    FirebaseAuth.instance.currentUser().then((firebaseUser) {
+      if (firebaseUser == null) {
+        //signed out
+      } else if (firebaseUser != null) {
+        //signed in
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Welcome(2)),
+        );
+      }
+    });
   }
 
   @override
@@ -104,13 +100,14 @@ print("C");
                           ),
                         ),
                         Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 30.0),
                             child: Text.rich(
                               TextSpan(
                                 text: AppLocalizations.of(context)
                                     .translate('signintxt'),
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.white),
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.white),
                                 children: <TextSpan>[
                                   TextSpan(
                                       recognizer: new TapGestureRecognizer()
@@ -246,7 +243,8 @@ print("C");
                                             );
                                           } else {
                                             Fluttertoast.showToast(
-                                                msg: "Please Verify Your Email.",
+                                                msg:
+                                                    "Please Verify Your Email.",
                                                 gravity: ToastGravity.CENTER);
                                           }
                                           setState(() {
@@ -255,7 +253,8 @@ print("C");
                                         } catch (e) {
                                           print(e);
                                           Fluttertoast.showToast(
-                                              msg: "Incorrect email or password",
+                                              msg:
+                                                  "Incorrect email or password",
                                               gravity: ToastGravity.CENTER);
 
                                           setState(() {
@@ -276,7 +275,8 @@ print("C");
                                 _asyncInputDialog(context);
                               },
                               child: Text(
-                                AppLocalizations.of(context).translate('frgtpas'),
+                                AppLocalizations.of(context)
+                                    .translate('frgtpas'),
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.white,

@@ -22,6 +22,7 @@ dependencies:
   firebase_core: ^0.4.5
   nfc_in_flutter: ^2.0.4
   vcard: ^0.1.1
+  launch_review: ^2.0.0
   share_extend: ^1.1.9
   flutter_nfc_reader: ^0.1.0
   firebase_auth: ^0.16.1
