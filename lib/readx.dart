@@ -30,7 +30,6 @@ class _ReadXState extends State<ReadX> {
     CRUD.getData();
 
     super.initState();
-
   }
 
   @override
@@ -118,98 +117,166 @@ class _ReadXState extends State<ReadX> {
                             spacing: 2,
                             direction: Axis.horizontal,
                             children: <Widget>[
-
-                            Visibility(
-                            visible: CRUD.whatsapp.contains("add your link")==true
-    || CRUD.whatsapp=="www.whatsapp.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/whatsapp.png",
-    "Whatsapp",
-    CRUD.whatsapp,
-    height)),
-    Visibility(
-    visible: CRUD.snapchat.contains("add your link")==true
-    || CRUD.snapchat=="www.snapchat.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/snapchat.png",
-    "Snapchat",
-    CRUD.snapchat,
-    height)),
-    Visibility(
-    visible: CRUD.soundcloud.contains("add your link")==true
-    || CRUD.soundcloud=="www.soundcloud.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/soundcloud.png",
-    "Soundcloud",
-    CRUD.soundcloud,
-    height)),
-    Visibility(
-    visible: CRUD.tiktok.contains("add your link")==true
-    || CRUD.tiktok=="www.tiktok.com/"?false:true,
-    child: _socialIcons("assets/images/tiktok.png",
-    "Tiktok", CRUD.tiktok, height)),
-    Visibility(
-    visible: CRUD.twitter.contains("add your link")==true
-    || CRUD.twitter=="www.twitter.com/"?false:true,
-    child: _socialIcons("assets/images/twitter.png",
-    "Twitter", CRUD.twitter, height)),
-    Visibility(
-    visible: CRUD.youtube.contains("add your link")==true
-    || CRUD.youtube=="www.youtube.com/"?false:true,
-    child: _socialIcons("assets/images/youtube.png",
-    "Youtube", CRUD.youtube, height)),
-    Visibility(
-    visible: CRUD.instagram.contains("add your link")==true
-    || CRUD.instagram=="www.instagram.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/instagram.png",
-    "Instagram",
-    CRUD.instagram,
-    height)),
-    Visibility(
-    visible: CRUD.linkendin.contains("add your link")==true
-    || CRUD.linkendin=="www.linekedin.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/linkedin.png",
-    "Linkedin",
-    CRUD.linkendin,
-    height)),
-    Visibility(
-    visible: CRUD.facebook.contains("add your link")==true
-    || CRUD.facebook=="www.facebook.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/facebook.png",
-    "Facebook",
-    CRUD.facebook,
-    height)),
-    Visibility(
-    visible: false,
-    child: _socialIcons("assets/images/tap.png",
-    "Contact Tap", "", height)),
-    Visibility(
-    visible: CRUD.cashapp.contains("add your link")==true
-    || CRUD.cashapp=="www.cashapp.com/"?false:true,
-    child: _socialIcons("assets/images/cashapp.png",
-    "Cashapp", CRUD.cashapp, height)),
-    Visibility(
-    visible: false,
-    child: _socialIcons("assets/images/browser.png",
-    "Browser", "", height)),
-    Visibility(
-    visible: CRUD.music.contains("add your link")==true
-    || CRUD.music=="www.music.com/"?false:true,
-    child: _socialIcons("assets/images/music.png",
-    "Music", CRUD.music, height)),
-    Visibility(
-    visible: CRUD.paypal.contains("add your link")==true
-    || CRUD.paypal=="www.paypal.com/"?false:true,
-    child: _socialIcons("assets/images/paypal.png",
-    "Paypal", CRUD.paypal, height)),
-    Visibility(
-    visible: false,
-    child: _socialIcons("assets/images/twitch.png",
-    "Twitch", "", height)),
-
+                              Visibility(
+                                  visible: CRUD.whatsapp
+                                                  .contains("add your link") ==
+                                              true ||
+                                          CRUD.whatsapp == "www.whatsapp.com/"
+                                      ? false
+                                      : true,
+                                  child: _socialIcons(
+                                      "assets/images/whatsapp.png",
+                                      "Whatsapp",
+                                      CRUD.whatsapp,
+                                      height)),
+                              Visibility(
+                                  visible: CRUD.snapchat
+                                                  .contains("add your link") ==
+                                              true ||
+                                          CRUD.snapchat == "www.snapchat.com/"
+                                      ? false
+                                      : true,
+                                  child: _socialIcons(
+                                      "assets/images/snapchat.png",
+                                      "Snapchat",
+                                      CRUD.snapchat,
+                                      height)),
+                              Visibility(
+                                  visible: CRUD.soundcloud
+                                                  .contains("add your link") ==
+                                              true ||
+                                          CRUD.soundcloud ==
+                                              "www.soundcloud.com/"
+                                      ? false
+                                      : true,
+                                  child: _socialIcons(
+                                      "assets/images/soundcloud.png",
+                                      "Soundcloud",
+                                      CRUD.soundcloud,
+                                      height)),
+                              Visibility(
+                                  visible:
+                                      CRUD.tiktok.contains("add your link") ==
+                                                  true ||
+                                              CRUD.tiktok == "www.tiktok.com/"
+                                          ? false
+                                          : true,
+                                  child: _socialIcons(
+                                      "assets/images/tiktok.png",
+                                      "Tiktok",
+                                      CRUD.tiktok,
+                                      height)),
+                              Visibility(
+                                  visible:
+                                      CRUD.twitter.contains("add your link") ==
+                                                  true ||
+                                              CRUD.twitter == "www.twitter.com/"
+                                          ? false
+                                          : true,
+                                  child: _socialIcons(
+                                      "assets/images/twitter.png",
+                                      "Twitter",
+                                      CRUD.twitter,
+                                      height)),
+                              Visibility(
+                                  visible:
+                                      CRUD.youtube.contains("add your link") ==
+                                                  true ||
+                                              CRUD.youtube == "www.youtube.com/"
+                                          ? false
+                                          : true,
+                                  child: _socialIcons(
+                                      "assets/images/youtube.png",
+                                      "Youtube",
+                                      CRUD.youtube,
+                                      height)),
+                              Visibility(
+                                  visible: CRUD.instagram
+                                                  .contains("add your link") ==
+                                              true ||
+                                          CRUD.instagram == "www.instagram.com/"
+                                      ? false
+                                      : true,
+                                  child: _socialIcons(
+                                      "assets/images/instagram.png",
+                                      "Instagram",
+                                      CRUD.instagram,
+                                      height)),
+                              Visibility(
+                                  visible: CRUD.linkendin
+                                                  .contains("add your link") ==
+                                              true ||
+                                          CRUD.linkendin == "www.linekedin.com/"
+                                      ? false
+                                      : true,
+                                  child: _socialIcons(
+                                      "assets/images/linkedin.png",
+                                      "Linkedin",
+                                      CRUD.linkendin,
+                                      height)),
+                              Visibility(
+                                  visible: CRUD.facebook
+                                                  .contains("add your link") ==
+                                              true ||
+                                          CRUD.facebook == "www.facebook.com/"
+                                      ? false
+                                      : true,
+                                  child: _socialIcons(
+                                      "assets/images/facebook.png",
+                                      "Facebook",
+                                      CRUD.facebook,
+                                      height)),
+                              Visibility(
+                                  visible: false,
+                                  child: _socialIcons("assets/images/tap.png",
+                                      "Contact Tap", "", height)),
+                              Visibility(
+                                  visible:
+                                      CRUD.cashapp.contains("add your link") ==
+                                                  true ||
+                                              CRUD.cashapp == "www.cashapp.com/"
+                                          ? false
+                                          : true,
+                                  child: _socialIcons(
+                                      "assets/images/cashapp.png",
+                                      "Cashapp",
+                                      CRUD.cashapp,
+                                      height)),
+                              Visibility(
+                                  visible: false,
+                                  child: _socialIcons(
+                                      "assets/images/browser.png",
+                                      "Browser",
+                                      "",
+                                      height)),
+                              Visibility(
+                                  visible:
+                                      CRUD.music.contains("add your link") ==
+                                                  true ||
+                                              CRUD.music == "www.music.com/"
+                                          ? false
+                                          : true,
+                                  child: _socialIcons("assets/images/music.png",
+                                      "Music", CRUD.music, height)),
+                              Visibility(
+                                  visible:
+                                      CRUD.paypal.contains("add your link") ==
+                                                  true ||
+                                              CRUD.paypal == "www.paypal.com/"
+                                          ? false
+                                          : true,
+                                  child: _socialIcons(
+                                      "assets/images/paypal.png",
+                                      "Paypal",
+                                      CRUD.paypal,
+                                      height)),
+                              Visibility(
+                                  visible: false,
+                                  child: _socialIcons(
+                                      "assets/images/twitch.png",
+                                      "Twitch",
+                                      "",
+                                      height)),
                             ],
                           ),
                         )
