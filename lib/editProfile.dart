@@ -206,7 +206,7 @@ class _EditProfileState extends State<EditProfile> {
                           _info(AppLocalizations.of(context).translate('name'),
                               1, CRUD.name, true),
                           _info(AppLocalizations.of(context).translate('email'),
-                              2, CRUD.email, true),
+                              2, CRUD.email, false),
                           _info('Number', 3, CRUD.Number, true),
                           _info('Occupation', 4, CRUD.Occupation, true),
                           _info(AppLocalizations.of(context).translate('bio'),

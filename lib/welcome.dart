@@ -42,9 +42,18 @@ class _WelcomeState extends State<Welcome> {
 
   @override
   Widget build(BuildContext context) {
+    
+    
     return WillPopScope(
       onWillPop: willpop,
-      child: Scaffold(
+      child: FutureBuilder<dynamic>(
+        future:  CRUD.getData(),
+    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+    if (snapshot.data == true) {
+print(snapshot.data);
+    return   Write();
+
+      Scaffold(
 
 //        bottomNavigationBar: FloatingNavbar(
 //          selectedBackgroundColor: Colors.white,
@@ -70,7 +79,12 @@ class _WelcomeState extends State<Welcome> {
 //                icon: FaIcon(FontAwesomeIcons.user).icon, title: 'Profile'),
 //          ],
 //        ),
-        body: _children[_index],
+  body: _children[_index],
+);
+    }
+    else
+      return CircularProgressIndicator();
+       }
       ),
     );
   }

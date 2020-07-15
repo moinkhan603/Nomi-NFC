@@ -176,5 +176,7 @@ class CRUD {
         bio = values["bio"];
       });
     });
+    return true;
   }
+
 }

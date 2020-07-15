@@ -175,8 +175,7 @@ class _ReadState extends State<Read> {
             GestureDetector(
               onTap: () {
                 CRUD.logOut();
-                Navigator.pop(context);
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/signin');
               },
               child: Padding(
                 padding: const EdgeInsets.only(top: 25.0),

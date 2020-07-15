@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => Profile(),
         '/read': (context) => ReadX(),
         '/write': (context) => Write(),
+        '/signin': (context) => signIn(5),
       },
 
       debugShowCheckedModeBanner: false,
