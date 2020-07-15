@@ -234,7 +234,9 @@ class _WriteState extends State<Write> {
       );
     }
  else
-  return CircularProgressIndicator();
+  return CircularProgressIndicator(
+
+  );
         }
     );
   }
