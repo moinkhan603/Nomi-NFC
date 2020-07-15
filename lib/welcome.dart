@@ -35,7 +35,7 @@ class _WelcomeState extends State<Welcome> {
       CRUD.myid = 3;
     }
 
-    CRUD.getData();
+   // CRUD.getData();
 
     super.initState();
   }
@@ -46,15 +46,10 @@ class _WelcomeState extends State<Welcome> {
     
     return WillPopScope(
       onWillPop: willpop,
-      child: FutureBuilder<dynamic>(
-        future:  CRUD.getData(),
-    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-    if (snapshot.data == true) {
-print(snapshot.data);
-    return   Write();
 
-      Scaffold(
 
+     child: Scaffold(
+//
 //        bottomNavigationBar: FloatingNavbar(
 //          selectedBackgroundColor: Colors.white,
 //          iconSize: 25,
@@ -62,30 +57,27 @@ print(snapshot.data);
 //          backgroundColor: Colors.blue,
 //          onTap: (int val) => setState(() => _index = val),
 //          currentIndex: _index,
-//          items: [
-////          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
-////          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
-////          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
+//         items: [
+//          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
+//          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
+//          FloatingNavbarItem(icon:Image.asset("person_icon.png")  , title: 'Home'),
 //
-//            FloatingNavbarItem(
-//              icon: FaIcon(
+//          FloatingNavbarItem(
+//             icon: FaIcon(
 //                FontAwesomeIcons.table,
-//              ).icon,
-//              title: 'Read',
-//            ),
-//            FloatingNavbarItem(
-//                icon: FaIcon(FontAwesomeIcons.edit).icon, title: 'Write'),
-//            FloatingNavbarItem(
-//                icon: FaIcon(FontAwesomeIcons.user).icon, title: 'Profile'),
-//          ],
-//        ),
+//             ).icon,
+//             title: 'Read',
+//           ),
+//           FloatingNavbarItem(
+//               icon: FaIcon(FontAwesomeIcons.edit).icon, title: 'Write'),
+//           FloatingNavbarItem(
+//               icon: FaIcon(FontAwesomeIcons.user).icon, title: 'Profile'),
+//         ],
+//       ),
   body: _children[_index],
-);
-    }
-    else
-      return CircularProgressIndicator();
-       }
-      ),
+
+
+     )
     );
   }
 

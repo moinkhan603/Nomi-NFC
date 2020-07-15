@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:nomi/customDrawer.dart';
 import 'package:nomi/read.dart';
 import 'package:nomi/welcome.dart';
@@ -14,7 +15,7 @@ class Write extends StatefulWidget {
 class _WriteState extends State<Write> {
   GlobalKey<ScaffoldState> key2 = GlobalKey<ScaffoldState>();
   double height = 120;
-
+  bool showSpinner = false;
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
@@ -31,7 +32,7 @@ class _WriteState extends State<Write> {
 
   @override
   void initState() {
-    CRUD.getData();
+    //CRUD.getData();
 
     super.initState();
   }
@@ -39,13 +40,13 @@ class _WriteState extends State<Write> {
   @override
   Widget build(BuildContext context) {
 
-    return FutureBuilder<dynamic>(
+    return FutureBuilder<bool>(
         future:  CRUD.getData(),
-    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-    if (snapshot.data == true) {
+    builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+    if (snapshot.connectionState == ConnectionState.done) {
+     print("xxx");
 
-      return
-        Scaffold(
+      return Scaffold(
 
         key: key2,
         drawer: CustomDrawer.buildDrawer(context),
@@ -234,8 +235,24 @@ class _WriteState extends State<Write> {
       );
     }
  else
-  return CircularProgressIndicator(
 
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Center(
+        child: Container(
+
+          height: 50,
+          width: 50,
+          margin: EdgeInsets.all(5),
+          child: CircularProgressIndicator(
+            strokeWidth: 2.0,
+            valueColor : AlwaysStoppedAnimation(Colors.black),
+          ),
+        ),
+      ),
+    ],
   );
         }
     );

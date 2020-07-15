@@ -123,7 +123,7 @@ class CRUD {
   }
 
 
-  static getData() async {
+  static Future<bool> getData() async {
 
 //
 //    FirebaseDatabase database;
@@ -148,14 +148,15 @@ class CRUD {
       print(e);
     }
 
-    databaseReference
+    await databaseReference
         .orderByKey()
         .equalTo(myuserid)
         .once()
         .then((DataSnapshot dataSnapshot) {
       Map<dynamic, dynamic> values = dataSnapshot.value;
       values.forEach((key, values) {
-        whatsapp = values["whatsapp_un"];
+        whatsapp =  values["whatsapp_un"];
+
         twitter = values["twitter_un"];
         venmo = values["venmo_un"];
         facebook = values["facebook_un"];
@@ -175,8 +176,10 @@ class CRUD {
         imgUrl = values["img_url"];
         bio = values["bio"];
       });
+
     });
-    return true;
+    print(whatsapp);
+return true;
   }
 
 }
