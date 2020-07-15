@@ -113,8 +113,7 @@ class CustomDrawer {
                 InkWell(
                     onTap: () {
                       CRUD.logOut();
-                      Navigator.pop(context);
-                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/signin');
                     },
                     child: _buildRow(FontAwesomeIcons.signOutAlt, "Logout")),
                 _buildDivider(),

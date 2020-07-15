@@ -35,6 +35,7 @@ class _ReadXState extends State<ReadX> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         key: key1,
         drawer: CustomDrawer.buildDrawer(context),
