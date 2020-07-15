@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nomi/read.dart';
+import 'package:reorderables/reorderables.dart';
 
 import 'CRUD.dart';
 import 'DemoLocalizations.dart';
@@ -12,7 +13,7 @@ class ReadX extends StatefulWidget {
 
 class _ReadXState extends State<ReadX> {
   GlobalKey<ScaffoldState> key1 = GlobalKey<ScaffoldState>();
-  double height = 120;
+  static double height = 120;
 
   @override
   void didChangeDependencies() {
@@ -24,6 +25,20 @@ class _ReadXState extends State<ReadX> {
       });
     }
   }
+  List<Widget>    _tiles = <Widget>[
+    _socialIcons("assets/images/whatsapp.png", "whatsapp", CRUD.whatsapp, height,"www.whatsapp.com"),
+    _socialIcons("assets/images/snapchat.png", "snapchat", CRUD.snapchat, height,"www.snapchat.com"),
+    _socialIcons("assets/images/soundcloud.png", "soundcloud", CRUD.soundcloud, height,"www.soundcloud.com"),
+    _socialIcons("assets/images/linkedin.png", "linkedin", CRUD.linkendin, height,"www.linkedin.com"),
+    _socialIcons("assets/images/youtube.png", "youtube", CRUD.youtube, height,"www.youtube.com"),
+    _socialIcons("assets/images/facebook.png", "facebook", CRUD.facebook, height,"www.facebook.com"),
+    _socialIcons("assets/images/instagram.png", "instagram", CRUD.instagram, height,"www.instagram.com"),
+    _socialIcons("assets/images/cashapp.png", "Cashapp", CRUD.cashapp, height,"www.cashapp.com"),
+    _socialIcons("assets/images/paypal.png", "paypal", CRUD.paypal, height,"www.paypal.com"),
+    _socialIcons("assets/images/music.png", "music", CRUD.music, height,"www.music.com"),
+    _socialIcons("assets/images/tiktok.png", "tiktok", CRUD.tiktok, height,"www.tiktok.com"),
+    _socialIcons("assets/images/twitter.png", "twitter", CRUD.twitter, height,"www.twitter.com"),
+  ];
 
   @override
   void initState() {
@@ -35,6 +50,13 @@ class _ReadXState extends State<ReadX> {
 
   @override
   Widget build(BuildContext context) {
+    void _onReorder(int oldIndex, int newIndex) {
+
+
+      Widget row = _tiles.removeAt(oldIndex);
+      _tiles.insert(newIndex, row);
+    }
+
 
     return Scaffold(
         key: key1,
@@ -113,105 +135,21 @@ class _ReadXState extends State<ReadX> {
                       physics: BouncingScrollPhysics(),
                       children: <Widget>[
                         Center(
-                          child: Wrap(
-                            runSpacing: 15.0,
-                            spacing: 2,
-                            direction: Axis.horizontal,
-                            children: <Widget>[
-
-                            Visibility(
-                            visible: CRUD.whatsapp.contains("add your link")==true
-    || CRUD.whatsapp=="www.whatsapp.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/whatsapp.png",
-    "Whatsapp",
-    CRUD.whatsapp,
-    height)),
-    Visibility(
-    visible: CRUD.snapchat.contains("add your link")==true
-    || CRUD.snapchat=="www.snapchat.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/snapchat.png",
-    "Snapchat",
-    CRUD.snapchat,
-    height)),
-    Visibility(
-    visible: CRUD.soundcloud.contains("add your link")==true
-    || CRUD.soundcloud=="www.soundcloud.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/soundcloud.png",
-    "Soundcloud",
-    CRUD.soundcloud,
-    height)),
-    Visibility(
-    visible: CRUD.tiktok.contains("add your link")==true
-    || CRUD.tiktok=="www.tiktok.com/"?false:true,
-    child: _socialIcons("assets/images/tiktok.png",
-    "Tiktok", CRUD.tiktok, height)),
-    Visibility(
-    visible: CRUD.twitter.contains("add your link")==true
-    || CRUD.twitter=="www.twitter.com/"?false:true,
-    child: _socialIcons("assets/images/twitter.png",
-    "Twitter", CRUD.twitter, height)),
-    Visibility(
-    visible: CRUD.youtube.contains("add your link")==true
-    || CRUD.youtube=="www.youtube.com/"?false:true,
-    child: _socialIcons("assets/images/youtube.png",
-    "Youtube", CRUD.youtube, height)),
-    Visibility(
-    visible: CRUD.instagram.contains("add your link")==true
-    || CRUD.instagram=="www.instagram.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/instagram.png",
-    "Instagram",
-    CRUD.instagram,
-    height)),
-    Visibility(
-    visible: CRUD.linkendin.contains("add your link")==true
-    || CRUD.linkendin=="www.linekedin.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/linkedin.png",
-    "Linkedin",
-    CRUD.linkendin,
-    height)),
-    Visibility(
-    visible: CRUD.facebook.contains("add your link")==true
-    || CRUD.facebook=="www.facebook.com/"?false:true,
-    child: _socialIcons(
-    "assets/images/facebook.png",
-    "Facebook",
-    CRUD.facebook,
-    height)),
-    Visibility(
-    visible: false,
-    child: _socialIcons("assets/images/tap.png",
-    "Contact Tap", "", height)),
-    Visibility(
-    visible: CRUD.cashapp.contains("add your link")==true
-    || CRUD.cashapp=="www.cashapp.com/"?false:true,
-    child: _socialIcons("assets/images/cashapp.png",
-    "Cashapp", CRUD.cashapp, height)),
-    Visibility(
-    visible: false,
-    child: _socialIcons("assets/images/browser.png",
-    "Browser", "", height)),
-    Visibility(
-    visible: CRUD.music.contains("add your link")==true
-    || CRUD.music=="www.music.com/"?false:true,
-    child: _socialIcons("assets/images/music.png",
-    "Music", CRUD.music, height)),
-    Visibility(
-    visible: CRUD.paypal.contains("add your link")==true
-    || CRUD.paypal=="www.paypal.com/"?false:true,
-    child: _socialIcons("assets/images/paypal.png",
-    "Paypal", CRUD.paypal, height)),
-    Visibility(
-    visible: false,
-    child: _socialIcons("assets/images/twitch.png",
-    "Twitch", "", height)),
-
-                            ],
-                          ),
+                            child: ReorderableWrap(
+                                spacing: 1.0,
+                                runSpacing: 18.0,
+                                padding: const EdgeInsets.all(5),
+                                children: _tiles,
+                                onReorder: _onReorder,
+                                onNoReorder: (int index) {
+                                  //this callback is optional
+                                  debugPrint('${DateTime.now().toString().substring(5, 22)} reorder cancelled. index:$index');
+                                },
+                                onReorderStarted: (int index) {
+                                  //this callback is optional
+                                  debugPrint('${DateTime.now().toString().substring(5, 22)} reorder started: index:$index');
+                                }
+                            )
                         )
                       ],
                     ),
@@ -229,40 +167,44 @@ class _socialIcons extends StatelessWidget {
   String name;
   String path;
   double Hight;
-
-  _socialIcons(this.imgPath, this.name, this.path, this.Hight);
+  String website;
+  _socialIcons(this.imgPath, this.name, this.path, this.Hight,this.website);
 
   @override
   Widget build(BuildContext context) {
+    print(path);
     return Visibility(
-        visible: true,
-        child: Wrap(
+      visible: path.contains("add your link") == true ||
+          path == website
+          ? false
+          : true,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Read("Read", path, name)),
-                        );
-                      },
-                      child: Image.asset(
-                        imgPath,
-                        height: Hight,
-                      )),
-                  Text(
-                    name,
-                    style: TextStyle(color: Colors.blue),
-                  )
-                ],
-              ),
-            ),
+            GestureDetector(
+
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Read("Write", path, name)),
+                  );
+                },
+                child: Image.asset(
+
+                  imgPath,
+                  height: Hight,
+                )),
+            Text(
+              name,
+              style: TextStyle(color: Colors.blue),
+            )
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
