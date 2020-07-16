@@ -18,7 +18,8 @@ class Read extends StatefulWidget {
   String name;
   String result = " ";
   String title;
-String imgPath="assets/images/transparent.png";
+  String imgPath = "assets/images/transparent.png";
+
   Read(this.btntxt, this.name, this.title);
 
   @override
@@ -74,18 +75,15 @@ class _ReadState extends State<Read> {
           print("Read NDEF message with ${message.records.length} records");
           for (NDEFRecord record in message.records) {
             print(
-                "Record '${record.id ?? "[NO ID]"}' with TNF '${record
-                    .tnf}', type '${record.type}', payload '${record
-                    .payload}' and data '${record
-                    .data}' and language code '${record.languageCode}'");
+                "Record '${record.id ?? "[NO ID]"}' with TNF '${record.tnf}', type '${record.type}', payload '${record.payload}' and data '${record.data}' and language code '${record.languageCode}'");
             setState(() {
-              widget.imgPath="assets/images/tick.png";
+              widget.imgPath = "assets/images/tick.png";
             });
             _launchURL(record.payload);
           }
         }, onError: (error) {
           setState(() {
-            widget.imgPath="assets/images/cross.png";
+            widget.imgPath = "assets/images/cross.png";
             _stream = null;
           });
           if (error is NFCUserCanceledSessionException) {
@@ -113,7 +111,6 @@ class _ReadState extends State<Read> {
 
   @override
   void dispose() {
-
     _stopScanning();
     super.dispose();
   }
@@ -149,7 +146,7 @@ class _ReadState extends State<Read> {
           leading: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
-              onPressed: (){
+              onPressed: () {
                 _key.currentState.openDrawer();
               },
               icon: ImageIcon(
@@ -191,7 +188,6 @@ class _ReadState extends State<Read> {
               child: ImageIcon(
                 AssetImage(
                   "assets/images/right_arrow.png",
-
                 ),
                 size: 12,
                 color: Colors.red,
@@ -265,12 +261,14 @@ class _ReadState extends State<Read> {
             ),
           ),
         ),
-
         Positioned.fill(
             child: Align(
-                alignment: Alignment.center,
-                child:Image.asset(widget.imgPath,height: 100,),)),
-
+          alignment: Alignment.center,
+          child: Image.asset(
+            widget.imgPath,
+            height: 100,
+          ),
+        )),
         Positioned.fill(
             child: Align(
           alignment: Alignment.bottomCenter,
