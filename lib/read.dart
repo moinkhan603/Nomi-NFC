@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -123,6 +124,11 @@ class _ReadState extends State<Read> {
         _stopScanning();
       }
       print('read pressed');
+      Fluttertoast.showToast(
+          msg: "Reading started...",
+          backgroundColor: Colors.blueAccent,
+          textColor: Colors.white,
+          gravity: ToastGravity.CENTER);
     } else {
       Navigator.push(
         context,

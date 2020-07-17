@@ -13,7 +13,7 @@ class ReadX extends StatefulWidget {
 
 class _ReadXState extends State<ReadX> {
   GlobalKey<ScaffoldState> key1 = GlobalKey<ScaffoldState>();
-  static double height = 120;
+  static double height = 85;
 
   @override
   void didChangeDependencies() {
@@ -27,30 +27,30 @@ class _ReadXState extends State<ReadX> {
   }
 
   List<Widget> _tiles = <Widget>[
-    _socialIcons("assets/images/whatsapp.png", "whatsapp", CRUD.whatsapp,
-        height, "www.whatsapp.com"),
-    _socialIcons("assets/images/snapchat.png", "snapchat", CRUD.snapchat,
-        height, "www.snapchat.com"),
-    _socialIcons("assets/images/soundcloud.png", "soundcloud", CRUD.soundcloud,
-        height, "www.soundcloud.com"),
-    _socialIcons("assets/images/linkedin.png", "linkedin", CRUD.linkendin,
-        height, "www.linkedin.com"),
-    _socialIcons("assets/images/youtube.png", "youtube", CRUD.youtube, height,
-        "www.youtube.com"),
-    _socialIcons("assets/images/facebook.png", "facebook", CRUD.facebook,
-        height, "www.facebook.com"),
-    _socialIcons("assets/images/instagram.png", "instagram", CRUD.instagram,
-        height, "www.instagram.com"),
-    _socialIcons("assets/images/cashapp.png", "Cashapp", CRUD.cashapp, height,
-        "www.cashapp.com"),
-    _socialIcons("assets/images/paypal.png", "paypal", CRUD.paypal, height,
-        "www.paypal.com"),
-    _socialIcons("assets/images/music.png", "music", CRUD.music, height,
-        "www.music.com"),
-    _socialIcons("assets/images/tiktok.png", "tiktok", CRUD.tiktok, height,
-        "www.tiktok.com"),
-    _socialIcons("assets/images/twitter.png", "twitter", CRUD.twitter, height,
-        "www.twitter.com"),
+    _socialIcons("assets/images/whatsapp.png", "WhatsApp", CRUD.whatsapp,
+        height, "www.whatsapp.com/"),
+    _socialIcons("assets/images/snapchat.png", "SnapChat", CRUD.snapchat,
+        height, "www.snapchat.com/"),
+    _socialIcons("assets/images/soundcloud.png", "SoundCloud", CRUD.soundcloud,
+        height, "www.soundcloud.com/"),
+    _socialIcons("assets/images/linkedin.png", "LinkedIn", CRUD.linkendin,
+        height, "www.linkedin.com/"),
+    _socialIcons("assets/images/youtube.png", "YouTube", CRUD.youtube, height,
+        "www.youtube.com/"),
+    _socialIcons("assets/images/facebook.png", "Facebook", CRUD.facebook,
+        height, "www.facebook.com/"),
+    _socialIcons("assets/images/instagram.png", "Instagram", CRUD.instagram,
+        height, "www.instagram.com/"),
+    _socialIcons("assets/images/cashapp.png", "CashApp", CRUD.cashapp, height,
+        "www.cashapp.com/"),
+    _socialIcons("assets/images/paypal.png", "PayPal", CRUD.paypal, height,
+        "www.paypal.com/"),
+    _socialIcons("assets/images/music.png", "Music", CRUD.music, height,
+        "www.music.com/"),
+    _socialIcons("assets/images/tiktok.png", "TikTok", CRUD.tiktok, height,
+        "www.tiktok.com/"),
+    _socialIcons("assets/images/twitter.png", "Twitter", CRUD.twitter, height,
+        "www.twitter.com/"),
   ];
 
   @override
@@ -197,7 +197,7 @@ class _socialIcons extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Read("Write", path, name)),
+                        builder: (context) => Read("Read", path, name)),
                   );
                 },
                 child: Image.asset(

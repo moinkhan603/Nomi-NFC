@@ -55,12 +55,12 @@ class CustomDrawer {
                     },
                     child: _buildRow(FontAwesomeIcons.userAlt, "My Profile")),
                 _buildDivider(),
-                InkWell(
-                    onTap: () {
-                      Navigator.popAndPushNamed(context, '/read');
-                    },
-                    child: _buildRow(FontAwesomeIcons.tag, "Read Nomi")),
-                _buildDivider(),
+//                InkWell(
+//                    onTap: () {
+//                      Navigator.popAndPushNamed(context, '/read');
+//                    },
+//                    child: _buildRow(FontAwesomeIcons.tag, "Read Nomi")),
+//                _buildDivider(),
                 InkWell(
                     onTap: () {
                       Navigator.popAndPushNamed(context, '/write');

@@ -38,7 +38,7 @@ class _EditProfileState extends State<EditProfile> {
           leading: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
-              onPressed: (){
+              onPressed: () {
                 _key.currentState.openDrawer();
               },
               icon: ImageIcon(
@@ -206,7 +206,7 @@ class _EditProfileState extends State<EditProfile> {
                           _info(AppLocalizations.of(context).translate('name'),
                               1, CRUD.name, true),
                           _info(AppLocalizations.of(context).translate('email'),
-                              2, CRUD.email, false),
+                              2, CRUD.email, true),
                           _info('Number', 3, CRUD.Number, true),
                           _info('Occupation', 4, CRUD.Occupation, true),
                           _info(AppLocalizations.of(context).translate('bio'),
@@ -430,6 +430,7 @@ class _info extends StatelessWidget {
               style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
               onChanged: (String value) {
                 //email=value.trim();
+
                 if (id == 1) {
                   CRUD.name = value;
                 } else if (id == 2) {

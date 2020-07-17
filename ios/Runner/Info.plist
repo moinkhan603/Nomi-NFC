@@ -27,28 +27,28 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-    <key>NSCalendarsUsageDescription</key>
-    <string>This app requires access to the Calendar Information.</string>
-	<key>NSContactsUsageDescription</key>
-    <string>This app requires access to the Contacts Information.</string>
-    <key>NSAppleMusicUsageDescription</key>
-    <string>This app requires access to the Apple Music Information.</string>
-    <key>NSMotionUsageDescription</key>
-    <string>This app requires access to the Motion Detection Information.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>This app requires access to the Location Information.</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app requires access to the Location When In Use Information.</string>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>This app requires access to the Speech Recognition Information.</string>
 	<key>NFCReaderUsageDescription</key>
 	<string>This app requires access to the NFC</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>This app requires access to the Apple Music Information.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app requires access to the Calendar Information.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app requires access to the camera.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This app requires access to the Contacts Information.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app requires access to the Location Information.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requires access to the Location When In Use Information.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app requires access to the microphone.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>This app requires access to the Motion Detection Information.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to the gallery.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>This app requires access to the Speech Recognition Information.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
