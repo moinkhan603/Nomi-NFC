@@ -92,7 +92,8 @@ class _WriteExampleScreenState extends State<WriteExampleScreen> {
         children: <Widget>[
           Center(
             child: OutlineButton(
-              child: const Text("Add record"),
+              padding: const EdgeInsets.all(8.0),
+              child: const Text("Add record", style: TextStyle(fontSize: 20)),
               onPressed: _addRecord,
             ),
           ),
@@ -102,7 +103,8 @@ class _WriteExampleScreenState extends State<WriteExampleScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(widget.title +" Link", style: Theme.of(context).textTheme.body2),
+                  Text(widget.title + " Link",
+                      style: Theme.of(context).textTheme.body2),
                   TextFormField(
                     controller: TextEditingController(text: widget.name),
                     decoration: InputDecoration(
@@ -114,7 +116,16 @@ class _WriteExampleScreenState extends State<WriteExampleScreen> {
             ),
           Center(
             child: RaisedButton(
-              child: const Text("Write to tag"),
+              textColor: Colors.white,
+              color: Colors.blueAccent,
+
+              padding: const EdgeInsets.all(10.0),
+              child: const Text("Click Me",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Roboto',
+                  )),
               onPressed: _records.length > 0 ? () => _write(context) : null,
             ),
           ),

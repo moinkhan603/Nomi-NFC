@@ -7,73 +7,54 @@ import 'package:vcard/vcard.dart';
 
 import 'CRUD.dart';
 
-class VCARD{
-
-VCARD();
+class VCARD {
+  VCARD();
   var vCard = VCard();
-Directory _downloadsDirectory;
+  Directory _downloadsDirectory;
 
 
-  saveVcard()async{
+  saveVcard() async {
     vCard.firstName = CRUD.name;
     vCard.email = CRUD.email;
-    vCard.photo.attachFromUrl(CRUD.imgUrl, 'PNG');
+    vCard.photo.attachFromUrl(CRUD.imgUrl, 'JPEG');
     vCard.workPhone = CRUD.Number;
-    vCard.jobTitle = CRUD.bio;
-
+    vCard.jobTitle = CRUD.Occupation;
     Directory dir = await getApplicationDocumentsDirectory();
-   // File testFile = new File("${dir.path}/image.png");
-    saveToFile('contact.vcf');
-    /// Save to file
-
-    /// Get as formatted string
+    saveToFile('vCardFile.vcf');
+    print('vcard');
     print(vCard.getFormattedString());
   }
-saveToFile(filename) async {
-  String contents = vCard.getFormattedString();
-  Directory downloadsDirectory;
-  // Platform messages may fail, so we use a try/catch PlatformException.
-  try {
-    downloadsDirectory = await DownloadsPathProvider.downloadsDirectory;
 
-  } on PlatformException {
-    print('Could not get the downloads directory');
+  saveToFile(filename) async {
+    String contents = vCard.getFormattedString();
+    Directory downloadsDirectory;
+
+    try {
+//      downloadsDirectory = await DownloadsPathProvider.downloadsDirectory;
+    } on PlatformException {
+      print('Could not get the downloads directory');
+    }
+    _downloadsDirectory = downloadsDirectory;
+     _downloadsDirectory = Platform.isAndroid
+        ? await getExternalStorageDirectory()
+        : await getApplicationDocumentsDirectory();
+
+    final fs = File('${_downloadsDirectory.path}/$filename');
+    print(fs.toString());
+    fs.writeAsStringSync(contents);
+    File test = new File("${_downloadsDirectory.path}/vCardFile.vcf");
+    if (await test.exists()) {
+      ShareExtend.share(test.path, "file");
+    }
   }
-  _downloadsDirectory=downloadsDirectory;
-  //Future<Directory> _downloadsDirectory=initDownloadsDirectoryState();
 
- // final directory = await getApplicationDocumentsDirectory();
-  final fs = File('${_downloadsDirectory.path}/$filename');
-  print(fs.toString());
-  fs.writeAsStringSync(contents);
-  File test = new File("${_downloadsDirectory.path}/contact.vcf");
-  if (await test.exists()) {
-//      await testFile.create(recursive: true);
-//      testFile.writeAsStringSync("test for share documents file");
-
-    ShareExtend.share(test.path, "file");
-  }
-}
-
-  ///Set properties
-
-Sharefile()async{
-  print(_downloadsDirectory);
-  Directory dir = await getApplicationDocumentsDirectory();
-// File test=vCard.saveToFile('${dir.path}/contact.vcf') as dynamic;
-  File test = new File("${_downloadsDirectory.path}/vCard/exports/contact.vcf");
-  if (await test.exists()) {
-//      await testFile.create(recursive: true);
-//      testFile.writeAsStringSync("test for share documents file");
-
-  ShareExtend.share(test.path, "file");
+  Sharefile() async {
+    print(_downloadsDirectory);
+    Directory dir = await getApplicationDocumentsDirectory();
+    File test =
+        new File("${_downloadsDirectory.path}/vCard/exports/vCardFile.vcf");
+    if (await test.exists()) {
+      ShareExtend.share(test.path, "file");
+    }
   }
 }
-
-
-
-
-}
-
-
-

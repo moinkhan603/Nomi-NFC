@@ -14,15 +14,10 @@ import 'package:page_indicator/page_indicator.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
-
-
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
@@ -33,7 +28,6 @@ class MyApp extends StatelessWidget {
         '/write': (context) => Write(),
         '/signin': (context) => signIn(5),
       },
-
       debugShowCheckedModeBanner: false,
       title: 'NomiTap',
       supportedLocales: [
@@ -59,7 +53,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   PageController _controller = PageController(
     initialPage: 0,
   );
@@ -93,12 +86,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   check() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final myBool = prefs.getBool('flag')??false;
-   return myBool;
-
-
+    final myBool = prefs.getBool('flag') ?? false;
+    return myBool;
   }
-
 
   @override
   void initState() {
@@ -111,7 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }
 
-
     super.initState();
 
     print("c");
@@ -123,17 +112,14 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<dynamic>(
       future: check(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.data == true) {
-
           return signIn(2);
-        }
-        else
+        } else
           return Scaffold(
             backgroundColor: Color(0xff0087E3),
             body: SafeArea(
@@ -170,8 +156,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Positioned.fill(
                     child: Padding(
-                      padding:
-                      const EdgeInsets.symmetric(vertical: 30, horizontal: 15),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 30, horizontal: 15),
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: GestureDetector(
@@ -194,10 +180,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             // This trailing comma makes auto-formatting nicer for build methods.
           );
-      },);
-
-
-
+      },
+    );
   }
 
   void setbool() async {
@@ -206,7 +190,4 @@ class _MyHomePageState extends State<MyHomePage> {
 
     prefs.setBool('flag', true);
   }
-
-
-
 }

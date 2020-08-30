@@ -37,11 +37,13 @@ class _ProfileState extends State<Profile> {
           leading: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: IconButton(
-              onPressed: (){
+              onPressed: () {
                 key.currentState.openDrawer();
               },
               icon: ImageIcon(
-                AssetImage("assets/images/menu.png",),
+                AssetImage(
+                  "assets/images/menu.png",
+                ),
                 size: 30,
                 color: Colors.white,
               ),
@@ -99,72 +101,6 @@ class _ProfileState extends State<Profile> {
             ),
             child: Column(
               children: <Widget>[
-//         SafeArea(
-//
-//           child: Padding(
-//
-//             padding: const EdgeInsets.symmetric(horizontal:10,vertical: 20 ),
-//
-//             child: Row(
-//
-//
-//
-//               crossAxisAlignment: CrossAxisAlignment.end,
-//
-//  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//
-//               children: <Widget>[
-//
-//
-//
-//              ImageIcon(
-//
-//                      AssetImage("assets/images/menu.png"),size: 30,
-//
-//                  color: Colors.white,
-//
-//                ),
-//
-//  Text(AppLocalizations.of(context).translate('profile'),
-//    style: TextStyle(color: Colors.white,fontSize: 22),),
-//
-//
-//
-//  Row(children: <Widget>[
-//
-//    GestureDetector(
-//      onTap: (){
-//
-//_logOut();
-//
-//      },
-//
-//      child: Text(AppLocalizations.of(context).translate('logout'),
-//          style: TextStyle(color: Colors.white,fontSize: 18)),
-//    ),
-//
-//      ImageIcon(
-//
-//        AssetImage("assets/images/right_arrow.png"),
-//
-//        color: Colors.red,
-//
-//      )
-//
-//  ],)
-//
-//  ,
-//
-//
-//
-//
-//
-//             ],),
-//
-//           ),
-//
-//         ),
-
                 SizedBox(
                   height: 20,
                 ),
@@ -173,25 +109,37 @@ class _ProfileState extends State<Profile> {
                   radius: 65,
                   backgroundColor: Colors.transparent,
                 ),
-
-                SizedBox(
-                  height: 15,
-                ),
-
-                Text(
-                  CRUD.name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                ),
-
                 SizedBox(
                   height: 10,
+                ),
+                Text(
+                  CRUD.name,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                ),
+                SizedBox(
+                  height: 6,
+                ),
+                Text(
+                  CRUD.email,
+                  style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+                ),
+
+                SizedBox(
+                  height: 6,
+                ),
+                Text(
+                  CRUD.Occupation,
+                  style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+                ),
+
+                SizedBox(
+                  height: 6,
                 ),
 
                 InkWell(
                   onTap: () {
                     CRUD.taps = CRUD.taps + 1;
                     CRUD.updateTaps();
-//CRUD.addData();
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => QRGenerator()),
@@ -201,30 +149,35 @@ class _ProfileState extends State<Profile> {
                     AppLocalizations.of(context).translate('generateqr'),
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Colors.blue),
                   ),
                 ),
-
                 SizedBox(
                   height: 10,
                 ),
-
-                Text("i'm " + CRUD.name),
-
-                SizedBox(
-                  height: 10,
-                ),
-
                 // Text(AppLocalizations.of(context).translate('tap')),
                 Text(
                   "taps: " + CRUD.taps.toString(),
                   style: TextStyle(color: Colors.black),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
-
+                Text(
+                  CRUD.bio,
+                  style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  CRUD.Number,
+                  style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
                 InkWell(
                   onTap: () {
                     Navigator.push(
@@ -247,7 +200,7 @@ class _ProfileState extends State<Profile> {
                                     .translate('edtprfile'),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 20,
+                                    fontSize: 17,
                                     color: Colors.blue)))),
                   ),
                 ),
@@ -298,8 +251,6 @@ class _ProfileState extends State<Profile> {
 //      ),
     );
   }
-
-
 }
 
 class _detailsWidget extends StatelessWidget {

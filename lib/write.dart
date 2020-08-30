@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nomi/customDrawer.dart';
 import 'package:nomi/read.dart';
+import 'package:nomi/write_example_screen.dart';
 import 'package:reorderables/reorderables.dart';
 import 'CRUD.dart';
 import 'DemoLocalizations.dart';
+import 'editProfile.dart';
 
 class Write extends StatefulWidget {
   @override
@@ -27,7 +30,15 @@ class _WriteState extends State<Write> {
     }
   }
 
+  static String get finalTitle {
+    var list = [CRUD.name, CRUD.email, CRUD.Number, CRUD.Occupation, CRUD.bio];
+    list.removeWhere((v) => v == null);
+    return list.join(" ");
+  }
+
   List<Widget> _tiles = <Widget>[
+    _socialIcons("assets/images/vcardfile.png", "vCard", finalTitle, height,
+        "vCardFile"),
     _socialIcons("assets/images/whatsapp.png", "WhatsApp", CRUD.whatsapp,
         height, "www.whatsapp.com/"),
     _socialIcons("assets/images/snapchat.png", "SnapChat", CRUD.snapchat,
@@ -177,6 +188,23 @@ class _WriteState extends State<Write> {
                   ),
                 ),
               ]),
+              floatingActionButton: FloatingActionButton.extended(
+                onPressed: () {
+                  // Add your onPressed code here!
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EditProfile()),
+                  );
+//                  Fluttertoast.showToast(
+//                      msg:
+//                      "You can Add/Remove tags from Edit Profile",
+//                      gravity: ToastGravity.CENTER);
+                },
+                label: Text('Add Nomi Tag'),
+                icon: Icon(Icons.add),
+                backgroundColor: Colors.blueAccent,
+              ),
             );
           } else
             return Column(
@@ -226,7 +254,8 @@ class _socialIcons extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Read("Write", path, name)),
+                        builder: (context) =>
+                            Read("Write", path, name)),
                   );
                 },
                 child: Image.asset(

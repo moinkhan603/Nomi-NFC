@@ -112,19 +112,18 @@ class CRUD {
     });
   }
 
-
-
   static logOut() async {
     final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     await _firebaseAuth.signOut().then((_) {
-
-  refresh();
+      refresh();
     });
   }
 
 
-  static Future<bool> getData() async {
 
+
+
+  static Future<bool> getData() async {
 //
 //    FirebaseDatabase database;
 //    database = FirebaseDatabase.instance;
@@ -155,7 +154,7 @@ class CRUD {
         .then((DataSnapshot dataSnapshot) {
       Map<dynamic, dynamic> values = dataSnapshot.value;
       values.forEach((key, values) {
-        whatsapp =  values["whatsapp_un"];
+        whatsapp = values["whatsapp_un"];
 
         twitter = values["twitter_un"];
         venmo = values["venmo_un"];
@@ -171,15 +170,14 @@ class CRUD {
         soundcloud = values["soundcloud_un"];
         taps = values["taps"];
         name = values["Name"];
+        email = values["email"];
         Number = values["Number"];
         Occupation = values["Occupation"];
         imgUrl = values["img_url"];
         bio = values["bio"];
       });
-
     });
     print(whatsapp);
-return true;
+    return true;
   }
-
 }

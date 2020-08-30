@@ -1,11 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:nomi/vcard.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:nfc_in_flutter/nfc_in_flutter.dart';
 import 'CRUD.dart';
 
 class CustomDrawer {
@@ -57,6 +60,7 @@ class CustomDrawer {
                 _buildDivider(),
 //                InkWell(
 //                    onTap: () {
+////                  fl    _ReadState._scanFun();
 //                      Navigator.popAndPushNamed(context, '/read');
 //                    },
 //                    child: _buildRow(FontAwesomeIcons.tag, "Read Nomi")),
@@ -70,9 +74,9 @@ class CustomDrawer {
 
                 InkWell(
                     onTap: () {
-                      LaunchReview.launch(androidAppId: "com.flashsol.nomi",
+                      LaunchReview.launch(
+                          androidAppId: "com.flashsol.nomi",
                           iOSAppId: "1521871921");
-
                     },
                     child: _buildRow(
                       FontAwesomeIcons.building,
@@ -81,18 +85,25 @@ class CustomDrawer {
                 _buildDivider(),
                 InkWell(
                     onTap: () async {
-                        final PermissionHandler _permissionHandler =
-                        PermissionHandler();
-                        var result = await _permissionHandler
-                            .requestPermissions([PermissionGroup.storage]);
-
+//                      if (Platform.isAndroid) {
+                      final PermissionHandler _permissionHandler =
+                          PermissionHandler();
+                      var result = await _permissionHandler
+                          .requestPermissions([PermissionGroup.storage]);
                       if (result[PermissionGroup.storage] ==
                           PermissionStatus.granted) {
-                        VCARD v = new VCARD();
-                        v.saveVcard();
+//
                       }
 
-                      // v.Sharefile();
+                      VCARD v = new VCARD();
+                      v.saveVcard();
+//                      }
+//                      else {
+//                        Fluttertoast.showToast(
+//                            msg: "You can Add/Remove tags from Edit Profile",
+//                            gravity: ToastGravity.CENTER);
+//
+//                      }
                     },
                     child: _buildRow(
                       FontAwesomeIcons.addressCard,
@@ -139,8 +150,6 @@ class CustomDrawer {
       color: Colors.grey.shade600,
     );
   }
-
-
 
   static Widget _buildRow(IconData icon, String title,
       {bool showBadge = false}) {

@@ -46,6 +46,11 @@ class _ReadState extends State<Read> {
           textColor: Colors.white,
           gravity: ToastGravity.CENTER);
     } else if (widget.btntxt == "Read") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Read("Read","","")),
+      );
       Fluttertoast.showToast(
           msg: "Click Read to Read the NFC TAG",
           backgroundColor: Colors.blue,
@@ -55,7 +60,7 @@ class _ReadState extends State<Read> {
   }
 
   _launchURL(String userLink) async {
-    var url = "https://" + userLink;
+    var url = userLink;
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -165,7 +170,7 @@ class _ReadState extends State<Read> {
           title: Padding(
             padding: const EdgeInsets.only(top: 18.0),
             child: Text(
-              widget.title,
+              "Read Nomi",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

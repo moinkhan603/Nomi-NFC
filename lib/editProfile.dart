@@ -63,7 +63,8 @@ class _EditProfileState extends State<EditProfile> {
           actions: <Widget>[
             GestureDetector(
               onTap: () {
-                Navigator.pop(context);
+//                Navigator.pop(context);
+                Navigator.popAndPushNamed(context, '/write');
               },
               child: GestureDetector(
                 onTap: () {
@@ -74,7 +75,8 @@ class _EditProfileState extends State<EditProfile> {
                   setState(() {
                     showSpinner = false;
                   });
-                  Navigator.pop(context);
+//                  Navigator.pop(context);
+                  Navigator.popAndPushNamed(context, '/write');
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(top: 25.0, right: 10),
@@ -206,7 +208,7 @@ class _EditProfileState extends State<EditProfile> {
                           _info(AppLocalizations.of(context).translate('name'),
                               1, CRUD.name, true),
                           _info(AppLocalizations.of(context).translate('email'),
-                              2, CRUD.email, true),
+                              2, CRUD.email, false),
                           _info('Number', 3, CRUD.Number, true),
                           _info('Occupation', 4, CRUD.Occupation, true),
                           _info(AppLocalizations.of(context).translate('bio'),
